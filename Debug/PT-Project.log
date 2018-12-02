@@ -1,2 +1,4 @@
-﻿  ApplicationManager.cpp
+﻿  AddEllipseAction.cpp
+  LINK : .\Debug/PT Project.exe not found or not built by the last incremental link; performing full link
+AddEllipseAction.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
   PT-Project.vcxproj -> C:\Users\anass\Desktop\david final final\Phase2 - Project Framework\.\Debug\PT Project.exe

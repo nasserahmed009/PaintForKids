@@ -129,10 +129,10 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AddEllipseAction.cpp" />
-    <ClCompile Include="AddLineAction.cpp" />
-    <ClCompile Include="AddRhomAction.cpp" />
-    <ClCompile Include="AddTriAction.cpp" />
+    <ClCompile Include="Actions\AddEllipseAction.cpp" />
+    <ClCompile Include="Actions\AddLineAction.cpp" />
+    <ClCompile Include="Actions\AddRhomAction.cpp" />
+    <ClCompile Include="Actions\AddTriAction.cpp" />
     <ClCompile Include="CEllipse.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
@@ -182,9 +182,9 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AddEllipseAction.h" />
-    <ClInclude Include="AddLineAction.h" />
-    <ClInclude Include="AddRhomAction.h" />
+    <ClInclude Include="Actions\AddEllipseAction.h" />
+    <ClInclude Include="Actions\AddLineAction.h" />
+    <ClInclude Include="Actions\AddRhomAction.h" />
     <ClInclude Include="CEllipse.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
@@ -218,7 +218,7 @@
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="CLine.h" />
-    <ClInclude Include="AddTriAction.h" />
+    <ClInclude Include="Actions\AddTriAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

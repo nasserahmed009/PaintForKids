@@ -1,11 +1,11 @@
 #include "AddLineAction.h"
 
-#include "CLine.h"
+#include "../CLine.h"
 
-#include "ApplicationManager.h"
+#include "../ApplicationManager.h"
 
-#include "GUI\Input.h"
-#include "GUI\Output.h"
+#include "../GUI/Input.h"
+#include "../GUI/Output.h"
 
 AddLineAction::AddLineAction(ApplicationManager * pApp):Action(pApp)
 {}

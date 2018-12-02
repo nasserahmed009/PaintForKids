@@ -1,9 +1,9 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
-#include "AddLineAction.h"
-#include "AddEllipseAction.h"
-#include "AddTriAction.h"
-#include "AddRhomAction.h"
+#include "Actions\AddLineAction.h"
+#include "Actions\AddEllipseAction.h"
+#include "Actions\AddTriAction.h"
+#include "Actions\AddRhomAction.h"
 
 
 //Constructor
