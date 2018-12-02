@@ -133,6 +133,7 @@
     <ClCompile Include="Actions\AddLineAction.cpp" />
     <ClCompile Include="Actions\AddRhomAction.cpp" />
     <ClCompile Include="Actions\AddTriAction.cpp" />
+    <ClCompile Include="Actions\AddSelectAction.cpp" />
     <ClCompile Include="CEllipse.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="Actions\AddEllipseAction.h" />
     <ClInclude Include="Actions\AddLineAction.h" />
     <ClInclude Include="Actions\AddRhomAction.h" />
+    <ClInclude Include="Actions\AddSelectAction.h" />
     <ClInclude Include="CEllipse.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />

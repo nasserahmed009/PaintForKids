@@ -4,6 +4,7 @@
 #include "Actions\AddEllipseAction.h"
 #include "Actions\AddTriAction.h"
 #include "Actions\AddRhomAction.h"
+#include "Actions\AddSelectAction.h"
 
 
 //Constructor
@@ -58,30 +59,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 
 		case SELECT:
-			if (FigCount != 0) {
-				int Px, Py;
-				pIn->GetPointClicked(Px,Py);
-				Point pClicked;
-				pClicked.x = Px;
-				pClicked.y = Py;
-				for (int i = 0; i < FigCount; i++) {
-					if (FigList[i]->IsSelected()) {
-						FigList[i]->SetSelected(false);
-						FigList[i]->ChngDrawClr(BLACK);
-					}
-				}
-				for (int i = FigCount-1; i >= 0; i--) {
-					if (FigList[i]->PointInFigure(pClicked)) {
-							FigList[i]->SetSelected(true);
-							FigList[i]->ChngDrawClr(MAGENTA);
-							pOut->PrintMessage("Selected");
-							break;
-					}
-				}
-			}
-			else {
-				pOut->PrintMessage("Please draw figures first");
-			};
+			pAct = new AddSelectAction(this);
 			break;
 
 		case CHNG_DRAW_CLR:
@@ -165,14 +143,32 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
+	Point P1;
+	P1.x = x;
+	P1.y = y;
+	for (int i = FigCount - 1; i >= 0; i--) {
+		if (FigList[i]->PointInFigure(P1)) {
+			return FigList[i];
+		}
+	}
+	return NULL;
 	//If a figure is found return a pointer to it.
 	//if this point (x,y) does not belong to any figure return NULL
 
 
 	//Add your code here to search for a figure given a point x,y	
 	//Remember that ApplicationManager only calls functions do NOT implement it.
-
-	return NULL;
+}
+void ApplicationManager::DeselectAll()
+{
+	//Loop over the figList, finds the selected item and deselect it
+	for (int i = FigCount - 1; i >= 0; i--) {
+		if (FigList[i]->IsSelected()) {
+			FigList[i]->SetSelected(false);
+			FigList[i]->ChngDrawClr(BLACK);
+			break;
+		}
+	}
 }
 //==================================================================================//
 //							Interface Management Functions							//
