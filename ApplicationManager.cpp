@@ -172,6 +172,8 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	P1.x = x;
 	P1.y = y;
 	for (int i = FigCount - 1; i >= 0; i--) {
+		if (FigList[i] == NULL)
+			continue;
 		if (FigList[i]->PointInFigure(P1)) {
 			return FigList[i];
 		}
@@ -188,7 +190,7 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 void ApplicationManager::DeleteFigure(CFigure* pFig) {
 	for (int i = 0; i < FigCount - 1; i++) {
 		if (FigList[i] == pFig) {
-			delete pFig;
+			delete FigList[i];
 			FigList[i] = NULL;
 		}
 	}
@@ -197,6 +199,8 @@ void ApplicationManager::DeselectAll()
 {
 	//Loop over the figList, finds the selected item and deselect it
 	for (int i = FigCount - 1; i >= 0; i--) {
+		if (FigList[i] == NULL)
+			continue;
 		if (FigList[i]->IsSelected()) {
 			FigList[i]->SetSelected(false);
 			FigList[i]->ChngDrawClr(BLACK);
@@ -211,7 +215,7 @@ void ApplicationManager::DeselectAll()
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {	
-	
+	pOut->ClearDrawArea();
 	for (int i = 0; i < FigCount; i++) {
 		if(FigList[i] != NULL)
 			FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
