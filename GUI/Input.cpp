@@ -62,6 +62,7 @@ ActionType Input::GetUserAction() const
 			//case ITM_PLAY:      return TO_PLAY;
 			case ITM_SELECT:		return SELECT;
 			case ITM_DEL: 			return DEL;
+			case ITM_CPY:			return CPY;
 			case ITM_SAVE: 			return SAVE;
 			case ITM_SAVEBT:	    return SAVE_BY_TYPE;
 			case ITM_LOAD:          return LOAD;

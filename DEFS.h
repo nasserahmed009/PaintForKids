@@ -15,6 +15,9 @@ enum ActionType //The actions supported (you can add more if needed)
 	CHNG_FILL_CLR,	//Change the filling color
 	SELECT,			//Open the selection mode
 	DEL,			//Delete a figure(s)
+	CPY,			//Copies a figure to the clipboard
+	CUT,			//Cuts the figure to the clipboard
+	PASTE,			//Pastes the figure from the clipboard
 	SAVE,			//Save the whole graph to a file
 	SAVE_BY_TYPE,	//Save the all the figures that have a specific type
 	LOAD,			//Load a graph from a file

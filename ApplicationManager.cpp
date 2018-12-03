@@ -5,6 +5,7 @@
 #include "Actions\AddTriAction.h"
 #include "Actions\AddRhomAction.h"
 #include "Actions\AddSelectAction.h"
+#include "Actions\CopyAction.h"
 
 
 //Constructor
@@ -102,6 +103,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DEL:
 				pOut->PrintMessage("Action: a click on the Delete button");
 				break;
+		case CPY:
+				pAct = new CopyAction(this);
+				break;
+				
 		case SAVE:
 				pOut->PrintMessage("Action: a click on the Save button, Click anywhere");
 				break;
@@ -187,6 +192,16 @@ Input *ApplicationManager::GetInput() const
 //Return a pointer to the output
 Output *ApplicationManager::GetOutput() const
 {	return pOut; }
+
+//==================================================================================//
+//							Clipboard Management Functions							//
+//==================================================================================//
+
+void ApplicationManager::SetClipboard(CFigure* pFig) 
+{
+	this->Clipboard = pFig;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////
 //Destructor
 ApplicationManager::~ApplicationManager()
