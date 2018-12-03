@@ -165,6 +165,7 @@ void PickByColorAction::Execute()
 						WrongPicks++;
 					}
 				}
+				selected->Hide(true);
 			}
 					break;
 
