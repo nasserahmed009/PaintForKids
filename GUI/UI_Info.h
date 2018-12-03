@@ -82,13 +82,14 @@ struct UI_Info	//User Interface Info.
 		ColorX, ColorY;
 
 	
-
+	
 	color DrawColor;		//Drawing color
 	color FillColor;		//Filling color
 	color HighlightColor;	//Highlighting color
 	color MsgColor;			//Messages color
 	color BkGrndColor;		//Background color
 	color StatusBarColor;	//Status bar color
+	color CutColor = GRAY;  //Figure cut color
 	int PenWidth;			//width of the pen that draws shapes
 
 	/// Add more members if needed

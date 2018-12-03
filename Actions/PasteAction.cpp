@@ -60,8 +60,13 @@ void PasteAction::Execute() {
 		pManager->AddFigure(TranslatedLine);
 	}
 
+	if (pManager->GetCutFig() != NULL) {
+		pManager->DeleteFigure(pManager->GetCutFig());
+		pManager->SetCutFig(NULL);
+		pManager->UpdateInterface();
+	}
 
-
+	pOut->PrintMessage("Figure is pasted");
 
 }
 

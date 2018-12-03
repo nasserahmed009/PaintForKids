@@ -38,6 +38,13 @@ void CopyAction::Execute() {
 
 		copiedFigure = new CRhombus(P1, selectedFigure->GetFigGfxInfo());
 	}
+
+	if (pManager->GetCutFig() != NULL) {
+		(pManager->GetCutFig())->ChngFillClr((pManager->GetClipboardFig())->GetFigGfxInfo().FillClr);
+		pManager->SetCutFig(NULL);
+	}
+	pManager->ClearClipboard();
+
 	copiedFigure->ChngDrawClr(BLACK);
 	pManager->SetClipboard(copiedFigure);
 	pManager->DeselectAll();

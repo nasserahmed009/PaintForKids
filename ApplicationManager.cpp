@@ -7,6 +7,7 @@
 #include "Actions\AddSelectAction.h"
 #include "Actions\CopyAction.h"
 #include "Actions\PasteAction.h"
+#include "Actions\CutAction.h"
 
 
 //Constructor
@@ -17,6 +18,7 @@ ApplicationManager::ApplicationManager()
 	pIn = pOut->CreateInput();
 	SelectedFig = NULL;
 	Clipboard = NULL;
+	CutFig = NULL;
 	FigCount = 0;
 		
 	//Create an array of figure pointers and set them to NULL		
@@ -108,6 +110,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case CPY:
 				pAct = new CopyAction(this);
 				break;
+		case CUT:
+				pAct = new CutAction(this);
+				break;
 		case PASTE:
 				pAct = new PasteAction(this);
 				break;
@@ -149,6 +154,17 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 	if(FigCount < MaxFigCount )
 		FigList[FigCount++] = pFig;	
 }
+
+CFigure* ApplicationManager::GetCutFig() {
+	return CutFig;
+}
+
+void ApplicationManager::SetCutFig(CFigure* pFig) {
+	if (pFig != NULL)
+		pFig->ChngFillClr(UI.CutColor);
+	CutFig = pFig;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
@@ -168,6 +184,15 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	//Add your code here to search for a figure given a point x,y	
 	//Remember that ApplicationManager only calls functions do NOT implement it.
 }
+
+void ApplicationManager::DeleteFigure(CFigure* pFig) {
+	for (int i = 0; i < FigCount - 1; i++) {
+		if (FigList[i] == pFig) {
+			delete pFig;
+			FigList[i] = NULL;
+		}
+	}
+}
 void ApplicationManager::DeselectAll()
 {
 	//Loop over the figList, finds the selected item and deselect it
@@ -186,8 +211,11 @@ void ApplicationManager::DeselectAll()
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {	
-	for(int i=0; i<FigCount; i++)
-		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+	
+	for (int i = 0; i < FigCount; i++) {
+		if(FigList[i] != NULL)
+			FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
@@ -209,6 +237,13 @@ void ApplicationManager::SetClipboard(CFigure* pFig)
 void ApplicationManager::SetSelectedFig(CFigure * pFig)
 {
 	this->SelectedFig = pFig;
+}
+
+void ApplicationManager::ClearClipboard()
+{
+	if (Clipboard!=NULL)
+		delete Clipboard;
+	Clipboard = NULL;
 }
 
 CFigure * ApplicationManager::GetSelectedFig()

@@ -18,6 +18,8 @@ private:
 	CFigure* SelectedFig;           //Pointer to the selected figure
 	CFigure* Clipboard;             //Pointer to the copied/cut figure
 
+	CFigure* CutFig;
+
 	//Pointers to Input and Output classes
 	Input *pIn;
 	Output *pOut;
@@ -37,7 +39,11 @@ public:
 	
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);            //Adds a new figure to the FigList
-	CFigure *GetFigure(int x, int y) const;   //Search for a figure given a point inside the figure
+	CFigure *GetCutFig();
+	void SetCutFig(CFigure * pFig);
+	CFigure *GetFigure(int x, int y) const;
+	void DeleteFigure(CFigure * pFig);
+	//Search for a figure given a point inside the figure
 	void DeselectAll();
 		
 	// -- Interface Management Functions
@@ -48,6 +54,7 @@ public:
 	// -- ClipboardFig & SelectedFig Management Functions
 	void SetClipboard(CFigure* pFig);
 	void SetSelectedFig(CFigure* pFig);
+	void ClearClipboard();
 	CFigure* GetSelectedFig();
 	CFigure* GetClipboardFig();
 };
