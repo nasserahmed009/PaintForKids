@@ -45,10 +45,11 @@ public:
 	Output *GetOutput() const;                //Return pointer to the output
 	void UpdateInterface() const;	          //Redraws all the drawing window
 
-	// -- Clipboard Management Functions
+	// -- ClipboardFig & SelectedFig Management Functions
 	void SetClipboard(CFigure* pFig);
 	void SetSelectedFig(CFigure* pFig);
 	CFigure* GetSelectedFig();
+	CFigure* GetClipboardFig();
 };
 
 #endif

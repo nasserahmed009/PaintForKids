@@ -30,3 +30,10 @@ bool CTriangle::PointInFigure(Point P1)
 	return false;
 
 }
+
+void CTriangle::GetFigPoints(Point & P1, Point & P2, Point & P3)
+{
+	P1 = Corner1;
+	P2 = Corner2;
+	P3 = Corner3;
+}

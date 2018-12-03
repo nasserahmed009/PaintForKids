@@ -24,6 +24,12 @@ public:
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
 
+	virtual void GetFigPoints(Point &P1); //gets point of figure
+	virtual void GetFigPoints(Point &P1, Point &P2); //gets 2 points of figure
+	virtual void GetFigPoints(Point &P1, Point &P2, Point &P3); //gets 3 points of figure
+
+	virtual GfxInfo GetFigGfxInfo();
+
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
 

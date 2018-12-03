@@ -20,3 +20,8 @@ bool CEllipse::PointInFigure(Point P1)
 	}
 	return false;
 }
+
+void CEllipse::GetFigPoints(Point & P1)
+{
+	P1 = Corner1;
+}

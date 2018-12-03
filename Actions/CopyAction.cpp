@@ -7,9 +7,6 @@ CopyAction::CopyAction(ApplicationManager * pApp):Action(pApp)
 }
 
 void CopyAction::ReadActionParameters() {
-	//Get a Pointer to the Input / Output Interfaces
-	Input* pIn = pManager->GetInput();
-	pIn->GetPointClicked(pClicked.x, pClicked.y);
 }
 
 void CopyAction::Execute() {
@@ -23,22 +20,25 @@ void CopyAction::Execute() {
 		pOut->PrintMessage("No figure is selected");
 		return;
 	}else if (dynamic_cast<CRectangle*>(selectedFigure)) {
-		copiedFigure = new CRectangle(P1,P2,TempGfx);
-		*copiedFigure = *(dynamic_cast<CRectangle*>(selectedFigure));
+		selectedFigure->GetFigPoints(P1,P2);
+		copiedFigure = new CRectangle(P1,P2, selectedFigure->GetFigGfxInfo());
 	}else if (dynamic_cast<CLine*>(selectedFigure)) {
-		copiedFigure = new CLine(P1,P2,TempGfx);
-		*copiedFigure = *(dynamic_cast<CLine*>(selectedFigure));
+		selectedFigure->GetFigPoints(P1, P2);
+		copiedFigure = new CLine(P1,P2, selectedFigure->GetFigGfxInfo());
 	}else if (dynamic_cast<CEllipse*>(selectedFigure)) {
-		copiedFigure = new CEllipse(P1,TempGfx);
-		*copiedFigure = *(dynamic_cast<CEllipse*>(selectedFigure));
-	}else if (dynamic_cast<CTriangle*>(selectedFigure)) {
-		copiedFigure = new CTriangle(P1,P2,P3,TempGfx);
-		*copiedFigure = *(dynamic_cast<CTriangle*>(selectedFigure));
-	}else if (dynamic_cast<CRhombus*>(selectedFigure)) {
-		copiedFigure = new CRhombus(P1,TempGfx);
-		*copiedFigure = *(dynamic_cast<CRhombus*>(selectedFigure));
-	}
+		selectedFigure->GetFigPoints(P1);
 
+		copiedFigure = new CEllipse(P1, selectedFigure->GetFigGfxInfo());
+	}else if (dynamic_cast<CTriangle*>(selectedFigure)) {
+		selectedFigure->GetFigPoints(P1, P2, P3);
+
+		copiedFigure = new CTriangle(P1,P2,P3, selectedFigure->GetFigGfxInfo());
+	}else if (dynamic_cast<CRhombus*>(selectedFigure)) {
+		selectedFigure->GetFigPoints(P1);
+
+		copiedFigure = new CRhombus(P1, selectedFigure->GetFigGfxInfo());
+	}
+	copiedFigure->ChngDrawClr(BLACK);
 	pManager->SetClipboard(copiedFigure);
 	pManager->DeselectAll();
 	selectedFigure = NULL;

@@ -21,3 +21,8 @@ bool CRhombus::PointInFigure(Point P1)
 	}
 	return false;
 }
+
+void CRhombus::GetFigPoints(Point & P1)
+{
+	P1 = Corner1;
+}

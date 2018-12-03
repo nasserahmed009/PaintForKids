@@ -6,6 +6,7 @@
 #include "Actions\AddRhomAction.h"
 #include "Actions\AddSelectAction.h"
 #include "Actions\CopyAction.h"
+#include "Actions\PasteAction.h"
 
 
 //Constructor
@@ -107,7 +108,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case CPY:
 				pAct = new CopyAction(this);
 				break;
-				
+		case PASTE:
+				pAct = new PasteAction(this);
+				break;
 		case SAVE:
 				pOut->PrintMessage("Action: a click on the Save button, Click anywhere");
 				break;
@@ -211,6 +214,11 @@ void ApplicationManager::SetSelectedFig(CFigure * pFig)
 CFigure * ApplicationManager::GetSelectedFig()
 {
 	return this->SelectedFig;
+}
+
+CFigure * ApplicationManager::GetClipboardFig()
+{
+	return this->Clipboard;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////

@@ -17,3 +17,9 @@ bool CLine::PointInFigure(Point P1)
 {
 	return false;
 }
+
+void CLine::GetFigPoints(Point & P1, Point & P2)
+{
+	P1 = Corner1;
+	P2 = Corner2;
+}

@@ -12,6 +12,7 @@ public:
 	CRhombus(Point , GfxInfo FigureGfxInfo );
 	virtual void Draw(Output* pOut) const;
 	bool PointInFigure(Point P1);
+	void GetFigPoints(Point & P1);
 };
 
 #endif

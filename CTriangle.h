@@ -13,6 +13,7 @@ public:
 	CTriangle(Point , Point, Point , GfxInfo FigureGfxInfo );
 	virtual void Draw(Output* pOut) const;
 	bool PointInFigure(Point P1);
+	void GetFigPoints(Point &P1, Point &P2, Point &P3);
 };
 
 #endif

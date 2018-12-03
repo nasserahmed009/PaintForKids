@@ -21,3 +21,20 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr; 
 }
 
+void CFigure::GetFigPoints(Point & P1)
+{
+}
+
+void CFigure::GetFigPoints(Point & P1, Point & P2)
+{
+}
+
+void CFigure::GetFigPoints(Point & P1, Point & P2, Point & P3)
+{
+}
+
+GfxInfo CFigure::GetFigGfxInfo()
+{
+	return FigGfxInfo;
+}
+

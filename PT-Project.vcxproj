@@ -182,6 +182,7 @@
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="CLine.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Actions\PasteAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddEllipseAction.h" />
@@ -223,6 +224,7 @@
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="CLine.h" />
     <ClInclude Include="Actions\AddTriAction.h" />
+    <ClInclude Include="Actions\PasteAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

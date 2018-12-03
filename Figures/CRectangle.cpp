@@ -26,3 +26,9 @@ void CRectangle::Draw(Output* pOut) const
 	//Call Output::DrawRect to draw a rectangle on the screen	
 	pOut->DrawRect(Corner1, Corner2, FigGfxInfo, Selected);
 }
+
+void CRectangle::GetFigPoints(Point &P1, Point &P2)
+{
+	P1 = Corner1;
+	P2 = Corner2;
+}
