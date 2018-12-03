@@ -21,13 +21,14 @@ void AddSelectAction::Execute()
 	ReadActionParameters();
 	pManager->DeselectAll();
 	CFigure* selectedFigure = pManager->GetFigure(pClicked.x, pClicked.y);
+	pManager->SetSelectedFig(selectedFigure);
 	if (selectedFigure){
 		selectedFigure->SetSelected(true);
 		selectedFigure->ChngDrawClr(MAGENTA);
-		pOut->PrintMessage("a figure is selected");
+		pOut->PrintMessage("A figure is selected");
 	}
 	else {
-		pOut->PrintMessage("no figure is selected");
+		pOut->PrintMessage("No figure is selected");
 	}
 }
 

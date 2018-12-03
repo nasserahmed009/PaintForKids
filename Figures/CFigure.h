@@ -16,7 +16,6 @@ protected:
 
 public:
 	CFigure(GfxInfo FigureGfxInfo);
-
 	void SetSelected(bool s);	//select/unselect the figure
 	bool IsSelected() const;	//check whether fig is selected
 	virtual bool PointInFigure(Point P1) = 0; //check whether the point is in the figure or not

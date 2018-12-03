@@ -47,6 +47,8 @@ public:
 
 	// -- Clipboard Management Functions
 	void SetClipboard(CFigure* pFig);
+	void SetSelectedFig(CFigure* pFig);
+	CFigure* GetSelectedFig();
 };
 
 #endif

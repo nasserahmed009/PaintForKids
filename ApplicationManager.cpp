@@ -14,7 +14,8 @@ ApplicationManager::ApplicationManager()
 	//Create Input and output
 	pOut = new Output;
 	pIn = pOut->CreateInput();
-	
+	SelectedFig = NULL;
+	Clipboard = NULL;
 	FigCount = 0;
 		
 	//Create an array of figure pointers and set them to NULL		
@@ -200,6 +201,16 @@ Output *ApplicationManager::GetOutput() const
 void ApplicationManager::SetClipboard(CFigure* pFig) 
 {
 	this->Clipboard = pFig;
+}
+
+void ApplicationManager::SetSelectedFig(CFigure * pFig)
+{
+	this->SelectedFig = pFig;
+}
+
+CFigure * ApplicationManager::GetSelectedFig()
+{
+	return this->SelectedFig;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
