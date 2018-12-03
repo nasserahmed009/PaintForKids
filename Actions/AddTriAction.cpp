@@ -25,7 +25,7 @@ void AddTriAction::ReadActionParameters()
 	//Read 2nd corner and store in point P2
 	pIn->GetPointClicked(P2.x, P2.y);
 
-	pOut->PrintMessage("New Rectangle: Click at second corner");
+	pOut->PrintMessage("New Rectangle: Click at third corner");
 
 	//Read 3rd corner and store in point P3
 	pIn->GetPointClicked(P3.x, P3.y);

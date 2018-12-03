@@ -12,6 +12,8 @@ public:
 	CRectangle(Point , Point, GfxInfo FigureGfxInfo );
 	bool PointInFigure(Point P1);
 	virtual void Draw(Output* pOut) const;
+	void Hide(bool);
+	bool checkHidden();
 };
 
 #endif

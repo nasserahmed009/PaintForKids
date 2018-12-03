@@ -20,3 +20,13 @@ bool CEllipse::PointInFigure(Point P1)
 	}
 	return false;
 }
+
+void CEllipse::Hide(bool h)
+{
+	isHidden = h;
+}
+
+bool CEllipse::checkHidden()
+{
+	return isHidden;
+}

@@ -13,6 +13,8 @@ public:
 	CTriangle(Point , Point, Point , GfxInfo FigureGfxInfo );
 	virtual void Draw(Output* pOut) const;
 	bool PointInFigure(Point P1);
+	void Hide(bool);
+	bool checkHidden();
 };
 
 #endif

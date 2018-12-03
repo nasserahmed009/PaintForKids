@@ -181,6 +181,8 @@
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="CLine.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Actions\PickByFigureAction.cpp" />
+    <ClCompile Include="Actions\PickByColorAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddEllipseAction.h" />
@@ -221,6 +223,8 @@
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="CLine.h" />
     <ClInclude Include="Actions\AddTriAction.h" />
+    <ClInclude Include="Actions\PickByFigureAction.h" />
+    <ClInclude Include="Actions\PickByColorAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

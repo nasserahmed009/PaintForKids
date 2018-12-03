@@ -30,3 +30,13 @@ bool CTriangle::PointInFigure(Point P1)
 	return false;
 
 }
+
+void CTriangle::Hide(bool h)
+{
+	isHidden = h;
+}
+
+bool CTriangle::checkHidden()
+{
+	return isHidden;
+}

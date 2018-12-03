@@ -7,11 +7,12 @@ class CEllipse : public CFigure
 {
 private:
 	Point Corner1;	
-	
 public:
 	CEllipse(Point , GfxInfo FigureGfxInfo );
 	virtual void Draw(Output* pOut) const;
 	bool PointInFigure(Point P1);
+	void Hide(bool);
+	bool checkHidden();
 };
 
 #endif

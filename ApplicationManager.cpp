@@ -5,7 +5,13 @@
 #include "Actions\AddTriAction.h"
 #include "Actions\AddRhomAction.h"
 #include "Actions\AddSelectAction.h"
-
+#include"Actions\PickByColorAction.h"
+#include"Actions\PickByFigureAction.h"
+#include"Figures/CRectangle.h"
+#include"CTriangle.h"
+#include"CEllipse.h"
+#include"CRhombus.h"
+#include"CLine.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -57,11 +63,17 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_RHOMBUS:
 			pAct = new AddRhomAction(this);
 			break;
+		case TO_DRAW:
+			pOut->CreateDrawToolBar();
+			break;
+		case TO_PLAY:
+			pOut->CreatePlayToolBar();
+			break;
 
 		case SELECT:
 			pAct = new AddSelectAction(this);
 			break;
-
+		
 		case CHNG_DRAW_CLR:
 				pOut->PrintMessage("Action: Change Figure's drawing color , Click anywhere");
 				pOut->DrawColorPallete(2);
@@ -112,7 +124,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 				pOut->PrintMessage("Action: a click on the Load button, Click anywhere");
 				
 				break;
-
+		case PICK_BY_FIGURE:
+				pOut->PrintMessage("Action: a click on the Pick by figure button, Click anywhere");
+				pAct = new PickByFigureAction(this);
+				break;
+		case PICK_BY_COLOR:
+			pOut->PrintMessage("Action: a click on the Pick by color button, Click anywhere");
+			pAct = new PickByColorAction(this);
+				break;
 		case EXIT:
 			///create ExitAction here
 			
@@ -129,6 +148,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		delete pAct;	//Action is not needed any more ==> delete it
 		pAct = NULL;
 	}
+}
+bool ApplicationManager::CheckDrawings()
+{
+	for (int i = 0; i < FigCount; i++) {
+		if (FigList[i] != NULL) {
+			return true;
+		}
+	}
+	return false;
 }
 //==================================================================================//
 //						Figures Management Functions								//
@@ -170,6 +198,12 @@ void ApplicationManager::DeselectAll()
 		}
 	}
 }
+void ApplicationManager::Hide_UnhideAll(bool h)
+{
+	for (int i = 0; i < FigCount; i++) {
+		FigList[i]->Hide(h);
+	}
+}
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
@@ -177,8 +211,11 @@ void ApplicationManager::DeselectAll()
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {	
-	for(int i=0; i<FigCount; i++)
-		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+	for (int i = 0; i < FigCount; i++) {
+		if ((FigList[i]->checkHidden())==false) {
+			FigList[i]->Draw(pOut);	//Call Draw function (virtual member fn)
+		}
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
@@ -187,6 +224,61 @@ Input *ApplicationManager::GetInput() const
 //Return a pointer to the output
 Output *ApplicationManager::GetOutput() const
 {	return pOut; }
+////////////////////////////////////////////////////////////////////////////////////
+int ApplicationManager::NumOfrect() {
+	CRectangle* rect;
+	int number = 0;
+	for (int i = 0; i < FigCount; i++) {
+		rect = dynamic_cast<CRectangle*>(FigList[i]);
+		if (rect != NULL)
+			number++;
+	}
+	return number;
+}
+////////////////////////////////////////////////////////////////////////////////////
+int ApplicationManager::NumOfTris() {
+	CTriangle* tri;
+	int number = 0;
+	for (int i = 0; i < FigCount; i++) {
+		tri = dynamic_cast<CTriangle*>(FigList[i]);
+		if (tri != NULL)
+			number++;
+	}
+	return number;
+}
+////////////////////////////////////////////////////////////////////////////////////
+int ApplicationManager::NumOfEli() {
+	CEllipse* eli;
+	int number = 0;
+	for (int i = 0; i < FigCount; i++) {
+		eli = dynamic_cast<CEllipse*>(FigList[i]);
+		if (eli != NULL)
+			number++;
+	}
+	return number;
+}
+////////////////////////////////////////////////////////////////////////////////////
+int ApplicationManager::NumOfRhom() {
+	CRhombus* rhom;
+	int number = 0;
+	for (int i = 0; i < FigCount; i++) {
+		rhom = dynamic_cast<CRhombus*>(FigList[i]);
+		if (rhom != NULL)
+			number++;
+	}
+	return number;
+}
+////////////////////////////////////////////////////////////////////////////////////
+int ApplicationManager::NumOfLines() {
+	CLine* line;
+	int number = 0;
+	for (int i = 0; i < FigCount; i++) {
+		line = dynamic_cast<CLine*>(FigList[i]);
+		if (line != NULL)
+			number++;
+	}
+	return number;
+}
 ////////////////////////////////////////////////////////////////////////////////////
 //Destructor
 ApplicationManager::~ApplicationManager()

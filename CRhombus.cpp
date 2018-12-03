@@ -21,3 +21,13 @@ bool CRhombus::PointInFigure(Point P1)
 	}
 	return false;
 }
+
+void CRhombus::Hide(bool h)
+{
+	isHidden = h;
+}
+
+bool CRhombus::checkHidden()
+{
+	return isHidden;
+}
