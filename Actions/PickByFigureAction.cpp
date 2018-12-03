@@ -65,8 +65,11 @@ void PickByFigureAction::Execute()
 		while(numOfSelected >0) {
 			pIn->GetPointClicked(pClicked.x, pClicked.y);
 			CFigure* selected = pManager->GetFigure(pClicked.x, pClicked.y);
+			
 			if (pClicked.y >= 0 && pClicked.y < UI.ToolBarHeight)
 				break;
+			if (selected == NULL)
+				continue;
 			switch (num) {
 			case 2: {
 				CRectangle* rPtr = dynamic_cast<CRectangle*>(selected);

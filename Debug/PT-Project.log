@@ -1,2 +1,2 @@
-﻿  PickByFigureAction.cpp
-  PT-Project.vcxproj -> C:\Users\Lenovo\Desktop\paintForKids-development\paintForKids-development\.\Debug\PT Project.exe
+﻿AddEllipseAction.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  PT-Project.vcxproj -> C:\Users\Lenovo\Desktop\New folder\paintForKids\.\Debug\PT Project.exe
