@@ -13,6 +13,7 @@ public:
 	virtual void Draw(Output* pOut) const;
 	bool PointInFigure(Point P1);
 	void Hide(bool);
+	GfxInfo GetFigGfxInfo();
 	bool checkHidden();
 };
 

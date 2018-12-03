@@ -14,6 +14,7 @@ public:
 	virtual void Draw(Output* pOut) const;
 	void Hide(bool);
 	bool checkHidden();
+	GfxInfo GetFigGfxInfo();
 };
 
 #endif

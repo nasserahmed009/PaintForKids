@@ -27,6 +27,11 @@ void CRhombus::Hide(bool h)
 	isHidden = h;
 }
 
+GfxInfo CRhombus::GetFigGfxInfo()
+{
+	return FigGfxInfo;
+}
+
 bool CRhombus::checkHidden()
 {
 	return isHidden;

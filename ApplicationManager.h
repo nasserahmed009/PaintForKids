@@ -48,6 +48,11 @@ public:
 	int NumOfEli();
 	int NumOfRhom();
 	int NumOfLines();
+	int NumOfBlack();
+	int NumOfWhite();
+	int NumOfRed();
+	int NumOfGreen();
+	int NumOfBlue();
 	void UpdateInterface() const;	          //Redraws all the drawing window	
 };
 

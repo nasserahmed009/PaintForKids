@@ -36,6 +36,11 @@ void CTriangle::Hide(bool h)
 	isHidden = h;
 }
 
+GfxInfo CTriangle::GetFigGfxInfo()
+{
+	return FigGfxInfo;
+}
+
 bool CTriangle::checkHidden()
 {
 	return isHidden;

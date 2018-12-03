@@ -280,6 +280,107 @@ int ApplicationManager::NumOfLines() {
 	return number;
 }
 ////////////////////////////////////////////////////////////////////////////////////
+int ApplicationManager::NumOfBlack() {
+	GfxInfo g1;
+	int number = 0;
+	for (int i = 0; i < FigCount; i++) {
+		g1 = FigList[i]->GetFigGfxInfo();
+		CLine* rPtr = dynamic_cast<CLine*>(FigList[i]);
+		if (rPtr != NULL) {
+			if (g1.DrawClr == BLACK) {
+				number++;
+			}
+		}
+		else {
+			if (g1.FillClr == BLACK) {
+				number++;
+			}
+		}
+	}
+	return number;
+}
+////////////////////////////////////////////////////////////////////////////////////
+int ApplicationManager::NumOfWhite() {
+	GfxInfo g1;
+	int number = 0;
+	for (int i = 0; i < FigCount; i++) {
+		g1 = FigList[i]->GetFigGfxInfo();
+		CLine* rPtr = dynamic_cast<CLine*>(FigList[i]);
+		if (rPtr != NULL) {
+			if (g1.DrawClr == WHITE) {
+				number++;
+			}
+		}
+		else {
+			if (g1.FillClr == WHITE) {
+				number++;
+			}
+		}
+	}
+	return number;
+}
+////////////////////////////////////////////////////////////////////////////////////
+int ApplicationManager::NumOfRed() {
+	GfxInfo g1;
+	int number = 0;
+	for (int i = 0; i < FigCount; i++) {
+		g1 = FigList[i]->GetFigGfxInfo();
+		CLine* rPtr = dynamic_cast<CLine*>(FigList[i]);
+		if (rPtr != NULL) {
+			if (g1.DrawClr == RED) {
+				number++;
+			}
+		}
+		else {
+			if (g1.FillClr == RED) {
+				number++;
+			}
+		}
+	}
+	return number;
+}
+////////////////////////////////////////////////////////////////////////////////////
+int ApplicationManager::NumOfGreen() {
+	GfxInfo g1;
+	int number = 0;
+	for (int i = 0; i < FigCount; i++) {
+		g1 = FigList[i]->GetFigGfxInfo();
+		CLine* rPtr = dynamic_cast<CLine*>(FigList[i]);
+		if (rPtr != NULL) {
+			if (g1.DrawClr == GREEN) {
+				number++;
+			}
+		}
+		else {
+			if (g1.FillClr == GREEN) {
+				number++;
+			}
+		}
+	}
+	return number;
+}
+////////////////////////////////////////////////////////////////////////////////////
+int ApplicationManager::NumOfBlue() {
+	GfxInfo g1;
+	int number = 0;
+	for (int i = 0; i < FigCount; i++) {
+		g1 = FigList[i]->GetFigGfxInfo();
+		CLine* rPtr = dynamic_cast<CLine*>(FigList[i]);
+		if (rPtr != NULL) {
+			if (g1.DrawClr == BLUE) {
+				number++;
+			}
+		}
+		else {
+			if (g1.FillClr == BLUE) {
+				number++;
+			}
+		}
+	}
+	return number;
+}
+////////////////////////////////////////////////////////////////////////////////////
+
 //Destructor
 ApplicationManager::~ApplicationManager()
 {

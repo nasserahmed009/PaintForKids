@@ -129,8 +129,9 @@ void PickByFigureAction::Execute()
 				else {
 					WrongPicks++;
 				}
+
+				selected->Hide(true);
 			}
-					selected->Hide(true);
 				break;
 			}
 			pOut->ClearDrawArea();

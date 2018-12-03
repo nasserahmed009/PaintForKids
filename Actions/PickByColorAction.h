@@ -3,6 +3,7 @@
 class PickByColorAction :
 	public Action
 {
+	Point pClicked;
 public:
 	PickByColorAction(ApplicationManager* pApp);
 	void ReadActionParameters();

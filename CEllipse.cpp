@@ -26,6 +26,11 @@ void CEllipse::Hide(bool h)
 	isHidden = h;
 }
 
+GfxInfo CEllipse::GetFigGfxInfo()
+{
+	return FigGfxInfo;
+}
+
 bool CEllipse::checkHidden()
 {
 	return isHidden;

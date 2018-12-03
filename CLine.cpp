@@ -28,6 +28,11 @@ void CLine::Hide(bool h)
 	isHidden = h;
 }
 
+GfxInfo CLine::GetFigGfxInfo()
+{
+	return FigGfxInfo;
+}
+
 bool CLine::checkHidden()
 {
 	return isHidden;

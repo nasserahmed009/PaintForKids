@@ -36,3 +36,8 @@ bool CRectangle::checkHidden()
 {
 	return isHidden;
 }
+
+GfxInfo CRectangle::GetFigGfxInfo()
+{
+	return FigGfxInfo;
+}
