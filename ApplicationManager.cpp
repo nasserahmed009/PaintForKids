@@ -8,6 +8,8 @@
 #include "Actions\CopyAction.h"
 #include "Actions\PasteAction.h"
 #include "Actions\CutAction.h"
+#include "Actions\ChngDrawColor.h"
+#include "Actions\ChngFillColor.h"
 
 
 //Constructor
@@ -68,42 +70,13 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 
 		case CHNG_DRAW_CLR:
-				pOut->PrintMessage("Action: Change Figure's drawing color , Click anywhere");
-				pOut->DrawColorPallete(2);
-				ChooseClr = pIn->GetClr();
-				switch(ChooseClr){
-				case PICK_BLACK: UI.DrawColor = BLACK;
-								 break;
-				case PICK_WHITE: UI.DrawColor = WHITE;
-								 break;
-				case PICK_RED:   UI.DrawColor = RED;
-								 break;
-				case PICK_GREEN: UI.DrawColor = GREEN;
-								 break;
-				case PICK_BLUE:  UI.DrawColor = BLUE;
-								 break;
-				}
-				pOut->ClearColorPallete();
-				break;
+			pAct = new ChngDrawColor(this, pOut, pIn);
+			break;
 
 		case CHNG_FILL_CLR:
-				pOut->PrintMessage("Action: Change Figure's Fill color , Click anywhere");
-				pOut->DrawColorPallete(1);
-				ChooseClr = pIn->GetClr();
-				switch(ChooseClr){
-				case PICK_BLACK: UI.FillColor = BLACK;
-								 break;
-				case PICK_WHITE: UI.FillColor = WHITE;
-								 break;
-				case PICK_RED:   UI.FillColor = RED;
-								 break;
-				case PICK_GREEN: UI.FillColor = GREEN;
-								 break;
-				case PICK_BLUE:  UI.FillColor = BLUE;
-								 break;
-				}
-				pOut->ClearColorPallete();
-				break;
+			pAct = new ChngFillColor(this, pOut, pIn);
+			break;
+
 		case DEL:
 				pOut->PrintMessage("Action: a click on the Delete button");
 				break;

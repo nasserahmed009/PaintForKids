@@ -16,6 +16,12 @@ void CopyAction::Execute() {
 
 	Point P1 = { 0,0 }, P2 = { 0,0 }, P3 = { 0,0 }; GfxInfo TempGfx;
 	CFigure* copiedFigure;
+
+	if (pManager->GetCutFig() != NULL) {
+		(pManager->GetCutFig())->ChngFillClr((pManager->GetClipboardFig())->GetFigGfxInfo().FillClr);
+		pManager->SetCutFig(NULL);
+	}
+
 	if (selectedFigure == NULL) {
 		pOut->PrintMessage("No figure is selected");
 		return;
@@ -39,10 +45,7 @@ void CopyAction::Execute() {
 		copiedFigure = new CRhombus(P1, selectedFigure->GetFigGfxInfo());
 	}
 
-	if (pManager->GetCutFig() != NULL) {
-		(pManager->GetCutFig())->ChngFillClr((pManager->GetClipboardFig())->GetFigGfxInfo().FillClr);
-		pManager->SetCutFig(NULL);
-	}
+
 	pManager->ClearClipboard();
 
 	copiedFigure->ChngDrawClr(BLACK);

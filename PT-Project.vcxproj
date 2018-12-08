@@ -135,6 +135,8 @@
     <ClCompile Include="Actions\AddTriAction.cpp" />
     <ClCompile Include="Actions\AddSelectAction.cpp" />
     <ClCompile Include="CEllipse.cpp" />
+    <ClCompile Include="Actions\ChngDrawColor.cpp" />
+    <ClCompile Include="Actions\ChngFillColor.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
@@ -191,6 +193,8 @@
     <ClInclude Include="Actions\AddRhomAction.h" />
     <ClInclude Include="Actions\AddSelectAction.h" />
     <ClInclude Include="CEllipse.h" />
+    <ClInclude Include="Actions\ChngDrawColor.h" />
+    <ClInclude Include="Actions\ChngFillColor.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />

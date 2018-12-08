@@ -23,8 +23,6 @@ private:
 	//Pointers to Input and Output classes
 	Input *pIn;
 	Output *pOut;
-	
-	ActionType ChooseClr;            //Choose color action
 	GfxInfo gfxInfo;                 //to be used with draw function of the class Ouput
 
 public:	
