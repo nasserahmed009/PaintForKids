@@ -10,6 +10,7 @@ private:
 	Point Corner2;
 public:
 	CRectangle(Point , Point, GfxInfo FigureGfxInfo );
+	void ChngFigSize(double figSize);
 	bool PointInFigure(Point P1);
 	virtual void Draw(Output* pOut) const;
 	void GetFigPoints(Point &P1, Point &P2);

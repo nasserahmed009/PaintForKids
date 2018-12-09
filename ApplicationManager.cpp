@@ -10,6 +10,7 @@
 #include "Actions\CutAction.h"
 #include "Actions\ChngDrawColor.h"
 #include "Actions\ChngFillColor.h"
+#include "Actions\ResizeFigure.h"
 
 
 //Constructor
@@ -75,6 +76,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case CHNG_FILL_CLR:
 			pAct = new ChngFillColor(this, pOut, pIn);
+			break;
+
+		case RESIZE:
+			pAct = new ResizeFigure(this, pOut, pIn);
 			break;
 
 		case DEL:

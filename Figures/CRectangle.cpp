@@ -6,6 +6,17 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(Figure
 	Corner2 = P2;
 }
 
+void CRectangle::ChngFigSize(double figSize)
+{
+	Point C = { (Corner1.x + Corner2.x) / 2 , (Corner1.y + Corner2.y) / 2 };
+	Corner1.x -= C.x; Corner1.y -= C.y;
+	Corner2.x -= C.x; Corner2.y -= C.y;
+	Corner1.x *= figSize; Corner1.y *= figSize;
+	Corner2.x *= figSize; Corner2.y *= figSize;
+	Corner1.x += C.x; Corner1.y += C.y;
+	Corner2.x += C.x; Corner2.y += C.y;
+}
+
 bool CRectangle::PointInFigure(Point P1)
 {
 	bool inX = ((Corner1.x < P1.x) && (P1.x < Corner2.x)) || ((Corner2.x < P1.x) && (P1.x < Corner1.x));

@@ -17,7 +17,8 @@ Output::Output()
 	UI.MenuItemWidth = 80;
 	UI.ColorBarHeight = 40;
 	UI.ColorItemWidth = 40;
-	
+	UI.ResizeItemWidth = 40;
+	UI.ResizeBarHeight = 40;
 	UI.DrawColor = BLUE;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
 	UI.MsgColor = RED;		//Messages color
@@ -25,7 +26,8 @@ Output::Output()
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only
 	UI.StatusBarColor = TURQUOISE;
 	UI.PenWidth = 3;	//width of the figures frames
-
+	UI.ResizeX = UI.wx + UI.MenuItemWidth * 7;
+	UI.ResizeY = UI.wy + UI.ToolBarHeight;
 	
 	//Create the output window
 	pWind = CreateWind(UI.width, UI.height, UI.wx, UI.wy);
@@ -95,6 +97,7 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_ELLIPSE] = "images\\MenuItems\\Menu_Ellipse.jpg";
 	MenuItemImages[ITM_DRAW_CLR] = "images\\MenuItems\\Menu_Draw_Color.jpg";
 	MenuItemImages[ITM_FILL_CLR] = "images\\MenuItems\\Menu_Fill_Color.jpg";
+	MenuItemImages[ITM_RESIZE] = "images\\MenuItems\\Menu_Resize.jpg";
 	MenuItemImages[ITM_SWITCH] = "images\\MenuItems\\Menu_Switch.jpg";
 	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\Menu_Select.jpg";
 	MenuItemImages[ITM_DEL] = "images\\MenuItems\\Menu_Delete.jpg";
@@ -136,6 +139,19 @@ void Output::DrawColorPallete(int x) const //x -> 1 : Fill color , x-> 2 : Draw 
 
 	for(int i=0; i<CLR_ITM_COUNT; i++)
 		pWind->DrawImage(ColorPalleteImages[i], UI.ColorX + i*UI.ColorItemWidth, UI.ColorY, UI.ColorItemWidth, UI.ColorBarHeight);
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+void Output::DrawResizePallete() const
+{
+	string ResizePalleteImages[RESIZE_ITM_COUNT];
+	ResizePalleteImages[SIZE_1_4] = "images\\Sizes\\Size_Quarter.jpg";
+	ResizePalleteImages[SIZE_1_2] = "images\\Sizes\\Size_Half.jpg";
+	ResizePalleteImages[SIZE_2] = "images\\Sizes\\Size_Double.jpg";
+	ResizePalleteImages[SIZE_4] = "images\\Sizes\\Size_Quad.jpg";
+	for (int i = 0; i<RESIZE_ITM_COUNT; i++)
+		pWind->DrawImage(ResizePalleteImages[i], UI.ResizeX + i * UI.ColorItemWidth, UI.ResizeY, UI.ColorItemWidth, UI.ColorBarHeight);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -294,7 +310,7 @@ void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool sele
 }
 
 //Draw a Rhombus
-void Output::DrawRhombus(Point P1, GfxInfo RhombusGfxInfo, bool selected) const
+void Output::DrawRhombus(Point P1, Point P2, Point P3, Point P4, GfxInfo RhombusGfxInfo, bool selected) const
 {
 	color DrawingClr;
 	if(selected)
@@ -304,8 +320,8 @@ void Output::DrawRhombus(Point P1, GfxInfo RhombusGfxInfo, bool selected) const
 
 	pWind -> SetPen(DrawingClr,1);
 
-	int xCoordinates[4]={P1.x+200,P1.x    ,P1.x-200,P1.x    },
-		yCoordinates[4]={P1.y    ,P1.y+200,P1.y    ,P1.y-200};
+	int xCoordinates[4]={P1.x,P2.x,P3.x,P4.x},
+		yCoordinates[4]={P1.y,P2.y,P3.y,P4.y};
 
 	drawstyle style;
 
@@ -320,10 +336,8 @@ void Output::DrawRhombus(Point P1, GfxInfo RhombusGfxInfo, bool selected) const
 }
 
 //Draw a Ellipse
-void Output::DrawEllipse(Point P1, GfxInfo EllipseGfxInfo, bool selected) const
+void Output::DrawEllipse(Point P1 , Point P2, GfxInfo EllipseGfxInfo, bool selected) const
 {
-	Point P2 = {P1.x + 125 , P1.y + 200}; //Upper right corner
-	Point P3 = {P1.x - 125 , P1.y - 200}; //Lower left corner
 	color DrawingClr;
 	if(selected)
 		DrawingClr = UI.HighlightColor;
@@ -341,7 +355,7 @@ void Output::DrawEllipse(Point P1, GfxInfo EllipseGfxInfo, bool selected) const
 		style = FRAME;
 	}
 
-	pWind -> DrawEllipse(P2.x,P2.y,P3.x,P3.y,style);
+	pWind -> DrawEllipse(P1.x,P1.y,P2.x,P2.y,style);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////

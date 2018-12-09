@@ -178,6 +178,7 @@
     <ClCompile Include="Actions\CutAction.cpp" />
     <ClCompile Include="Actions\ChngDrawColor.cpp" />
     <ClCompile Include="Actions\ChngFillColor.cpp" />
+    <ClCompile Include="Actions\ResizeFigure.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -295,6 +296,7 @@
     <ClInclude Include="Actions\CutAction.h" />
     <ClInclude Include="Actions\ChngDrawColor.h" />
     <ClInclude Include="Actions\ChngFillColor.h" />
+    <ClInclude Include="Actions\ResizeFigure.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

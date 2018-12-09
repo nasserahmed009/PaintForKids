@@ -21,6 +21,10 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr; 
 }
 
+void CFigure::ChngFigSize(double figSize)
+{
+}
+
 void CFigure::GetFigPoints(Point & P1)
 {
 }

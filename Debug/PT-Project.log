@@ -1,2 +1,24 @@
-﻿  ChngDrawColor.cpp
+﻿  CRhombus.cpp
+f:\git repo\nasserahmed009\paintforkids\crhombus.cpp(20): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+f:\git repo\nasserahmed009\paintforkids\crhombus.cpp(21): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+f:\git repo\nasserahmed009\paintforkids\crhombus.cpp(22): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+f:\git repo\nasserahmed009\paintforkids\crhombus.cpp(23): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+  CLine.cpp
+f:\git repo\nasserahmed009\paintforkids\cline.cpp(15): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+f:\git repo\nasserahmed009\paintforkids\cline.cpp(16): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+  CEllipse.cpp
+f:\git repo\nasserahmed009\paintforkids\cellipse.cpp(6): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+f:\git repo\nasserahmed009\paintforkids\cellipse.cpp(16): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+f:\git repo\nasserahmed009\paintforkids\cellipse.cpp(17): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  Compiling...
+  PasteAction.cpp
+  CutAction.cpp
+  CopyAction.cpp
+  AddRhomAction.cpp
+  AddEllipseAction.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  ApplicationManager.cpp
+  ResizeFigure.cpp
   PT-Project.vcxproj -> F:\Git Repo\nasserahmed009\paintForKids\.\Debug\PT Project.exe
