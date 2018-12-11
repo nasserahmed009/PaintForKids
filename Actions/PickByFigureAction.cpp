@@ -71,11 +71,13 @@ void PickByFigureAction::Execute()
 				ended = false;
 				break;
 			}
+			if (selected == NULL) {
+				continue;
+			}
 			if (selected->checkHidden()) {
 				continue;
 			}
-			if (selected == NULL)
-				continue;
+			
 			switch (num) {
 			case 2: {
 				CRectangle* rPtr = dynamic_cast<CRectangle*>(selected);

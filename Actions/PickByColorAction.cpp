@@ -69,14 +69,15 @@ void PickByColorAction::Execute()
 				ended = false;
 				break;
 			}
+			if (selected == NULL) {
+				continue;
+			}
 			if (selected->checkHidden()) {
 				continue;
 			}
 			CLine* rPtr = dynamic_cast<CLine*>(selected);
 			GfxInfo g1;
 			g1 = selected->GetFigGfxInfo();
-			if (selected == NULL)
-				continue;
 			switch (num) {
 			case 1: {
 				GfxInfo g1;
