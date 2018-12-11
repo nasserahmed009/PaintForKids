@@ -25,6 +25,7 @@ void PickByColorAction::Execute()
 	int numOfSelected = 0;
 	int num;
 	string msg;
+	bool ended = true;
 	if (pManager->CheckDrawings()) {
 		do {
 			int range = 5;
@@ -63,15 +64,23 @@ void PickByColorAction::Execute()
 		while (numOfSelected > 0) {
 			pIn->GetPointClicked(pClicked.x, pClicked.y);
 			CFigure* selected = pManager->GetFigure(pClicked.x, pClicked.y);
-			if (pClicked.y >= 0 && pClicked.y < UI.ToolBarHeight)
+			if (pClicked.y >= 0 && pClicked.y < UI.ToolBarHeight) {
+				pOut->PrintMessage("Game Restarted");
+				ended = false;
 				break;
+			}
+			if (selected->checkHidden()) {
+				continue;
+			}
+			CLine* rPtr = dynamic_cast<CLine*>(selected);
+			GfxInfo g1;
+			g1 = selected->GetFigGfxInfo();
 			if (selected == NULL)
 				continue;
 			switch (num) {
 			case 1: {
 				GfxInfo g1;
 				g1=selected->GetFigGfxInfo();
-				CLine* rPtr = dynamic_cast<CLine*>(selected);
 				if (rPtr != NULL) {
 					if (g1.DrawClr == BLACK) {
 						CorrectPicks++;
@@ -96,7 +105,6 @@ void PickByColorAction::Execute()
 			case 2: {
 				GfxInfo g1;
 				g1 = selected->GetFigGfxInfo();
-				CLine* rPtr = dynamic_cast<CLine*>(selected);
 				if (rPtr != NULL) {
 					if (g1.DrawClr == WHITE) {
 						CorrectPicks++;
@@ -119,9 +127,6 @@ void PickByColorAction::Execute()
 			}
 					break;
 			case 3: {
-				GfxInfo g1;
-				g1 = selected->GetFigGfxInfo();
-				CLine* rPtr = dynamic_cast<CLine*>(selected);
 				if (rPtr != NULL) {
 					if (g1.DrawClr == RED) {
 						CorrectPicks++;
@@ -144,9 +149,6 @@ void PickByColorAction::Execute()
 			}
 					break;
 			case 4: {
-				GfxInfo g1;
-				g1 = selected->GetFigGfxInfo();
-				CLine* rPtr = dynamic_cast<CLine*>(selected);
 				if (rPtr != NULL) {
 					if (g1.DrawClr == GREEN) {
 						CorrectPicks++;
@@ -170,9 +172,6 @@ void PickByColorAction::Execute()
 					break;
 
 			case 5: {
-				GfxInfo g1;
-				g1 = selected->GetFigGfxInfo();
-				CLine* rPtr = dynamic_cast<CLine*>(selected);
 				if (rPtr != NULL) {
 					if (g1.DrawClr == BLUE) {
 						CorrectPicks++;
@@ -198,7 +197,9 @@ void PickByColorAction::Execute()
 			pOut->ClearDrawArea();
 			pManager->UpdateInterface();
 		}
-		pOut->PrintMessage("Correct picks= " + std::to_string(CorrectPicks) + " Wrong picks= " + std::to_string(WrongPicks));
+		if (ended) {
+			pOut->PrintMessage("Game Ended, Final score is : Correct picks= " + std::to_string(CorrectPicks) + " , Wrong picks= " + std::to_string(WrongPicks));
+		}
 		pManager->Hide_UnhideAll(false);
 	}
 	else {

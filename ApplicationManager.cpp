@@ -198,6 +198,9 @@ void ApplicationManager::DeselectAll()
 		}
 	}
 }
+
+
+
 void ApplicationManager::Hide_UnhideAll(bool h)
 {
 	for (int i = 0; i < FigCount; i++) {

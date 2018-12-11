@@ -26,6 +26,7 @@ void PickByFigureAction::Execute()
 	int WrongPicks = 0;
 	int numOfSelected = 0;
 	int num;
+	bool ended = true;
 	string msg;
 	if (pManager->CheckDrawings()) {
 		do {
@@ -62,12 +63,17 @@ void PickByFigureAction::Execute()
 			}
 		} while (numOfSelected == 0);
 		pOut->PrintMessage("Select All " + msg);
-		while(numOfSelected >0) {
+		while (numOfSelected > 0) {
 			pIn->GetPointClicked(pClicked.x, pClicked.y);
 			CFigure* selected = pManager->GetFigure(pClicked.x, pClicked.y);
-			
-			if (pClicked.y >= 0 && pClicked.y < UI.ToolBarHeight)
+			if (pClicked.y >= 0 && pClicked.y < UI.ToolBarHeight) {
+				pOut->PrintMessage("Game Restarted");
+				ended = false;
 				break;
+			}
+			if (selected->checkHidden()) {
+				continue;
+			}
 			if (selected == NULL)
 				continue;
 			switch (num) {
@@ -137,7 +143,9 @@ void PickByFigureAction::Execute()
 			pOut->ClearDrawArea();
 			pManager->UpdateInterface();
 		}
-		pOut->PrintMessage("Correct picks= " + std::to_string(CorrectPicks)+" Wrong picks= "+std::to_string(WrongPicks));
+		if (ended) {
+			pOut->PrintMessage("Game Ended, Final score is : Correct picks= " + std::to_string(CorrectPicks) + " , Wrong picks= " + std::to_string(WrongPicks));
+		}
 		pManager->Hide_UnhideAll(false);
 	}
 	else {
