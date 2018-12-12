@@ -37,3 +37,17 @@ void CTriangle::PrintInfo(Output * pOut)
 void CTriangle::Save(ofstream &OutFile) {
 	OutFile << "Triangle " << ID << "  " << Corner1.x << "  " << Corner1.y << "  " << Corner2.x << "  " << Corner2.y << "  " << Corner3.x << "  " << Corner3.y << "  ";
 }
+void CTriangle::Hide(bool h)
+{
+	isHidden = h;
+}
+
+GfxInfo CTriangle::GetFigGfxInfo()
+{
+	return FigGfxInfo;
+}
+
+bool CTriangle::checkHidden()
+{
+	return isHidden;
+}

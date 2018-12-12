@@ -15,6 +15,9 @@ public:
 	Point getCenter();
 	void PrintInfo(Output* pOut);
 	void Save(ofstream &);
+	void Hide(bool);
+	GfxInfo GetFigGfxInfo();
+	bool checkHidden();
 };
 
 #endif

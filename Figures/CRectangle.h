@@ -20,6 +20,9 @@ public:
 	int getHeight();
 	void Save(ofstream &OutFile);
 
+	void Hide(bool);
+	bool checkHidden();
+	GfxInfo GetFigGfxInfo();
 };
 
 #endif

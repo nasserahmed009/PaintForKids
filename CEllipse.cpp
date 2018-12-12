@@ -28,3 +28,18 @@ void CEllipse::PrintInfo(Output * pOut)
 void CEllipse::Save(ofstream &OutFile) {
 	OutFile << "Ellipse" << ID << "  " << Corner1.x << "  " << Corner1.y << "  ";
 }
+
+void CEllipse::Hide(bool h)
+{
+	isHidden = h;
+}
+
+GfxInfo CEllipse::GetFigGfxInfo()
+{
+	return FigGfxInfo;
+}
+
+bool CEllipse::checkHidden()
+{
+	return isHidden;
+}

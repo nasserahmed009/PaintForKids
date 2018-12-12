@@ -173,8 +173,13 @@
       <Filter>Action Classes</Filter>
     </ClCompile>
     <ClCompile Include="Actions\AddSelectAction.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="Actions\DeleteAction.cpp" />
     <ClCompile Include="DELETEACTION.CPP" />
+=======
+    <ClCompile Include="Actions\PickByFigureAction.cpp" />
+    <ClCompile Include="Actions\PickByColorAction.cpp" />
+>>>>>>> dd1bf749159fb68c36a36c7f6734bd6d3f816ba0
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -287,7 +292,12 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="Actions\AddSelectAction.h" />
+<<<<<<< HEAD
     <ClInclude Include="Actions\DeleteAction.h" />
+=======
+    <ClInclude Include="Actions\PickByFigureAction.h" />
+    <ClInclude Include="Actions\PickByColorAction.h" />
+>>>>>>> dd1bf749159fb68c36a36c7f6734bd6d3f816ba0
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

@@ -15,6 +15,7 @@ protected:
 	GfxInfo FigGfxInfo;	//Figure graphis info
 	color PrevDrawColor;
 	static int counter;
+	bool isHidden;
 	/// Add more parameters if needed.
 
 public:
@@ -24,10 +25,11 @@ public:
 	bool IsSelected() const;	//check whether fig is selected
 	virtual bool PointInFigure(Point P1) = 0; //check whether the point is in the figure or not
 	virtual void Draw(Output* pOut) const  = 0 ;		//Draw the figure
-	
+	virtual void Hide(bool)=0;
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
-
+	virtual bool checkHidden() = 0;
+	virtual GfxInfo GetFigGfxInfo() = 0;
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
 

@@ -15,6 +15,9 @@ public:
 	bool PointInFigure(Point P1);
 	void PrintInfo(Output* pOut);
 	void Save(ofstream &);
+	void Hide(bool);
+	GfxInfo GetFigGfxInfo();
+	bool checkHidden();
 };
 
 #endif

@@ -43,3 +43,17 @@ int CRectangle::getHeight()
 void CRectangle::Save(ofstream &OutFile) {
 	OutFile << "Rectangle " << ID << "  " << Corner1.x << "  " << Corner1.y << "  " << Corner2.x << "  " << Corner2.y << "  ";
 }
+void CRectangle::Hide(bool h)
+{
+	isHidden = h;
+}
+
+bool CRectangle::checkHidden()
+{
+	return isHidden;
+}
+
+GfxInfo CRectangle::GetFigGfxInfo()
+{
+	return FigGfxInfo;
+}

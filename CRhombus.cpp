@@ -33,5 +33,18 @@ void CRhombus::PrintInfo(Output * pOut)
 
 void CRhombus::Save(ofstream &OutFile) {
 	OutFile << "Rhombus " << ID << "  " << Corner1.x << "  " << Corner1.y << "  ";
+}
+void CRhombus::Hide(bool h)
+{
+	isHidden = h;
+}
 
+GfxInfo CRhombus::GetFigGfxInfo()
+{
+	return FigGfxInfo;
+}
+
+bool CRhombus::checkHidden()
+{
+	return isHidden;
 }
