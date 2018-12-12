@@ -173,6 +173,8 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
     <ClCompile Include="CRhombus.cpp" />
     <ClCompile Include="CTriangle.cpp" />
+    <ClCompile Include="Actions\DeleteAction.cpp" />
+    <ClCompile Include="DELETEACTION.CPP" />
     <ClCompile Include="Figures\CFigure.cpp" />
     <ClCompile Include="Figures\CRectangle.cpp" />
     <ClCompile Include="Actions\AddRectAction.cpp" />
@@ -210,6 +212,7 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
     <ClInclude Include="CRhombus.h" />
     <ClInclude Include="CTriangle.h" />
+    <ClInclude Include="Actions\DeleteAction.h" />
     <ClInclude Include="Figures\CFigure.h" />
     <ClInclude Include="Figures\CRectangle.h" />
     <ClInclude Include="Actions\Action.h" />

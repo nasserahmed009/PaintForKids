@@ -1,9 +1,12 @@
 #include "CFigure.h"
 
+int CFigure::counter = 0;
+
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
+	ID = ++counter;
 }
 
 void CFigure::SetSelected(bool s)
@@ -21,3 +24,22 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr; 
 }
 
+void CFigure::setPrevDrawColor(color c)
+{
+	PrevDrawColor = c;
+}
+
+color CFigure::getPrevDrawColor()
+{
+	return PrevDrawColor;
+}
+
+color CFigure::getDrawColor()
+{
+	return FigGfxInfo.DrawClr;
+}
+
+color CFigure::getFillColor()
+{
+	return FigGfxInfo.FillClr;
+}

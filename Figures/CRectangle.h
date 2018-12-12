@@ -12,6 +12,14 @@ public:
 	CRectangle(Point , Point, GfxInfo FigureGfxInfo );
 	bool PointInFigure(Point P1);
 	virtual void Draw(Output* pOut) const;
+	int getID() {
+		return ID;
+	};
+	void PrintInfo(Output* pOut);
+	int getWidth();
+	int getHeight();
+	void Save(ofstream &OutFile);
+
 };
 
 #endif

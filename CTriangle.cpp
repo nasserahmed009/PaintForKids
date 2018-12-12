@@ -1,5 +1,4 @@
 #include "CTriangle.h"
-
 CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	Corner1 = P1;
@@ -29,4 +28,12 @@ bool CTriangle::PointInFigure(Point P1)
 	}
 	return false;
 
+}
+
+void CTriangle::PrintInfo(Output * pOut)
+{
+}
+
+void CTriangle::Save(ofstream &OutFile) {
+	OutFile << "Triangle " << ID << "  " << Corner1.x << "  " << Corner1.y << "  " << Corner2.x << "  " << Corner2.y << "  " << Corner3.x << "  " << Corner3.y << "  ";
 }

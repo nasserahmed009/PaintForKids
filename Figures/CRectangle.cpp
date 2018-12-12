@@ -26,3 +26,20 @@ void CRectangle::Draw(Output* pOut) const
 	//Call Output::DrawRect to draw a rectangle on the screen	
 	pOut->DrawRect(Corner1, Corner2, FigGfxInfo, Selected);
 }
+
+void CRectangle::PrintInfo(Output * pOut)
+{ 
+}
+
+int CRectangle::getWidth()
+{
+	return abs(Corner1.x - Corner2.x);
+}
+int CRectangle::getHeight()
+{
+	return abs(Corner1.y - Corner2.y);
+}
+
+void CRectangle::Save(ofstream &OutFile) {
+	OutFile << "Rectangle " << ID << "  " << Corner1.x << "  " << Corner1.y << "  " << Corner2.x << "  " << Corner2.y << "  ";
+}

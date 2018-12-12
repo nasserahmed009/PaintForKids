@@ -15,5 +15,15 @@ void CLine::Draw(Output* pOut) const
 
 bool CLine::PointInFigure(Point P1)
 {
+
 	return false;
 }
+
+void CLine::PrintInfo(Output * pOut)
+{
+}
+
+void CLine::Save(ofstream &OutFile) {
+	OutFile << "Line " << ID << "  " << Corner1.x << "  " << Corner1.y << "  " << Corner2.x << "  " << Corner2.y << "  ";
+}
+

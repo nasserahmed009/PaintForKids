@@ -21,3 +21,17 @@ bool CRhombus::PointInFigure(Point P1)
 	}
 	return false;
 }
+
+Point CRhombus::getCenter()
+{
+	return Corner1;
+}
+
+void CRhombus::PrintInfo(Output * pOut)
+{
+}
+
+void CRhombus::Save(ofstream &OutFile) {
+	OutFile << "Rhombus " << ID << "  " << Corner1.x << "  " << Corner1.y << "  ";
+
+}

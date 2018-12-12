@@ -1,0 +1,4 @@
+ Blue    Green
+Number of Figures :1
+Rhombus 0  369  351   Blue  Green
+

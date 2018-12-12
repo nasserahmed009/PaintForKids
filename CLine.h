@@ -11,5 +11,7 @@ public:
 	CLine(Point , Point, GfxInfo FigureGfxInfo );
 	virtual void Draw(Output* pOut) const;
 	bool PointInFigure(Point P1);
+	void PrintInfo(Output* pOut);
+	void Save(ofstream &);
 };
 

@@ -20,3 +20,11 @@ bool CEllipse::PointInFigure(Point P1)
 	}
 	return false;
 }
+
+void CEllipse::PrintInfo(Output * pOut)
+{
+}
+
+void CEllipse::Save(ofstream &OutFile) {
+	OutFile << "Ellipse" << ID << "  " << Corner1.x << "  " << Corner1.y << "  ";
+}

@@ -1,5 +1,0 @@
-﻿  ApplicationManager.cpp
-  AddSelectAction.cpp
-c:\users\anass\desktop\david final final\phase2 - project framework\actions\addselectaction.cpp(26): warning C4101: 'unSelectedFigure': unreferenced local variable
-  Generating Code...
-  PT-Project.vcxproj -> C:\Users\anass\Desktop\david final final\Phase2 - Project Framework\.\Debug\PT Project.exe

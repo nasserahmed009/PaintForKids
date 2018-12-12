@@ -5,6 +5,9 @@
 #include "Actions\AddTriAction.h"
 #include "Actions\AddRhomAction.h"
 #include "Actions\AddSelectAction.h"
+#include "Actions\DeleteAction.h"
+#include "CLine.h"
+
 
 
 //Constructor
@@ -100,10 +103,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 				pOut->ClearColorPallete();
 				break;
 		case DEL:
-				pOut->PrintMessage("Action: a click on the Delete button");
+				pAct = new DeleteAction(this);
 				break;
 		case SAVE:
 				pOut->PrintMessage("Action: a click on the Save button, Click anywhere");
+				SaveAllAction();
 				break;
 		case SAVE_BY_TYPE:
 				pOut->PrintMessage("Action: a click on the Save By Type button, Click anywhere");
@@ -165,10 +169,24 @@ void ApplicationManager::DeselectAll()
 	for (int i = FigCount - 1; i >= 0; i--) {
 		if (FigList[i]->IsSelected()) {
 			FigList[i]->SetSelected(false);
-			FigList[i]->ChngDrawClr(BLACK);
+			FigList[i]->ChngDrawClr(FigList[i]->getPrevDrawColor());
 			break;
 		}
 	}
+}
+void ApplicationManager::DeleteFigure(CFigure * pFig)
+{
+	for (int i = 0; i < FigCount; i++) {
+		if (FigList[i] == pFig) {
+			FigList[i] = FigList[FigCount - 1];
+			FigList[FigCount - 1] = NULL;
+			FigCount--;
+			pOut->ClearDrawArea();
+			break;
+		}
+	}
+	
+	
 }
 //==================================================================================//
 //							Interface Management Functions							//
@@ -179,6 +197,55 @@ void ApplicationManager::UpdateInterface() const
 {	
 	for(int i=0; i<FigCount; i++)
 		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+}
+
+void ApplicationManager::SaveAll(ofstream &OutFile) {
+	OutFile << getcolorname(UI.DrawColor) << "  " << getcolorname(UI.FillColor) << endl;
+	OutFile << "Number of Figures :" << FigCount << endl;
+	for (int i = 0; i < FigCount; i++)
+	{
+		FigList[i]->Save(OutFile);
+		OutFile << getcolorname(FigList[i]->getDrawColor());
+		CLine *ptrLine = dynamic_cast<CLine*>(FigList[i]);
+		if (ptrLine != NULL)
+		{
+			OutFile << endl;
+		}
+		else {
+			OutFile << getcolorname(FigList[i]->getFillColor()) << endl;
+		}
+		OutFile << endl;
+	}
+}
+void ApplicationManager::SaveAllAction() {
+	ofstream OutFile;
+	OutFile.open("Savefile/File.txt");
+	SaveAll(OutFile);
+	OutFile.close();
+}
+string ApplicationManager::getcolorname(color fig)
+{
+	int x = 5;
+	if (fig == BLACK)
+		x = 0;
+	if (fig == WHITE)
+		x = 1;
+	if (fig == RED)
+		x = 2;
+	if (fig == GREEN)
+		x = 3;
+	if (fig == BLUE)
+		x = 4;
+
+	switch (x)
+	{
+	default: return "No Fill Color";
+	case 0: return "Black";
+	case 1: return "White";
+	case 2: return "Red";
+	case 3: return " Green";
+	case 4: return " Blue ";
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
