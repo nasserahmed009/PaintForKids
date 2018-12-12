@@ -6,7 +6,7 @@
 class CEllipse : public CFigure
 {
 private:
-	Point P1, P2, P3;
+	Point Corner1, P2, P3;
 	int dx, dy;
 public:
 	CEllipse(Point , GfxInfo FigureGfxInfo );

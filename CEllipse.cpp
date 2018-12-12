@@ -1,11 +1,11 @@
 #include "CEllipse.h"
 
-CEllipse::CEllipse(Point P1,  GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
+CEllipse::CEllipse(Point Corner1,  GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
-	this->P1 = P1;
+	this->Corner1 = Corner1;
 	dx = 93.75, dy = 150;
-	P2 = { P1.x + dx, P1.y + dy}; //Upper right corner
-	P3 = { P1.x - dx, P1.y - dy}; //Lower left corner
+	P2 = { Corner1.x + dx, Corner1.y + dy}; //Upper right corner
+	P3 = { Corner1.x - dx, Corner1.y - dy}; //Lower left corner
 }
 	
 void CEllipse::ChngFigSize(double figSize) 
@@ -25,16 +25,16 @@ void CEllipse::Draw(Output* pOut) const
 	pOut->DrawEllipse(P2, P3,  FigGfxInfo, Selected);
 }
 
-bool CEllipse::PointInFigure(Point P1)
+bool CEllipse::PointInFigure(Point Corner1)
 {
-	bool condition = (pow( (P1.x - this->P1.x)*1.0 / dx , 2)+pow((P1.y - this->P1.y)*1.0 / dy, 2) <= 1);
+	bool condition = (pow( (Corner1.x - this->Corner1.x)*1.0 / dx , 2)+pow((Corner1.y - this->Corner1.y)*1.0 / dy, 2) <= 1);
 	if (condition) {
 		return true;
 	}
 	return false;
 }
 
-void CEllipse::GetFigPoints(Point & P1)
+void CEllipse::GetFigPoints(Point & Corner1)
 {
-	P1 = this->P1;
+	Corner1 = this->Corner1;
 }

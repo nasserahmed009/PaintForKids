@@ -7,7 +7,7 @@ class CRhombus : public CFigure
 {
 private:
 	int d;
-	Point C,P1,P2,P3,P4;
+	Point Corner1,P1,P2,P3,P4;
 public:
 	CRhombus(Point , GfxInfo FigureGfxInfo );
 	void ChngFigSize(double figSize);
