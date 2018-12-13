@@ -5,6 +5,9 @@
 
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
+#include <Windows.h>
+#include <MMSystem.h>
+
 
 AddRectAction::AddRectAction(ApplicationManager * pApp):Action(pApp)
 {}
@@ -14,9 +17,10 @@ void AddRectAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
+	PlaySound(TEXT("rectangle.wav"), NULL, SND_SYNC);
 
 	pOut->PrintMessage("New Rectangle: Click at first corner");
-	
+
 	//Read 1st corner and store in point P1
 	pIn->GetPointClicked(P1.x, P1.y);
 

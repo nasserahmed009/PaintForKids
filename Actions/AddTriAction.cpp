@@ -5,7 +5,8 @@
 
 #include "../GUI/Input.h"
 #include "../GUI/Output.h"
-
+#include <Windows.h>
+#include <MMSystem.h>
 AddTriAction::AddTriAction(ApplicationManager * pApp):Action(pApp)
 {}
 
@@ -14,7 +15,7 @@ void AddTriAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-
+	PlaySound(TEXT("tri.wav"), NULL, SND_SYNC);
 	pOut->PrintMessage("New Triangle: Click at first corner");
 	
 	//Read 1st corner and store in point P1
