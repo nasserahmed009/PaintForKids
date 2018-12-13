@@ -5,6 +5,12 @@
 #include "Actions\AddTriAction.h"
 #include "Actions\AddRhomAction.h"
 #include "Actions\AddSelectAction.h"
+#include "Actions\CopyAction.h"
+#include "Actions\PasteAction.h"
+#include "Actions\CutAction.h"
+#include "Actions\ChngDrawColor.h"
+#include "Actions\ChngFillColor.h"
+#include "Actions\ResizeFigure.h"
 #include "Actions\DeleteAction.h"
 #include "CLine.h"
 
@@ -21,7 +27,9 @@ ApplicationManager::ApplicationManager()
 	//Create Input and output
 	pOut = new Output;
 	pIn = pOut->CreateInput();
-	
+	SelectedFig = NULL;
+	Clipboard = NULL;
+	CutFig = NULL;
 	FigCount = 0;
 		
 	//Create an array of figure pointers and set them to NULL		
@@ -77,42 +85,28 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		
 		case CHNG_DRAW_CLR:
-				pOut->PrintMessage("Action: Change Figure's drawing color , Click anywhere");
-				pOut->DrawColorPallete(2);
-				ChooseClr = pIn->GetClr();
-				switch(ChooseClr){
-				case PICK_BLACK: UI.DrawColor = BLACK;
-								 break;
-				case PICK_WHITE: UI.DrawColor = WHITE;
-								 break;
-				case PICK_RED:   UI.DrawColor = RED;
-								 break;
-				case PICK_GREEN: UI.DrawColor = GREEN;
-								 break;
-				case PICK_BLUE:  UI.DrawColor = BLUE;
-								 break;
-				}
-				pOut->ClearColorPallete();
-				break;
+			pAct = new ChngDrawColor(this, pOut, pIn);
+			break;
 
 		case CHNG_FILL_CLR:
-				pOut->PrintMessage("Action: Change Figure's Fill color , Click anywhere");
-				pOut->DrawColorPallete(1);
-				ChooseClr = pIn->GetClr();
-				switch(ChooseClr){
-				case PICK_BLACK: UI.FillColor = BLACK;
-								 break;
-				case PICK_WHITE: UI.FillColor = WHITE;
-								 break;
-				case PICK_RED:   UI.FillColor = RED;
-								 break;
-				case PICK_GREEN: UI.FillColor = GREEN;
-								 break;
-				case PICK_BLUE:  UI.FillColor = BLUE;
-								 break;
-				}
-				pOut->ClearColorPallete();
+			pAct = new ChngFillColor(this, pOut, pIn);
+			break;
+
+		case RESIZE:
+			pAct = new ResizeFigure(this, pOut, pIn);
+			break;
+
+		case DEL:
+				pOut->PrintMessage("Action: a click on the Delete button");
 				break;
+		case CPY:
+				pAct = new CopyAction(this);
+				break;
+		case CUT:
+				pAct = new CutAction(this);
+				break;
+		case PASTE:
+				pAct = new PasteAction(this);
 		case DEL:
 				pAct = new DeleteAction(this);
 				break;
@@ -171,6 +165,17 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 	if(FigCount < MaxFigCount )
 		FigList[FigCount++] = pFig;	
 }
+
+CFigure* ApplicationManager::GetCutFig() {
+	return CutFig;
+}
+
+void ApplicationManager::SetCutFig(CFigure* pFig) {
+	if (pFig != NULL)
+		pFig->ChngFillClr(UI.CutColor);
+	CutFig = pFig;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
@@ -178,6 +183,8 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	P1.x = x;
 	P1.y = y;
 	for (int i = FigCount - 1; i >= 0; i--) {
+		if (FigList[i] == NULL)
+			continue;
 		if (FigList[i]->PointInFigure(P1)) {
 			return FigList[i];
 		}
@@ -190,10 +197,21 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	//Add your code here to search for a figure given a point x,y	
 	//Remember that ApplicationManager only calls functions do NOT implement it.
 }
+
+void ApplicationManager::DeleteFigure(CFigure* pFig) {
+	for (int i = 0; i < FigCount - 1; i++) {
+		if (FigList[i] == pFig) {
+			delete FigList[i];
+			FigList[i] = NULL;
+		}
+	}
+}
 void ApplicationManager::DeselectAll()
 {
 	//Loop over the figList, finds the selected item and deselect it
 	for (int i = FigCount - 1; i >= 0; i--) {
+		if (FigList[i] == NULL)
+			continue;
 		if (FigList[i]->IsSelected()) {
 			FigList[i]->SetSelected(false);
 			FigList[i]->ChngDrawClr(FigList[i]->getPrevDrawColor());
@@ -293,6 +311,38 @@ Input *ApplicationManager::GetInput() const
 //Return a pointer to the output
 Output *ApplicationManager::GetOutput() const
 {	return pOut; }
+
+//==================================================================================//
+//							Clipboard Management Functions							//
+//==================================================================================//
+
+void ApplicationManager::SetClipboard(CFigure* pFig) 
+{
+	this->Clipboard = pFig;
+}
+
+void ApplicationManager::SetSelectedFig(CFigure * pFig)
+{
+	this->SelectedFig = pFig;
+}
+
+void ApplicationManager::ClearClipboard()
+{
+	if (Clipboard!=NULL)
+		delete Clipboard;
+	Clipboard = NULL;
+}
+
+CFigure * ApplicationManager::GetSelectedFig()
+{
+	return this->SelectedFig;
+}
+
+CFigure * ApplicationManager::GetClipboardFig()
+{
+	return this->Clipboard;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////
 int ApplicationManager::NumOfrect() {
 	CRectangle* rect;

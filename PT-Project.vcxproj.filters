@@ -173,6 +173,12 @@
       <Filter>Action Classes</Filter>
     </ClCompile>
     <ClCompile Include="Actions\AddSelectAction.cpp" />
+    <ClCompile Include="Actions\CopyAction.cpp" />
+    <ClCompile Include="Actions\PasteAction.cpp" />
+    <ClCompile Include="Actions\CutAction.cpp" />
+    <ClCompile Include="Actions\ChngDrawColor.cpp" />
+    <ClCompile Include="Actions\ChngFillColor.cpp" />
+    <ClCompile Include="Actions\ResizeFigure.cpp" />
 <<<<<<< HEAD
     <ClCompile Include="Actions\DeleteAction.cpp" />
     <ClCompile Include="DELETEACTION.CPP" />
@@ -298,6 +304,12 @@
     <ClInclude Include="Actions\PickByFigureAction.h" />
     <ClInclude Include="Actions\PickByColorAction.h" />
 >>>>>>> dd1bf749159fb68c36a36c7f6734bd6d3f816ba0
+    <ClInclude Include="Actions\CopyAction.h" />
+    <ClInclude Include="Actions\PasteAction.h" />
+    <ClInclude Include="Actions\CutAction.h" />
+    <ClInclude Include="Actions\ChngDrawColor.h" />
+    <ClInclude Include="Actions\ChngFillColor.h" />
+    <ClInclude Include="Actions\ResizeFigure.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

@@ -18,11 +18,11 @@ private:
 	CFigure* SelectedFig;           //Pointer to the selected figure
 	CFigure* Clipboard;             //Pointer to the copied/cut figure
 
+	CFigure* CutFig;
+
 	//Pointers to Input and Output classes
 	Input *pIn;
 	Output *pOut;
-	
-	ActionType ChooseClr;            //Choose color action
 	GfxInfo gfxInfo;                 //to be used with draw function of the class Ouput
 
 public:	
@@ -37,7 +37,11 @@ public:
 	bool CheckDrawings();					  //Checks if there is Figures Drawn	
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);            //Adds a new figure to the FigList
-	CFigure *GetFigure(int x, int y) const;   //Search for a figure given a point inside the figure
+	CFigure *GetCutFig();
+	void SetCutFig(CFigure * pFig);
+	CFigure *GetFigure(int x, int y) const;
+	void DeleteFigure(CFigure * pFig);
+	//Search for a figure given a point inside the figure
 	void DeselectAll();
 	void DeleteFigure(CFigure* pFig);
 		
@@ -60,6 +64,12 @@ public:
 	void SaveAll(ofstream &);
 	void SaveAllAction();
 	string getcolorname(color);
+	// -- ClipboardFig & SelectedFig Management Functions
+	void SetClipboard(CFigure* pFig);
+	void SetSelectedFig(CFigure* pFig);
+	void ClearClipboard();
+	CFigure* GetSelectedFig();
+	CFigure* GetClipboardFig();
 };
 
 #endif

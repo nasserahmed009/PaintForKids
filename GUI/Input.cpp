@@ -62,6 +62,10 @@ ActionType Input::GetUserAction() const
 			//case ITM_PLAY:      return TO_PLAY;
 			case ITM_SELECT:		return SELECT;
 			case ITM_DEL: 			return DEL;
+			case ITM_CPY:			return CPY;
+			case ITM_CUT:			return CUT;
+			case ITM_PST:			return PASTE;
+			case ITM_RESIZE:		return RESIZE;
 			case ITM_SAVE: 			return SAVE;
 			case ITM_SAVEBT:	    return SAVE_BY_TYPE;
 			case ITM_LOAD:          return LOAD;
@@ -147,6 +151,43 @@ ActionType Input::GetClr() const
 		return STATUS;
 }
 ////////////////////////////////
+
+ActionType Input::GetSize()	const 
+{
+	int x, y;
+	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
+									//[1] If user clicks on the Toolbar
+	if (y >= UI.ResizeY && y < UI.ResizeY + UI.ResizeBarHeight)
+	{
+		//Check whick Menu item was clicked
+		//==> This assumes that menu items are lined up horizontally <==
+		int ClickedItemOrder = ((x - UI.ResizeX) / UI.ResizeItemWidth);
+		//Divide x coord of the point clicked by the menu item width (int division)
+		//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
+
+		switch (ClickedItemOrder)
+		{
+		case SIZE_1_4: return PICK_QUARTER;
+			break;
+		case SIZE_1_2: return PICK_HALF;
+			break;
+		case SIZE_2: return PICK_DOUBLE;
+			break;
+		case SIZE_4: return PICK_QUAD;
+			break;
+		default: return EMPTY;	//A click on empty place in desgin toolbar
+		}
+	}
+	//[2] User clicks on the drawing area
+	if (y >= UI.ColorY + UI.ColorBarHeight && (x<UI.ColorX || x> UI.ColorX + UI.ColorItemWidth * 5) && y< UI.height - UI.StatusBarHeight)
+	{
+		return DRAWING_AREA;
+	}
+
+	//[3] User clicks on the status bar
+	return STATUS;
+
+}
 	
 Input::~Input()
 {

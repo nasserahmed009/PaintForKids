@@ -11,6 +11,7 @@ private:
 	Point Corner3;
 public:
 	CTriangle(Point , Point, Point , GfxInfo FigureGfxInfo );
+	void ChngFigSize(double figSize);
 	virtual void Draw(Output* pOut) const;
 	bool PointInFigure(Point P1);
 	void PrintInfo(Output* pOut);
@@ -18,6 +19,7 @@ public:
 	void Hide(bool);
 	GfxInfo GetFigGfxInfo();
 	bool checkHidden();
+	void GetFigPoints(Point &P1, Point &P2, Point &P3);
 };
 
 #endif

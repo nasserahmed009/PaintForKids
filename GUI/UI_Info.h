@@ -23,6 +23,7 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_ELLIPSE,	//Ellipse item in menu
 	ITM_DRAW_CLR,   //Changes draw color
 	ITM_FILL_CLR,   //Changes fill color
+	ITM_RESIZE,		//Resizes figure
 	ITM_SWITCH,     //Exit item
 	ITM_SELECT,     //Select item
 	ITM_DEL,        //Delete item
@@ -46,6 +47,15 @@ enum ColorPalleteItem //The colors in the color pallete
 	CLR_BLUE,
 	CLR_ITM_COUNT
 
+};
+
+enum ResizePalleteItem
+{
+	SIZE_1_4,
+	SIZE_1_2,
+	SIZE_2,
+	SIZE_4,
+	RESIZE_ITM_COUNT
 };
 
 enum PlayMenuItem //The items of the Play menu (you should add more items)
@@ -79,16 +89,19 @@ struct UI_Info	//User Interface Info.
 		MenuItemWidth,		//Width of each item in toolbar menu
 		ColorBarHeight,		//Height of the Color Pallete
 		ColorItemWidth,		//Width of each Color Pallete icon
-		ColorX, ColorY;
-
+		ResizeBarHeight,
+		ResizeItemWidth,
+		ColorX, ColorY,
+		ResizeX, ResizeY;
 	
-
+	
 	color DrawColor;		//Drawing color
 	color FillColor;		//Filling color
 	color HighlightColor;	//Highlighting color
 	color MsgColor;			//Messages color
 	color BkGrndColor;		//Background color
 	color StatusBarColor;	//Status bar color
+	color CutColor = GRAY;  //Figure cut color
 	int PenWidth;			//width of the pen that draws shapes
 
 	/// Add more members if needed

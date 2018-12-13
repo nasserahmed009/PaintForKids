@@ -17,7 +17,9 @@ public:
 	string GetSrting(Output* pO) const ;	     //Returns a string entered by the user
 
 	ActionType GetUserAction() const;            //Read the user click and map to an action
-	ActionType GetClr() const;                   //Read the user click and map to the color
+	ActionType GetClr() const;
+	ActionType GetSize() const;
+	//Read the user click and map to the color
 	~Input();
 };
 

@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectName>PT Project</ProjectName>
     <ProjectGuid>{1AC3DDD7-FDDE-487E-A2A4-52A8FCF7BDB9}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -135,6 +135,8 @@
     <ClCompile Include="Actions\AddTriAction.cpp" />
     <ClCompile Include="Actions\AddSelectAction.cpp" />
     <ClCompile Include="CEllipse.cpp" />
+    <ClCompile Include="Actions\ChngDrawColor.cpp" />
+    <ClCompile Include="Actions\ChngFillColor.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
@@ -171,8 +173,10 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant1.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
+    <ClCompile Include="Actions\CopyAction.cpp" />
     <ClCompile Include="CRhombus.cpp" />
     <ClCompile Include="CTriangle.cpp" />
+    <ClCompile Include="Actions\CutAction.cpp" />
     <ClCompile Include="Actions\DeleteAction.cpp" />
     <ClCompile Include="DELETEACTION.CPP" />
     <ClCompile Include="Figures\CFigure.cpp" />
@@ -185,6 +189,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Actions\PickByFigureAction.cpp" />
     <ClCompile Include="Actions\PickByColorAction.cpp" />
+    <ClCompile Include="Actions\PasteAction.cpp" />
+    <ClCompile Include="Actions\ResizeFigure.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddEllipseAction.h" />
@@ -192,6 +198,8 @@
     <ClInclude Include="Actions\AddRhomAction.h" />
     <ClInclude Include="Actions\AddSelectAction.h" />
     <ClInclude Include="CEllipse.h" />
+    <ClInclude Include="Actions\ChngDrawColor.h" />
+    <ClInclude Include="Actions\ChngFillColor.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />
@@ -212,8 +220,10 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpegint.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
+    <ClInclude Include="Actions\CopyAction.h" />
     <ClInclude Include="CRhombus.h" />
     <ClInclude Include="CTriangle.h" />
+    <ClInclude Include="Actions\CutAction.h" />
     <ClInclude Include="Actions\DeleteAction.h" />
     <ClInclude Include="Figures\CFigure.h" />
     <ClInclude Include="Figures\CRectangle.h" />
@@ -228,6 +238,8 @@
     <ClInclude Include="Actions\AddTriAction.h" />
     <ClInclude Include="Actions\PickByFigureAction.h" />
     <ClInclude Include="Actions\PickByColorAction.h" />
+    <ClInclude Include="Actions\PasteAction.h" />
+    <ClInclude Include="Actions\ResizeFigure.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
