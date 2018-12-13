@@ -48,7 +48,7 @@ void CopyAction::Execute() {
 
 	pManager->ClearClipboard();
 
-	copiedFigure->ChngDrawClr(BLACK);
+	copiedFigure->ChngDrawClr(selectedFigure->getPrevDrawColor());
 	pManager->SetClipboard(copiedFigure);
 	pManager->DeselectAll();
 	selectedFigure = NULL;

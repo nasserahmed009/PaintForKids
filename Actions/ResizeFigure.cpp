@@ -38,6 +38,7 @@ void ResizeFigure::Execute() {
 			pOut->PrintMessage("Figure resized to four times it's size");
 			break;
 	}
+	pOut->ClearDrawArea();
 }
 
 ResizeFigure::~ResizeFigure()

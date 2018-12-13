@@ -68,7 +68,7 @@ GfxInfo CRectangle::GetFigGfxInfo()
 {
 	return FigGfxInfo;
 }
-}
+
 
 void CRectangle::GetFigPoints(Point &P1, Point &P2)
 {

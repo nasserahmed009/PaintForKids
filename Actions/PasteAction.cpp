@@ -63,10 +63,9 @@ void PasteAction::Execute() {
 	if (pManager->GetCutFig() != NULL) {
 		pManager->DeleteFigure(pManager->GetCutFig());
 		pManager->SetCutFig(NULL);
-		pManager->SetSelectedFig(NULL);
 		pManager->UpdateInterface();
 	}
-
+	pManager->SetSelectedFig(NULL);
 	pOut->PrintMessage("Figure is pasted");
 
 }

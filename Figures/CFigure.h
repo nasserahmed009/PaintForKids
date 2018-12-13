@@ -35,9 +35,6 @@ public:
 	virtual GfxInfo GetFigGfxInfo();
 
 	virtual bool checkHidden() = 0;
-	virtual GfxInfo GetFigGfxInfo() = 0;
-	///The following functions should be supported by the figure class
-	///It should be overridden by each inherited figure
 
 	///Decide the parameters that you should pass to each function	
 	//virtual void Save(ofstream &OutFile) = 0;	//Save the figure parameters to the file

@@ -13,7 +13,7 @@
 #include "Actions\ResizeFigure.h"
 #include "Actions\DeleteAction.h"
 #include "CLine.h"
-
+#include "Actions/loadAction.h"
 #include"Actions\PickByColorAction.h"
 #include"Actions\PickByFigureAction.h"
 #include"Figures/CRectangle.h"
@@ -96,9 +96,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new ResizeFigure(this, pOut, pIn);
 			break;
 
-		case DEL:
-				pOut->PrintMessage("Action: a click on the Delete button");
-				break;
 		case CPY:
 				pAct = new CopyAction(this);
 				break;
@@ -107,9 +104,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 				break;
 		case PASTE:
 				pAct = new PasteAction(this);
-		case DEL:
-				pAct = new DeleteAction(this);
 				break;
+		/*case DEL:
+				pAct = new DeleteAction(this);
+				break;*/
 		case SAVE:
 				pOut->PrintMessage("Action: a click on the Save button, Click anywhere");
 				SaveAllAction();
@@ -118,8 +116,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 				pOut->PrintMessage("Action: a click on the Save By Type button, Click anywhere");
 				break;
 		case LOAD:
-				pOut->PrintMessage("Action: a click on the Load button, Click anywhere");
-				
+				pAct = new loadAction(this);
 				break;
 		case PICK_BY_FIGURE:
 				pOut->PrintMessage("Action: a click on the Pick by figure button, Click anywhere");
@@ -198,14 +195,14 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	//Remember that ApplicationManager only calls functions do NOT implement it.
 }
 
-void ApplicationManager::DeleteFigure(CFigure* pFig) {
-	for (int i = 0; i < FigCount - 1; i++) {
-		if (FigList[i] == pFig) {
-			delete FigList[i];
-			FigList[i] = NULL;
-		}
-	}
-}
+//void ApplicationManager::DeleteFigure(CFigure* pFig) {
+//	for (int i = 0; i < FigCount - 1; i++) {
+//		if (FigList[i] == pFig) {
+//			delete FigList[i];
+//			FigList[i] = NULL;
+//		}
+//	}
+//}
 void ApplicationManager::DeselectAll()
 {
 	//Loop over the figList, finds the selected item and deselect it
@@ -262,14 +259,19 @@ void ApplicationManager::SaveAll(ofstream &OutFile) {
 	for (int i = 0; i < FigCount; i++)
 	{
 		FigList[i]->Save(OutFile);
-		OutFile << getcolorname(FigList[i]->getDrawColor());
+		if (FigList[i]->IsSelected()) 
+			OutFile << getcolorname(FigList[i]->getPrevDrawColor());
+		else 
+			OutFile << getcolorname(FigList[i]->getDrawColor());
+		
+		
 		CLine *ptrLine = dynamic_cast<CLine*>(FigList[i]);
 		if (ptrLine != NULL)
 		{
 			OutFile << endl;
 		}
 		else {
-			OutFile << getcolorname(FigList[i]->getFillColor()) << endl;
+			OutFile << " " << getcolorname(FigList[i]->getFillColor()) << endl;
 		}
 		OutFile << endl;
 	}
@@ -280,29 +282,20 @@ void ApplicationManager::SaveAllAction() {
 	SaveAll(OutFile);
 	OutFile.close();
 }
+
 string ApplicationManager::getcolorname(color fig)
 {
-	int x = 5;
 	if (fig == BLACK)
-		x = 0;
-	if (fig == WHITE)
-		x = 1;
-	if (fig == RED)
-		x = 2;
-	if (fig == GREEN)
-		x = 3;
-	if (fig == BLUE)
-		x = 4;
-
-	switch (x)
-	{
-	default: return "No Fill Color";
-	case 0: return "Black";
-	case 1: return "White";
-	case 2: return "Red";
-	case 3: return " Green";
-	case 4: return " Blue ";
-	}
+		return "BLACK";
+	else if (fig == GREEN)
+		return "GREEN";
+	else if (fig == BLUE)
+		return "BLUE";
+	else if (fig == RED)
+		return "RED";
+	else if (fig == WHITE)
+		return "WHITE";
+	else return "ERROR";
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input

@@ -1,6 +1,4 @@
- Blue    Green
-Number of Figures :2
-Rhombus 1  299  311   Blue  Green
-
-Ellipse2  724  283   Blue  Green
+BLUE  GREEN
+Number of Figures :1
+Triangle 1  514  263  494  342  792  379  BLUE GREEN
 

@@ -44,6 +44,7 @@ void AddSelectAction::Execute()
 		else {											// the figure isn't already selected
 			pManager->DeselectAll();					// deselects the selected figure
 			clickedFigure->SetSelected(true);
+			pManager->SetSelectedFig(clickedFigure);
 			clickedFigure->setPrevDrawColor(clickedFigure->getDrawColor());
 			clickedFigure->ChngDrawClr(MAGENTA);
 			//Checking the type of the figure and print specific message for every type;
