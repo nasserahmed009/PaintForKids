@@ -231,6 +231,13 @@ void ApplicationManager::DeleteFigure(CFigure * pFig)
 	
 }
 
+void ApplicationManager::DeleteAllFigures() {
+	for (int i = 0; i < FigCount; i++) {
+		FigList[i] = NULL;
+	}
+	FigCount = 0;
+	pOut->ClearDrawArea();
+}
 
 
 void ApplicationManager::Hide_UnhideAll(bool h)

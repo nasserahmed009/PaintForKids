@@ -2,6 +2,10 @@
 
 int CFigure::counter = 0;
 
+CFigure::CFigure()
+{
+}
+
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.

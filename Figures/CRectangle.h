@@ -9,6 +9,7 @@ private:
 	Point Corner1;	
 	Point Corner2;
 public:
+	CRectangle();
 	CRectangle(Point , Point, GfxInfo FigureGfxInfo );
 	void ChngFigSize(double figSize);
 	bool PointInFigure(Point P1);
@@ -20,6 +21,7 @@ public:
 	int getWidth();
 	int getHeight();
 	void Save(ofstream &OutFile);
+	void Load(string);
 
 	void Hide(bool);
 	bool checkHidden();

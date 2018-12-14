@@ -43,6 +43,8 @@ public:
 	//Search for a figure given a point inside the figure
 	void DeselectAll();
 	void DeleteFigure(CFigure* pFig);
+
+	void DeleteAllFigures();
 		
 	void Hide_UnhideAll(bool);
 	// -- Interface Management Functions

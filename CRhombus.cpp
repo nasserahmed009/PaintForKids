@@ -1,4 +1,12 @@
 #include "CRhombus.h"
+#include<iostream>
+#include <sstream>      // std::istringstream
+#include <string> 
+using namespace std;
+
+CRhombus::CRhombus()
+{
+}
 
 CRhombus::CRhombus(Point P, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
@@ -53,11 +61,69 @@ void CRhombus::PrintInfo(Output * pOut)
 }
 
 void CRhombus::Save(ofstream &OutFile) {
-	OutFile << "Rhombus " << ID << "  " << Corner1.x << "  " << Corner1.y << "  ";
+	OutFile << "Rhombus " << ID << " " << Corner1.x << " " << Corner1.y << " ";
 }
 void CRhombus::Hide(bool h)
 {
 	isHidden = h;
+}
+
+void CRhombus::Load(string s)
+{
+	string word = s;
+	istringstream iss(s);
+	string arr[10];
+	int k = 0;
+	color DrawColor, FillColor;
+	while (getline(iss, word, ' '))
+	{
+		arr[k] = word;
+		k++;
+	}
+	this->ID = stoi(arr[1]);
+	this->Corner1.x = stoi(arr[2]);
+	this->Corner1.y = stoi(arr[3]);
+	//Checks the draw color
+	if (arr[4] == "BLACK") {
+		DrawColor = BLACK;
+	}
+	else if (arr[4] == "BLUE") {
+		DrawColor = BLUE;
+	}
+	else if (arr[4] == "WHITE") {
+		DrawColor = WHITE;
+	}
+	else if (arr[4] == "RED") {
+		DrawColor = RED;
+	}
+	else if (arr[4] == "GREEN") {
+		DrawColor = GREEN;
+	}
+	//Checks the fill color
+	if (arr[5] == "BLACK") {
+		FillColor = BLACK;
+	}
+	else if (arr[5] == "BLUE") {
+		FillColor = BLUE;
+	}
+	else if (arr[5] == "WHITE") {
+		FillColor = WHITE;
+	}
+	else if (arr[5] == "RED") {
+		FillColor = RED;
+	}
+	else if (arr[5] == "GREEN") {
+		FillColor = GREEN;
+	}
+	this->FigGfxInfo.DrawClr = DrawColor;
+	this->FigGfxInfo.FillClr = FillColor;
+	this->isHidden = false;
+	this->Selected = false;
+	this->d = 150;
+	P1.x = Corner1.x + d; P1.y = Corner1.y;
+	P2.x = Corner1.x; P2.y = Corner1.y + d;
+	P3.x = Corner1.x - d; P3.y = Corner1.y;
+	P4.x = Corner1.x; P4.y = Corner1.y - d;
 }
 
 GfxInfo CRhombus::GetFigGfxInfo()
