@@ -6,8 +6,6 @@
 
 #include "../GUI/Input.h"
 #include "../GUI/Output.h"
-#include <Windows.h>
-#include <MMSystem.h>
 
 AddLineAction::AddLineAction(ApplicationManager * pApp):Action(pApp)
 {}
@@ -17,7 +15,7 @@ void AddLineAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	PlaySound(TEXT("line.wav"), NULL, SND_SYNC);
+	PlaySound("Sounds\\line.wav", NULL, SND_ASYNC);
 
 	pOut->PrintMessage("New Line: Click at start point");
 	
