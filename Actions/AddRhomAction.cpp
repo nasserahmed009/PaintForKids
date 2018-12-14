@@ -2,8 +2,6 @@
 #include "../CRhombus.h"
 
 #include "../ApplicationManager.h"
-#include <Windows.h>
-#include <MMSystem.h>
 
 AddRhomAction::AddRhomAction(ApplicationManager * pApp):Action(pApp)
 {}
@@ -13,7 +11,7 @@ void AddRhomAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	PlaySound(TEXT("rho.wav"), NULL, SND_SYNC);
+	PlaySound(TEXT("rhombus.wav"), NULL, SND_SYNC);
 
 	pOut->PrintMessage("New Rhombus: Click at first corner");
 	

@@ -5,8 +5,7 @@
 
 #include "../GUI/input.h"
 #include "../GUI/Output.h"
-#include <Windows.h>
-#include <MMSystem.h>
+
 
 
 
@@ -18,7 +17,7 @@ void AddEllipseAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	PlaySound(TEXT("elipse.wav"), NULL, SND_SYNC);
+	PlaySound("Sounds\\ellipse.wav", NULL, SND_ASYNC);
 
 	pOut->PrintMessage("New Ellipse: Click at midpoint");
 
