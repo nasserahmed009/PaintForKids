@@ -12,6 +12,7 @@
 #include "Actions\ChngFillColor.h"
 #include "Actions\ResizeFigure.h"
 #include "Actions\DeleteAction.h"
+#include"Actions/SaveAction.h"
 #include "CLine.h"
 #include "Actions/loadAction.h"
 #include"Actions\PickByColorAction.h"
@@ -109,8 +110,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 				pAct = new DeleteAction(this);
 				break;*/
 		case SAVE:
-				pOut->PrintMessage("Action: a click on the Save button, Click anywhere");
-				SaveAllAction();
+				pAct = new SaveAction(this);
 				break;
 		case SAVE_BY_TYPE:
 				pOut->PrintMessage("Action: a click on the Save By Type button, Click anywhere");
@@ -282,12 +282,6 @@ void ApplicationManager::SaveAll(ofstream &OutFile) {
 		}
 		OutFile << endl;
 	}
-}
-void ApplicationManager::SaveAllAction() {
-	ofstream OutFile;
-	OutFile.open("Savefile/File.txt");
-	SaveAll(OutFile);
-	OutFile.close();
 }
 
 string ApplicationManager::getcolorname(color fig)

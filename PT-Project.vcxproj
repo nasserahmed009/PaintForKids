@@ -134,6 +134,7 @@
     <ClCompile Include="Actions\AddRhomAction.cpp" />
     <ClCompile Include="Actions\AddTriAction.cpp" />
     <ClCompile Include="Actions\AddSelectAction.cpp" />
+    <ClCompile Include="Actions\SaveAction.cpp" />
     <ClCompile Include="CEllipse.cpp" />
     <ClCompile Include="Actions\ChngDrawColor.cpp" />
     <ClCompile Include="Actions\ChngFillColor.cpp" />
@@ -242,6 +243,7 @@
     <ClInclude Include="Actions\PasteAction.h" />
     <ClInclude Include="Actions\ResizeFigure.h" />
     <ClInclude Include="Actions\loadAction.h" />
+    <ClInclude Include="Actions\SaveAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
