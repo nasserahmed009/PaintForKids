@@ -17,32 +17,34 @@ void CutAction::Execute() {
 
 	Point P1 = { 0,0 }, P2 = { 0,0 }, P3 = { 0,0 }; GfxInfo TempGfx;
 	CFigure* copiedFigure;
+	TempGfx = selectedFigure->GetFigGfxInfo();
+	TempGfx.DrawClr = selectedFigure->getPrevDrawColor();
 	if (selectedFigure == NULL) {
 		pOut->PrintMessage("No figure is selected");
 		return;
 	}
 	else if (dynamic_cast<CRectangle*>(selectedFigure)) {
 		selectedFigure->GetFigPoints(P1, P2);
-		copiedFigure = new CRectangle(P1, P2, selectedFigure->GetFigGfxInfo());
+		copiedFigure = new CRectangle(P1, P2, TempGfx);
 	}
 	else if (dynamic_cast<CLine*>(selectedFigure)) {
 		selectedFigure->GetFigPoints(P1, P2);
-		copiedFigure = new CLine(P1, P2, selectedFigure->GetFigGfxInfo());
+		copiedFigure = new CLine(P1, P2, TempGfx);
 	}
 	else if (dynamic_cast<CEllipse*>(selectedFigure)) {
 		selectedFigure->GetFigPoints(P1);
 
-		copiedFigure = new CEllipse(P1, selectedFigure->GetFigGfxInfo());
+		copiedFigure = new CEllipse(P1, TempGfx);
 	}
 	else if (dynamic_cast<CTriangle*>(selectedFigure)) {
 		selectedFigure->GetFigPoints(P1, P2, P3);
 
-		copiedFigure = new CTriangle(P1, P2, P3, selectedFigure->GetFigGfxInfo());
+		copiedFigure = new CTriangle(P1, P2, P3, TempGfx);
 	}
 	else if (dynamic_cast<CRhombus*>(selectedFigure)) {
 		selectedFigure->GetFigPoints(P1);
 
-		copiedFigure = new CRhombus(P1, selectedFigure->GetFigGfxInfo());
+		copiedFigure = new CRhombus(P1, TempGfx);
 	}
 
 	if (pManager->GetCutFig() != NULL) {
@@ -51,7 +53,6 @@ void CutAction::Execute() {
 	}
 
 	pManager->ClearClipboard();
-	copiedFigure->ChngDrawClr(BLACK);
 	pManager->SetClipboard(copiedFigure);
 
 	pManager->SetCutFig(selectedFigure);

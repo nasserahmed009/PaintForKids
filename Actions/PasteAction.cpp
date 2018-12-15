@@ -61,7 +61,7 @@ void PasteAction::Execute() {
 	}
 
 	if (pManager->GetCutFig() != NULL) {
-		//pManager->DeleteFigure(pManager->GetCutFig());
+		pManager->DeleteFigure(pManager->GetCutFig());
 		pManager->SetCutFig(NULL);
 		pManager->UpdateInterface();
 	}

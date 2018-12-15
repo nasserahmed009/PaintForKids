@@ -43,7 +43,7 @@ public:
 	//Search for a figure given a point inside the figure
 	void DeselectAll();
 	void DeleteSelectedFigure();
-		
+	void DeleteFigure(CFigure* pFig);
 
 	void DeleteAllFigures();
 		

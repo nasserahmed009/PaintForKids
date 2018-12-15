@@ -199,14 +199,19 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	//Remember that ApplicationManager only calls functions do NOT implement it.
 }
 
-//void ApplicationManager::DeleteFigure(CFigure* pFig) {
-//	for (int i = 0; i < FigCount - 1; i++) {
-//		if (FigList[i] == pFig) {
-//			delete FigList[i];
-//			FigList[i] = NULL;
-//		}
-//	}
-//}
+void ApplicationManager::DeleteFigure(CFigure* pFig) {
+		for (int i = 0; i < FigCount - 1; i++) {
+			if (FigList[i] == pFig) {
+				delete FigList[i];
+				for (int j = i; j < FigCount - 1; j++) {
+					FigList[j] = FigList[j + 1];
+				}
+				FigCount--;
+				pOut->ClearDrawArea();
+				break;
+			}
+		}
+}
 void ApplicationManager::DeselectAll()
 {
 	//Loop over the figList, finds the selected item and deselect it
