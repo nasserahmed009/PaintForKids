@@ -105,9 +105,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case PASTE:
 				pAct = new PasteAction(this);
 				break;
-		/*case DEL:
+		case DEL:
 				pAct = new DeleteAction(this);
-				break;*/
+				break;
 		case SAVE:
 				pOut->PrintMessage("Action: a click on the Save button, Click anywhere");
 				SaveAllAction();
@@ -216,19 +216,31 @@ void ApplicationManager::DeselectAll()
 		}
 	}
 }
-void ApplicationManager::DeleteFigure(CFigure * pFig)
+
+void ApplicationManager::DeleteSelectedFigure()
 {
-	for (int i = 0; i < FigCount; i++) {
-		if (FigList[i] == pFig) {
-			FigList[i] = FigList[FigCount - 1];
-			FigList[FigCount - 1] = NULL;
-			FigCount--;
-			pOut->ClearDrawArea();
-			break;
+	if (SelectedFig != NULL) {
+
+		int index;
+		for (int i = 0; i < FigCount; i++) {
+			if (FigList[i] == SelectedFig) {
+				index = i;
+				break;
+			}
 		}
+
+		for (int i = index; i < FigCount - 1; i++) {
+			FigList[i] = FigList[i + 1];
+		}
+
+		FigCount--;
+		SelectedFig = NULL;
+		pOut->ClearDrawArea();
 	}
-	
-	
+	else {
+		pOut->PrintMessage("No figure is selected");
+	}
+
 }
 
 

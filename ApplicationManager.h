@@ -42,7 +42,7 @@ public:
 	CFigure *GetFigure(int x, int y) const;
 	//Search for a figure given a point inside the figure
 	void DeselectAll();
-	void DeleteFigure(CFigure* pFig);
+	void DeleteSelectedFigure();
 		
 	void Hide_UnhideAll(bool);
 	// -- Interface Management Functions
