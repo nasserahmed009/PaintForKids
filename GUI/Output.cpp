@@ -6,8 +6,8 @@ Output::Output()
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
 	
-	UI.width = 1500;
-	UI.height = 650;
+	UI.width = 1605;
+	UI.height = 780;
 	UI.wx = 5;
 	UI.wy =5;
 
@@ -100,6 +100,8 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_RESIZE] = "images\\MenuItems\\Menu_Resize.jpg";
 	MenuItemImages[ITM_SWITCH] = "images\\MenuItems\\Menu_Switch.jpg";
 	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\Menu_Select.jpg";
+	MenuItemImages[ITM_FRONT] = "images\\MenuItems\\Menu_Front.jpg";
+	MenuItemImages[ITM_BACK] = "images\\MenuItems\\Menu_Back.jpg";
 	MenuItemImages[ITM_DEL] = "images\\MenuItems\\Menu_Delete.jpg";
 	MenuItemImages[ITM_CPY] = "images\\MenuItems\\Menu_Copy.jpg";
 	MenuItemImages[ITM_CUT] = "images\\MenuItems\\Menu_Cut.jpg";

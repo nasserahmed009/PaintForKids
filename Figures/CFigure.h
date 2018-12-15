@@ -15,10 +15,11 @@ protected:
 	GfxInfo FigGfxInfo;	//Figure graphis info
 	color PrevDrawColor;
 	static int counter;
-	bool isHidden;
+	bool isHidden=false;
 	/// Add more parameters if needed.
 
 public:
+	CFigure();
 	CFigure(GfxInfo FigureGfxInfo);
 	void SetSelected(bool s);	//select/unselect the figure
 	bool IsSelected() const;	//check whether fig is selected
@@ -38,7 +39,7 @@ public:
 
 	///Decide the parameters that you should pass to each function	
 	//virtual void Save(ofstream &OutFile) = 0;	//Save the figure parameters to the file
-	//virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
+	virtual void Load(string) = 0;	//Load the figure parameters to the file
 
 	void setPrevDrawColor(color c);
 	color getPrevDrawColor();

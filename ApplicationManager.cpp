@@ -12,6 +12,8 @@
 #include "Actions\ChngFillColor.h"
 #include "Actions\ResizeFigure.h"
 #include "Actions\DeleteAction.h"
+#include "Actions/SaveAction.h"
+#include "Actions\BringFrontAction.h"
 #include "CLine.h"
 #include "Actions/loadAction.h"
 #include"Actions\PickByColorAction.h"
@@ -105,12 +107,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case PASTE:
 				pAct = new PasteAction(this);
 				break;
+		case BRING_FRONT:
+				pAct = new BringFrontAction(this);
+				break;
 		case DEL:
 				pAct = new DeleteAction(this);
 				break;
 		case SAVE:
-				pOut->PrintMessage("Action: a click on the Save button, Click anywhere");
-				SaveAllAction();
+				pAct = new SaveAction(this);
 				break;
 		case SAVE_BY_TYPE:
 				pOut->PrintMessage("Action: a click on the Save By Type button, Click anywhere");
@@ -243,6 +247,13 @@ void ApplicationManager::DeleteSelectedFigure()
 
 }
 
+void ApplicationManager::DeleteAllFigures() {
+	for (int i = 0; i < FigCount; i++) {
+		FigList[i] = NULL;
+	}
+	FigCount = 0;
+	pOut->ClearDrawArea();
+}
 
 
 void ApplicationManager::Hide_UnhideAll(bool h)
@@ -287,12 +298,6 @@ void ApplicationManager::SaveAll(ofstream &OutFile) {
 		}
 		OutFile << endl;
 	}
-}
-void ApplicationManager::SaveAllAction() {
-	ofstream OutFile;
-	OutFile.open("Savefile/File.txt");
-	SaveAll(OutFile);
-	OutFile.close();
 }
 
 string ApplicationManager::getcolorname(color fig)

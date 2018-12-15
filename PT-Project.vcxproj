@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectName>PT Project</ProjectName>
     <ProjectGuid>{1AC3DDD7-FDDE-487E-A2A4-52A8FCF7BDB9}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -134,6 +134,8 @@
     <ClCompile Include="Actions\AddRhomAction.cpp" />
     <ClCompile Include="Actions\AddTriAction.cpp" />
     <ClCompile Include="Actions\AddSelectAction.cpp" />
+    <ClCompile Include="Actions\SaveAction.cpp" />
+    <ClCompile Include="Actions\BringFrontAction.cpp" />
     <ClCompile Include="CEllipse.cpp" />
     <ClCompile Include="Actions\ChngDrawColor.cpp" />
     <ClCompile Include="Actions\ChngFillColor.cpp" />
@@ -198,6 +200,7 @@
     <ClInclude Include="Actions\AddLineAction.h" />
     <ClInclude Include="Actions\AddRhomAction.h" />
     <ClInclude Include="Actions\AddSelectAction.h" />
+    <ClInclude Include="Actions\BringFrontAction.h" />
     <ClInclude Include="CEllipse.h" />
     <ClInclude Include="Actions\ChngDrawColor.h" />
     <ClInclude Include="Actions\ChngFillColor.h" />
@@ -242,9 +245,17 @@
     <ClInclude Include="Actions\PasteAction.h" />
     <ClInclude Include="Actions\ResizeFigure.h" />
     <ClInclude Include="Actions\loadAction.h" />
+    <ClInclude Include="Actions\SaveAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Actions\elipse.wav" />
+    <Media Include="Actions\line.wav" />
+    <Media Include="Actions\rectangle.wav" />
+    <Media Include="Actions\rho.wav" />
+    <Media Include="Actions\tri.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

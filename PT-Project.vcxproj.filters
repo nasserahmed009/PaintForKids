@@ -64,6 +64,8 @@
     <ClCompile Include="Actions\PasteAction.cpp" />
     <ClCompile Include="Actions\ResizeFigure.cpp" />
     <ClCompile Include="Actions\loadAction.cpp" />
+    <ClCompile Include="Actions\SaveAction.cpp" />
+    <ClCompile Include="Actions\BringFrontAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddEllipseAction.h" />
@@ -114,8 +116,17 @@
     <ClInclude Include="Actions\PasteAction.h" />
     <ClInclude Include="Actions\ResizeFigure.h" />
     <ClInclude Include="Actions\loadAction.h" />
+    <ClInclude Include="Actions\SaveAction.h" />
+    <ClInclude Include="Actions\BringFrontAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Actions\elipse.wav" />
+    <Media Include="Actions\rectangle.wav" />
+    <Media Include="Actions\rho.wav" />
+    <Media Include="Actions\line.wav" />
+    <Media Include="Actions\tri.wav" />
   </ItemGroup>
 </Project>

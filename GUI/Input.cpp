@@ -59,6 +59,8 @@ ActionType Input::GetUserAction() const
 			case ITM_ELLIPSE:		return DRAW_ELLIPSE;
 			case ITM_DRAW_CLR:	    return CHNG_DRAW_CLR;
 			case ITM_FILL_CLR:	    return CHNG_FILL_CLR;
+			case ITM_FRONT:			return BRING_FRONT;
+			case ITM_BACK:			return BRING_BACK;
 			//case ITM_PLAY:      return TO_PLAY;
 			case ITM_SELECT:		return SELECT;
 			case ITM_DEL: 			return DEL;

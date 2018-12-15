@@ -1,4 +1,11 @@
 #include "CLine.h"
+#include<iostream>
+#include <sstream>      // std::istringstream
+#include <string> 
+using namespace std;
+CLine::CLine()
+{
+}
 
 CLine::CLine(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
@@ -32,7 +39,7 @@ void CLine::PrintInfo(Output * pOut)
 }
 
 void CLine::Save(ofstream &OutFile) {
-	OutFile << "Line " << ID << "  " << Corner1.x << "  " << Corner1.y << "  " << Corner2.x << "  " << Corner2.y << "  ";
+	OutFile << "Line " << ID << " " << Corner1.x << " " << Corner1.y << " " << Corner2.x << " " << Corner2.y << " ";
 }
 
 bool CLine::PointInFigure(Point P1)
@@ -57,6 +64,46 @@ GfxInfo CLine::GetFigGfxInfo()
 bool CLine::checkHidden()
 {
 	return isHidden;
+}
+
+void CLine::Load(string s)
+{
+	string word = s;
+	istringstream iss(s);
+	string arr[10];
+	int k = 0;
+	color DrawColor;
+	while (getline(iss, word, ' '))
+	{
+		arr[k] = word;
+		k++;
+	}
+	this->ID = stoi(arr[1]);
+	this->Corner1.x = stoi(arr[2]);
+	this->Corner1.y = stoi(arr[3]);
+	this->Corner2.x = stoi(arr[4]);
+	this->Corner2.y = stoi(arr[5]);
+	//Checks the draw color
+	if (arr[6] == "BLACK") {
+		DrawColor = BLACK;
+	}
+	else if (arr[6] == "BLUE") {
+		DrawColor = BLUE;
+	}
+	else if (arr[6] == "WHITE") {
+		DrawColor = WHITE;
+	}
+	else if (arr[6] == "RED") {
+		DrawColor = RED;
+	}
+	else if (arr[6] == "GREEN") {
+		DrawColor = GREEN;
+	}
+	this->FigGfxInfo.DrawClr = DrawColor;
+	this->FigGfxInfo.FillClr = BLUE;
+	this->FigGfxInfo.isFilled = false;
+	this->isHidden = false;
+	this->Selected = false;
 }
 
 void CLine::GetFigPoints(Point & P1, Point & P2)

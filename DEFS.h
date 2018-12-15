@@ -30,6 +30,8 @@ enum ActionType //The actions supported (you can add more if needed)
 	EMPTY,			//A click on empty place in the toolbar
 	TO_DRAW,		//Switch interface to Draw mode
 	TO_PLAY,	    //Switch interface to Play mode
+	BRING_FRONT,	//Brings the selected figure to front
+	BRING_BACK,		//Brings the selected figure to back
 
 	PICK_BLACK,     //pick the black color     
 	PICK_WHITE,     //pick the white color 

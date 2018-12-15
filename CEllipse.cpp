@@ -1,4 +1,12 @@
 #include "CEllipse.h"
+#include<iostream>
+#include <sstream>      // std::istringstream
+#include <string> 
+using namespace std;
+CEllipse::CEllipse()
+{
+	
+}
 
 CEllipse::CEllipse(Point Corner1,  GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
@@ -39,12 +47,68 @@ void CEllipse::PrintInfo(Output * pOut)
 }
 
 void CEllipse::Save(ofstream &OutFile) {
-	OutFile << "Ellipse" << ID << "  " << Corner1.x << "  " << Corner1.y << "  ";
+	OutFile << "Ellipse " << ID << " " << Corner1.x << " " << Corner1.y << " ";
 }
 
 void CEllipse::Hide(bool h)
 {
 	isHidden = h;
+}
+
+void CEllipse::Load(string s)
+{
+	string word=s;
+	istringstream iss(s);
+	string arr[10];
+	int k = 0;
+	color DrawColor,FillColor;
+	while (getline(iss, word, ' '))
+	{
+		arr[k] = word;
+		k++;
+	}
+	this->ID = stoi(arr[1]);
+	this->Corner1.x = stoi(arr[2]);
+	this->Corner1.y = stoi(arr[3]);
+	//Checks the draw color
+	if (arr[4] == "BLACK") {
+		DrawColor = BLACK;
+	}
+	else if (arr[4] == "BLUE") {
+		DrawColor = BLUE;
+	}
+	else if (arr[4] == "WHITE") {
+		DrawColor = WHITE;
+	}
+	else if (arr[4] == "RED") {
+		DrawColor = RED;
+	}
+	else if (arr[4] == "GREEN") {
+		DrawColor = GREEN;
+	}
+	//Checks the fill color
+	if (arr[5] == "BLACK") {
+		FillColor = BLACK;
+	}
+	else if (arr[5] == "BLUE") {
+		FillColor = BLUE;
+	}
+	else if (arr[5] == "WHITE") {
+		FillColor = WHITE;
+	}
+	else if (arr[5] == "RED") {
+		FillColor = RED;
+	}
+	else if (arr[5] == "GREEN") {
+		FillColor = GREEN;
+	}
+	this->FigGfxInfo.DrawClr = DrawColor;
+	this-> FigGfxInfo.FillClr = FillColor;
+	this->isHidden = false;
+	this->Selected = false;
+	dx = 93.75, dy = 150;
+	P2 = { Corner1.x + dx, Corner1.y + dy }; //Upper right corner
+	P3 = { Corner1.x - dx, Corner1.y - dy }; //Lower left corner
 }
 
 GfxInfo CEllipse::GetFigGfxInfo()

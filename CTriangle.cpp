@@ -1,4 +1,11 @@
 #include "CTriangle.h"
+#include<iostream>
+#include <sstream>      // std::istringstream
+#include <string> 
+using namespace std;
+CTriangle::CTriangle()
+{
+}
 CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	Corner1 = P1;
@@ -49,7 +56,7 @@ void CTriangle::PrintInfo(Output * pOut)
 }
 
 void CTriangle::Save(ofstream &OutFile) {
-	OutFile << "Triangle " << ID << "  " << Corner1.x << "  " << Corner1.y << "  " << Corner2.x << "  " << Corner2.y << "  " << Corner3.x << "  " << Corner3.y << "  ";
+	OutFile << "Triangle " << ID << " " << Corner1.x << " " << Corner1.y << " " << Corner2.x << " " << Corner2.y << " " << Corner3.x << " " << Corner3.y << " ";
 }
 void CTriangle::Hide(bool h)
 {
@@ -64,6 +71,63 @@ GfxInfo CTriangle::GetFigGfxInfo()
 bool CTriangle::checkHidden()
 {
 	return isHidden;
+}
+
+void CTriangle::Load(string s)
+{
+	string word = s;
+	istringstream iss(s);
+	string arr[10];
+	int k = 0;
+	color DrawColor, FillColor;
+	while (getline(iss, word, ' '))
+	{
+		arr[k] = word;
+		k++;
+	}
+	this->ID = stoi(arr[1]);
+	this->Corner1.x = stoi(arr[2]);
+	this->Corner1.y = stoi(arr[3]);
+	this->Corner2.x = stoi(arr[4]);
+	this->Corner2.y = stoi(arr[5]);
+	this->Corner3.x = stoi(arr[6]);
+	this->Corner3.y = stoi(arr[7]);
+	//Checks the draw color
+	if (arr[8] == "BLACK") {
+		DrawColor = BLACK;
+	}
+	else if (arr[8] == "BLUE") {
+		DrawColor = BLUE;
+	}
+	else if (arr[8] == "WHITE") {
+		DrawColor = WHITE;
+	}
+	else if (arr[8] == "RED") {
+		DrawColor = RED;
+	}
+	else if (arr[8] == "GREEN") {
+		DrawColor = GREEN;
+	}
+	//Checks the fill color
+	if (arr[9] == "BLACK") {
+		FillColor = BLACK;
+	}
+	else if (arr[9] == "BLUE") {
+		FillColor = BLUE;
+	}
+	else if (arr[9] == "WHITE") {
+		FillColor = WHITE;
+	}
+	else if (arr[9] == "RED") {
+		FillColor = RED;
+	}
+	else if (arr[9] == "GREEN") {
+		FillColor = GREEN;
+	}
+	this->FigGfxInfo.DrawClr = DrawColor;
+	this->FigGfxInfo.FillClr = FillColor;
+	this->isHidden = false;
+	this->Selected = false;
 }
 
 void CTriangle::GetFigPoints(Point & P1, Point & P2, Point & P3)

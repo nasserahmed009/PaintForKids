@@ -1,4 +1,6 @@
 BLUE  GREEN
-Number of Figures :1
-Triangle 1  514  263  494  342  792  379  BLUE GREEN
+Number of Figures :2
+Line 1 195 217 706 459 BLUE
+
+Ellipse 2 793 321 BLUE GREEN
 

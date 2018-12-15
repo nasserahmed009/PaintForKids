@@ -1,4 +1,11 @@
 #include "CRectangle.h"
+#include<iostream>
+#include <sstream>      // std::istringstream
+#include <string> 
+using namespace std;
+CRectangle::CRectangle()
+{
+}
 
 CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
@@ -52,7 +59,61 @@ int CRectangle::getHeight()
 }
 
 void CRectangle::Save(ofstream &OutFile) {
-	OutFile << "Rectangle " << ID << "  " << Corner1.x << "  " << Corner1.y << "  " << Corner2.x << "  " << Corner2.y << "  ";
+	OutFile << "Rectangle " << ID << " " << Corner1.x << " " << Corner1.y << " " << Corner2.x << " " << Corner2.y << " ";
+}
+void CRectangle::Load(string s)
+{
+	string word = s;
+	istringstream iss(s);
+	string arr[10];
+	int k = 0;
+	color DrawColor, FillColor;
+	while (getline(iss, word, ' '))
+	{
+		arr[k] = word;
+		k++;
+	}
+	this->ID = stoi(arr[1]);
+	this->Corner1.x = stoi(arr[2]);
+	this->Corner1.y = stoi(arr[3]);
+	this->Corner2.x = stoi(arr[4]);
+	this->Corner2.y = stoi(arr[5]);
+	//Checks the draw color
+	if (arr[6] == "BLACK") {
+		DrawColor = BLACK;
+	}
+	else if (arr[6] == "BLUE") {
+		DrawColor = BLUE;
+	}
+	else if (arr[6] == "WHITE") {
+		DrawColor = WHITE;
+	}
+	else if (arr[6] == "RED") {
+		DrawColor = RED;
+	}
+	else if (arr[6] == "GREEN") {
+		DrawColor = GREEN;
+	}
+	//Checks the fill color
+	if (arr[7] == "BLACK") {
+		FillColor = BLACK;
+	}
+	else if (arr[7] == "BLUE") {
+		FillColor = BLUE;
+	}
+	else if (arr[7] == "WHITE") {
+		FillColor = WHITE;
+	}
+	else if (arr[7] == "RED") {
+		FillColor = RED;
+	}
+	else if (arr[7] == "GREEN") {
+		FillColor = GREEN;
+	}
+	this->FigGfxInfo.DrawClr = DrawColor;
+	this->FigGfxInfo.FillClr = FillColor;
+	this->isHidden = false;
+	this->Selected = false;
 }
 void CRectangle::Hide(bool h)
 {

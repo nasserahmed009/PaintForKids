@@ -8,6 +8,7 @@ private:
 	Point Corner1;	
 	Point Corner2;
 public:
+	CLine();
 	CLine(Point , Point, GfxInfo FigureGfxInfo );
 	void ChngFigSize(double figSize);
 	virtual void Draw(Output* pOut) const;
@@ -17,6 +18,8 @@ public:
 	void Hide(bool);
 	GfxInfo GetFigGfxInfo();
 	bool checkHidden();
+	void Load(string);
+
 	void GetFigPoints(Point &P1, Point &P2);
 };
 

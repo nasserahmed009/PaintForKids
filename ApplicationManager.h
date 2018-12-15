@@ -44,6 +44,9 @@ public:
 	void DeselectAll();
 	void DeleteSelectedFigure();
 		
+
+	void DeleteAllFigures();
+		
 	void Hide_UnhideAll(bool);
 	// -- Interface Management Functions
 	Input *GetInput() const;                  //Return pointer to the input

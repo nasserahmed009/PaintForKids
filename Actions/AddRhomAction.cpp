@@ -11,6 +11,7 @@ void AddRhomAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
+	PlaySound("Sounds\\rhombus.wav", NULL, SND_ASYNC);
 
 	pOut->PrintMessage("New Rhombus: Click at first corner");
 	
