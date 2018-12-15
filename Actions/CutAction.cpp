@@ -14,16 +14,16 @@ void CutAction::Execute() {
 	Output* pOut = pManager->GetOutput();
 
 	CFigure* selectedFigure = pManager->GetSelectedFig();
-
-	Point P1 = { 0,0 }, P2 = { 0,0 }, P3 = { 0,0 }; GfxInfo TempGfx;
-	CFigure* copiedFigure;
-	TempGfx = selectedFigure->GetFigGfxInfo();
-	TempGfx.DrawClr = selectedFigure->getPrevDrawColor();
 	if (selectedFigure == NULL) {
 		pOut->PrintMessage("No figure is selected");
 		return;
 	}
-	else if (dynamic_cast<CRectangle*>(selectedFigure)) {
+	Point P1 = { 0,0 }, P2 = { 0,0 }, P3 = { 0,0 }; GfxInfo TempGfx;
+	CFigure* copiedFigure;
+	TempGfx = selectedFigure->GetFigGfxInfo();
+	TempGfx.DrawClr = selectedFigure->getPrevDrawColor();
+
+	if (dynamic_cast<CRectangle*>(selectedFigure)) {
 		selectedFigure->GetFigPoints(P1, P2);
 		copiedFigure = new CRectangle(P1, P2, TempGfx);
 	}
