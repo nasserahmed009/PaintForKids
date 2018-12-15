@@ -26,6 +26,8 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_RESIZE,		//Resizes figure
 	ITM_SWITCH,     //Exit item
 	ITM_SELECT,     //Select item
+	ITM_FRONT,		//Bring to front item
+	ITM_BACK,		//Bring to back item
 	ITM_DEL,        //Delete item
 	ITM_CPY,        //Copy item
 	ITM_CUT,        //Cut item

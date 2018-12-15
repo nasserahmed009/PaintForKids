@@ -12,7 +12,8 @@
 #include "Actions\ChngFillColor.h"
 #include "Actions\ResizeFigure.h"
 #include "Actions\DeleteAction.h"
-#include"Actions/SaveAction.h"
+#include "Actions/SaveAction.h"
+#include "Actions\BringFrontAction.h"
 #include "CLine.h"
 #include "Actions/loadAction.h"
 #include"Actions\PickByColorAction.h"
@@ -105,6 +106,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 				break;
 		case PASTE:
 				pAct = new PasteAction(this);
+				break;
+		case BRING_FRONT:
+				pAct = new BringFrontAction(this);
 				break;
 		/*case DEL:
 				pAct = new DeleteAction(this);
@@ -220,8 +224,10 @@ void ApplicationManager::DeleteFigure(CFigure * pFig)
 {
 	for (int i = 0; i < FigCount; i++) {
 		if (FigList[i] == pFig) {
-			FigList[i] = FigList[FigCount - 1];
-			FigList[FigCount - 1] = NULL;
+			delete pFig;
+			for (int j = i; j < FigCount-1; j++) {
+				FigList[j] = FigList[j + 1];
+			}
 			FigCount--;
 			pOut->ClearDrawArea();
 			break;

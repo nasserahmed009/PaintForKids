@@ -1,0 +1,6 @@
+BLUE  GREEN
+Number of Figures :2
+Triangle 6 777 242 691 388 924 470 BLACK GREEN
+
+Rhombus 2 783 376 BLUE ERROR
+
