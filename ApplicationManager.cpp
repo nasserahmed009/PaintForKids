@@ -14,6 +14,7 @@
 #include "Actions\DeleteAction.h"
 #include "Actions/SaveAction.h"
 #include "Actions\BringFrontAction.h"
+#include "Actions\BringBackAction.h"
 #include "CLine.h"
 #include "Actions/loadAction.h"
 #include"Actions\PickByColorAction.h"
@@ -110,6 +111,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case BRING_FRONT:
 				pAct = new BringFrontAction(this);
 				break;
+		case BRING_BACK:
+				pAct = new BringBackAction(this);
+				break;
 		case DEL:
 				pAct = new DeleteAction(this);
 				break;
@@ -199,13 +203,25 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	//Remember that ApplicationManager only calls functions do NOT implement it.
 }
 
+void ApplicationManager::AddFigureOnTop(CFigure * pFig)
+{
+	if (FigCount < MaxFigCount) {
+		for (int i = FigCount - 1; i >= 0; i--) {
+			FigList[i + 1] = FigList[i];
+		}
+		FigCount++;
+		FigList[0] = pFig;
+	}
+}
+
 void ApplicationManager::DeleteFigure(CFigure* pFig) {
-		for (int i = 0; i < FigCount - 1; i++) {
+		for (int i = 0; i < FigCount ; i++) {
 			if (FigList[i] == pFig) {
 				delete FigList[i];
 				for (int j = i; j < FigCount - 1; j++) {
 					FigList[j] = FigList[j + 1];
 				}
+				FigList[FigCount - 1] = NULL;
 				FigCount--;
 				pOut->ClearDrawArea();
 				break;

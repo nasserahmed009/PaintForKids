@@ -1,15 +1,15 @@
-#include "BringFrontAction.h"
+#include "BringBackAction.h"
 
 
 
-BringFrontAction::BringFrontAction(ApplicationManager * pApp) :Action(pApp)
+BringBackAction::BringBackAction(ApplicationManager * pApp) :Action(pApp)
 {
 }
 
-void BringFrontAction::ReadActionParameters() {
+void BringBackAction::ReadActionParameters() {
 }
 
-void BringFrontAction::Execute() {
+void BringBackAction::Execute() {
 	Output* pOut = pManager->GetOutput();
 	if (pManager->GetSelectedFig() == NULL) {
 		pOut->PrintMessage("No figure is selected");
@@ -44,14 +44,15 @@ void BringFrontAction::Execute() {
 			tempFig = new CRhombus(P1, TempGfx);
 		}
 
-		pManager->AddFigure(tempFig);
+		pManager->AddFigureOnTop(tempFig);
 		pManager->DeleteFigure(selectedFigure);
+
 		pManager->SetSelectedFig(NULL);
 		pManager->DeselectAll();
-		pOut->PrintMessage("Figure brought to front");
+		pOut->PrintMessage("Figure brought to back");
 	}
 }
 
-BringFrontAction::~BringFrontAction()
+BringBackAction::~BringBackAction()
 {
 }

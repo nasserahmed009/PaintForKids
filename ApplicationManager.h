@@ -40,6 +40,7 @@ public:
 	CFigure *GetCutFig();
 	void SetCutFig(CFigure * pFig);
 	CFigure *GetFigure(int x, int y) const;
+	void AddFigureOnTop(CFigure* pFig);
 	//Search for a figure given a point inside the figure
 	void DeselectAll();
 	void DeleteSelectedFigure();
