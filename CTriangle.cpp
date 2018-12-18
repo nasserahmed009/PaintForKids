@@ -11,6 +11,7 @@ CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo):CFigur
 	Corner1 = P1;
 	Corner2 = P2;
 	Corner3 = P3;
+	type = Figure_Type::TRIANGLE;
 }
 
 

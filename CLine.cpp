@@ -11,6 +11,7 @@ CLine::CLine(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	Corner1 = P1;
 	Corner2 = P2;
+	type=Figure_Type::LINE;
 }
 	
 

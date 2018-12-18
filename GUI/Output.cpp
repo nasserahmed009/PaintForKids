@@ -14,7 +14,7 @@ Output::Output()
 	
 	UI.StatusBarHeight = 50;
 	UI.ToolBarHeight = 50;
-	UI.MenuItemWidth = 80;
+	UI.MenuItemWidth = 70;
 	UI.ColorBarHeight = 40;
 	UI.ColorItemWidth = 40;
 	UI.ResizeItemWidth = 40;

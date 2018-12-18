@@ -16,6 +16,7 @@ CRhombus::CRhombus(Point P, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 	P2.x = Corner1.x; P2.y = Corner1.y + d;
 	P3.x = Corner1.x - d; P3.y = Corner1.y;
 	P4.x = Corner1.x; P4.y = Corner1.y - d;
+	type = Figure_Type::RHUMBOS;
 
 }
 

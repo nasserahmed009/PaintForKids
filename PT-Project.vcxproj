@@ -134,6 +134,7 @@
     <ClCompile Include="Actions\AddRhomAction.cpp" />
     <ClCompile Include="Actions\AddTriAction.cpp" />
     <ClCompile Include="Actions\AddSelectAction.cpp" />
+    <ClCompile Include="Actions\DeleteAction.cpp" />
     <ClCompile Include="Actions\SaveAction.cpp" />
     <ClCompile Include="Actions\BringFrontAction.cpp" />
     <ClCompile Include="CEllipse.cpp" />
@@ -179,8 +180,6 @@
     <ClCompile Include="CRhombus.cpp" />
     <ClCompile Include="CTriangle.cpp" />
     <ClCompile Include="Actions\CutAction.cpp" />
-    <ClCompile Include="Actions\DeleteAction.cpp" />
-    <ClCompile Include="DELETEACTION.CPP" />
     <ClCompile Include="Figures\CFigure.cpp" />
     <ClCompile Include="Figures\CRectangle.cpp" />
     <ClCompile Include="Actions\AddRectAction.cpp" />
@@ -194,6 +193,7 @@
     <ClCompile Include="Actions\PickByColorAction.cpp" />
     <ClCompile Include="Actions\PasteAction.cpp" />
     <ClCompile Include="Actions\ResizeFigure.cpp" />
+    <ClCompile Include="Actions\SaveByTypeAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddEllipseAction.h" />
@@ -201,6 +201,7 @@
     <ClInclude Include="Actions\AddRhomAction.h" />
     <ClInclude Include="Actions\AddSelectAction.h" />
     <ClInclude Include="Actions\BringFrontAction.h" />
+    <ClInclude Include="Actions\DeleteAction.h" />
     <ClInclude Include="CEllipse.h" />
     <ClInclude Include="Actions\ChngDrawColor.h" />
     <ClInclude Include="Actions\ChngFillColor.h" />
@@ -228,7 +229,6 @@
     <ClInclude Include="CRhombus.h" />
     <ClInclude Include="CTriangle.h" />
     <ClInclude Include="Actions\CutAction.h" />
-    <ClInclude Include="Actions\DeleteAction.h" />
     <ClInclude Include="Figures\CFigure.h" />
     <ClInclude Include="Figures\CRectangle.h" />
     <ClInclude Include="Actions\Action.h" />
@@ -246,6 +246,7 @@
     <ClInclude Include="Actions\ResizeFigure.h" />
     <ClInclude Include="Actions\loadAction.h" />
     <ClInclude Include="Actions\SaveAction.h" />
+    <ClInclude Include="Actions\SaveByTypeAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

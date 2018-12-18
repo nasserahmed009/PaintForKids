@@ -1,0 +1,6 @@
+BLUE  GREEN
+Number of Figures :2
+Rhombus 1 428 522 BLUE GREEN
+
+Rhombus 2 233 209 BLUE GREEN
+

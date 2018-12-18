@@ -11,7 +11,6 @@
 #include "Actions\ChngDrawColor.h"
 #include "Actions\ChngFillColor.h"
 #include "Actions\ResizeFigure.h"
-#include "Actions\DeleteAction.h"
 #include "Actions/SaveAction.h"
 #include "Actions\BringFrontAction.h"
 #include "CLine.h"
@@ -22,6 +21,10 @@
 #include"CTriangle.h"
 #include"CEllipse.h"
 #include"CRhombus.h"
+#include <utility>
+#include "Actions\DeleteAction.h"
+#include "Actions/SaveByTypeAction.h"
+
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -117,8 +120,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 				pAct = new SaveAction(this);
 				break;
 		case SAVE_BY_TYPE:
-				pOut->PrintMessage("Action: a click on the Save By Type button, Click anywhere");
-				break;
+			pAct = new SaveByTypeAction(this);
+			break;
 		case LOAD:
 				pAct = new loadAction(this);
 				break;
@@ -166,18 +169,19 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 	if(FigCount < MaxFigCount )
 		FigList[FigCount++] = pFig;	
 }
-
+//Get the cut figure 
 CFigure* ApplicationManager::GetCutFig() {
 	return CutFig;
 }
-
+////////////////////////////////////////////////////////////////////////////////////
+//
 void ApplicationManager::SetCutFig(CFigure* pFig) {
 	if (pFig != NULL)
 		pFig->ChngFillClr(UI.CutColor);
 	CutFig = pFig;
 }
-
 ////////////////////////////////////////////////////////////////////////////////////
+//get the figure 
 CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
 	Point P1;
@@ -198,7 +202,7 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	//Add your code here to search for a figure given a point x,y	
 	//Remember that ApplicationManager only calls functions do NOT implement it.
 }
-
+//Delete the figure from the screen
 void ApplicationManager::DeleteFigure(CFigure* pFig) {
 		for (int i = 0; i < FigCount - 1; i++) {
 			if (FigList[i] == pFig) {
@@ -212,6 +216,8 @@ void ApplicationManager::DeleteFigure(CFigure* pFig) {
 			}
 		}
 }
+////////////////////////////////////////////////////////////////////////////////////
+//Deselect all the selected figures
 void ApplicationManager::DeselectAll()
 {
 	//Loop over the figList, finds the selected item and deselect it
@@ -225,7 +231,8 @@ void ApplicationManager::DeselectAll()
 		}
 	}
 }
-
+////////////////////////////////////////////////////////////////////////////////////
+//Delete the selected figure from list
 void ApplicationManager::DeleteSelectedFigure()
 {
 	if (SelectedFig != NULL) {
@@ -251,7 +258,8 @@ void ApplicationManager::DeleteSelectedFigure()
 	}
 
 }
-
+////////////////////////////////////////////////////////////////////////////////////
+//Delete all the figures from the list
 void ApplicationManager::DeleteAllFigures() {
 	for (int i = 0; i < FigCount; i++) {
 		FigList[i] = NULL;
@@ -259,14 +267,15 @@ void ApplicationManager::DeleteAllFigures() {
 	FigCount = 0;
 	pOut->ClearDrawArea();
 }
-
-
+////////////////////////////////////////////////////////////////////////////////////
+//
 void ApplicationManager::Hide_UnhideAll(bool h)
 {
 	for (int i = 0; i < FigCount; i++) {
 		FigList[i]->Hide(h);
 	}
 }
+////////////////////////////////////////////////////////////////////////////////////
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
@@ -280,34 +289,62 @@ void ApplicationManager::UpdateInterface() const
 		}
 	}
 }
-
-void ApplicationManager::SaveAll(ofstream &OutFile) {
+////////////////////////////////////////////////////////////////////////////////////
+//save all figures function on the user interface
+void ApplicationManager::SaveAll(ofstream &OutFile ) {
 	OutFile << getcolorname(UI.DrawColor) << "  " << getcolorname(UI.FillColor) << endl;
 	OutFile << "Number of Figures :" << FigCount << endl;
-	for (int i = 0; i < FigCount; i++)
-	{
-		FigList[i]->Save(OutFile);
-		if (FigList[i]->IsSelected()) 
-			OutFile << getcolorname(FigList[i]->getPrevDrawColor());
-		else 
-			OutFile << getcolorname(FigList[i]->getDrawColor());
-		
-		
-		CLine *ptrLine = dynamic_cast<CLine*>(FigList[i]);
-		if (ptrLine != NULL)
+		for (int i = 0; i < FigCount; i++)
 		{
+			FigList[i]->Save(OutFile);
+			if (FigList[i]->IsSelected())
+				OutFile << getcolorname(FigList[i]->getPrevDrawColor());
+			else
+				OutFile << getcolorname(FigList[i]->getDrawColor());
+
+
+			CLine *ptrLine = dynamic_cast<CLine*>(FigList[i]);
+			if (ptrLine != NULL)
+			{
+				OutFile << endl;
+			}
+			else {
+				OutFile << " " << getcolorname(FigList[i]->getFillColor()) << endl;
+			}
 			OutFile << endl;
 		}
-		else {
-			OutFile << " " << getcolorname(FigList[i]->getFillColor()) << endl;
+}
+////////////////////////////////////////////////////////////////////////////////////
+//Save the figures by the selected type icon
+void ApplicationManager::SaveByType(ofstream &OutFile, Figure_Type type)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->type == type) {
+			FigList[i]->Save(OutFile);
+			if (FigList[i]->IsSelected())
+				OutFile << getcolorname(FigList[i]->getPrevDrawColor());
+			else
+				OutFile << getcolorname(FigList[i]->getDrawColor());
+
+
+			CLine *ptrLine = dynamic_cast<CLine*>(FigList[i]);
+			if (ptrLine != NULL)
+			{
+				OutFile << endl;
+			}
+			else {
+				OutFile << " " << getcolorname(FigList[i]->getFillColor()) << endl;
+			}
+			OutFile << endl;
 		}
-		OutFile << endl;
 	}
 }
-
+////////////////////////////////////////////////////////////////////////////////////
+//function to get the name of colors of figures on the user interface
 string ApplicationManager::getcolorname(color fig)
 {
-	if (fig == BLACK)
+	if (fig == BLACK)  
 		return "BLACK";
 	else if (fig == GREEN)
 		return "GREEN";
@@ -323,10 +360,11 @@ string ApplicationManager::getcolorname(color fig)
 //Return a pointer to the input
 Input *ApplicationManager::GetInput() const
 {	return pIn; }
+////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the output
 Output *ApplicationManager::GetOutput() const
 {	return pOut; }
-
+////////////////////////////////////////////////////////////////////////////////////
 //==================================================================================//
 //							Clipboard Management Functions							//
 //==================================================================================//
@@ -335,30 +373,34 @@ void ApplicationManager::SetClipboard(CFigure* pFig)
 {
 	this->Clipboard = pFig;
 }
-
+////////////////////////////////////////////////////////////////////////////////////
+//
 void ApplicationManager::SetSelectedFig(CFigure * pFig)
 {
 	this->SelectedFig = pFig;
 }
-
+////////////////////////////////////////////////////////////////////////////////////
+//
 void ApplicationManager::ClearClipboard()
 {
 	if (Clipboard!=NULL)
 		delete Clipboard;
 	Clipboard = NULL;
 }
-
+////////////////////////////////////////////////////////////////////////////////////
+//
 CFigure * ApplicationManager::GetSelectedFig()
 {
 	return this->SelectedFig;
 }
-
+////////////////////////////////////////////////////////////////////////////////////
+//
 CFigure * ApplicationManager::GetClipboardFig()
 {
 	return this->Clipboard;
 }
-
 ////////////////////////////////////////////////////////////////////////////////////
+//get the number of the rectangles
 int ApplicationManager::NumOfrect() {
 	CRectangle* rect;
 	int number = 0;
@@ -370,6 +412,7 @@ int ApplicationManager::NumOfrect() {
 	return number;
 }
 ////////////////////////////////////////////////////////////////////////////////////
+//get the number of the triangles
 int ApplicationManager::NumOfTris() {
 	CTriangle* tri;
 	int number = 0;
@@ -381,6 +424,7 @@ int ApplicationManager::NumOfTris() {
 	return number;
 }
 ////////////////////////////////////////////////////////////////////////////////////
+//get the number of the ellipses
 int ApplicationManager::NumOfEli() {
 	CEllipse* eli;
 	int number = 0;
@@ -392,6 +436,7 @@ int ApplicationManager::NumOfEli() {
 	return number;
 }
 ////////////////////////////////////////////////////////////////////////////////////
+//get the number on rhombuses
 int ApplicationManager::NumOfRhom() {
 	CRhombus* rhom;
 	int number = 0;
@@ -403,6 +448,7 @@ int ApplicationManager::NumOfRhom() {
 	return number;
 }
 ////////////////////////////////////////////////////////////////////////////////////
+//get the number of lines
 int ApplicationManager::NumOfLines() {
 	CLine* line;
 	int number = 0;
@@ -414,6 +460,7 @@ int ApplicationManager::NumOfLines() {
 	return number;
 }
 ////////////////////////////////////////////////////////////////////////////////////
+//get the number of the black figures
 int ApplicationManager::NumOfBlack() {
 	GfxInfo g1;
 	int number = 0;
@@ -434,6 +481,7 @@ int ApplicationManager::NumOfBlack() {
 	return number;
 }
 ////////////////////////////////////////////////////////////////////////////////////
+//get the number of white figures
 int ApplicationManager::NumOfWhite() {
 	GfxInfo g1;
 	int number = 0;
@@ -454,6 +502,7 @@ int ApplicationManager::NumOfWhite() {
 	return number;
 }
 ////////////////////////////////////////////////////////////////////////////////////
+//get the number of red figures
 int ApplicationManager::NumOfRed() {
 	GfxInfo g1;
 	int number = 0;
@@ -474,6 +523,7 @@ int ApplicationManager::NumOfRed() {
 	return number;
 }
 ////////////////////////////////////////////////////////////////////////////////////
+//get the number of green figures
 int ApplicationManager::NumOfGreen() {
 	GfxInfo g1;
 	int number = 0;
@@ -494,6 +544,7 @@ int ApplicationManager::NumOfGreen() {
 	return number;
 }
 ////////////////////////////////////////////////////////////////////////////////////
+//get the number of blue figures
 int ApplicationManager::NumOfBlue() {
 	GfxInfo g1;
 	int number = 0;
@@ -514,7 +565,6 @@ int ApplicationManager::NumOfBlue() {
 	return number;
 }
 ////////////////////////////////////////////////////////////////////////////////////
-
 //Destructor
 ApplicationManager::~ApplicationManager()
 {
