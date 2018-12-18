@@ -27,6 +27,7 @@ void PickByFigureAction::Execute()
 	int numOfSelected = 0;
 	int num;
 	bool ended = true;
+	ActionType act = EMPTY;
 	string msg;
 	if (pManager->CheckDrawings()) {
 		do {
@@ -67,9 +68,28 @@ void PickByFigureAction::Execute()
 			pIn->GetPointClicked(pClicked.x, pClicked.y);
 			CFigure* selected = pManager->GetFigure(pClicked.x, pClicked.y);
 			if (pClicked.y >= 0 && pClicked.y < UI.ToolBarHeight) {
-				pOut->PrintMessage("Game Restarted");
-				ended = false;
-				break;
+				//pOut->PrintMessage("Game Restarted");
+				int ClickedItemOrder = (pClicked.x / UI.MenuItemWidth);
+				switch (ClickedItemOrder)
+				{
+				case ITM_PickByFigure: 
+					act= PICK_BY_FIGURE;
+					break;
+				case ITM_PickByColor: 
+					act= PICK_BY_COLOR;
+					break;
+				case ITM_TO_DRAW: 
+					act= TO_DRAW;
+					break;
+				case ITM_ExitProg: 
+					act= EXIT;
+					break;
+				default: act= EMPTY;	//A click on empty place in desgin toolbar
+				}
+				if (act != EMPTY) {
+					ended = false;
+					break;
+				}
 			}
 			if (selected == NULL) {
 				continue;
@@ -149,6 +169,10 @@ void PickByFigureAction::Execute()
 			pOut->PrintMessage("Game Ended, Final score is : Correct picks= " + std::to_string(CorrectPicks) + " , Wrong picks= " + std::to_string(WrongPicks));
 		}
 		pManager->Hide_UnhideAll(false);
+		pManager->UpdateInterface();
+		if (!ended) {
+			pManager->ExecuteAction(act);
+		}
 	}
 	else {
 		pOut->PrintMessage("You need to draw some shapes before you play");

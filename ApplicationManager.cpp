@@ -81,9 +81,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case TO_DRAW:
 			pOut->CreateDrawToolBar();
+			pOut->ClearStatusBar();
 			break;
 		case TO_PLAY:
 			pOut->CreatePlayToolBar();
+			pOut->ClearStatusBar();
 			break;
 
 		case SELECT:
