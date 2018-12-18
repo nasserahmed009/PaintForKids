@@ -30,9 +30,10 @@ public:
 	bool CheckDrawings();					  //Checks if there is Figures Drawn	
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);            //Adds a new figure to the FigList
-	CFigure *GetCutFig();                     //
-	void SetCutFig(CFigure * pFig);           //
-	CFigure *GetFigure(int x, int y) const;   //
+	CFigure *GetCutFig();
+	void SetCutFig(CFigure * pFig);
+	CFigure *GetFigure(int x, int y) const;
+	void AddFigureOnTop(CFigure* pFig);
 	//Search for a figure given a point inside the figure
 	void DeselectAll();                       //Unselect the selected figure 
 	void DeleteSelectedFigure();              //Delete the selected figure 

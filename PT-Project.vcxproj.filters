@@ -64,6 +64,7 @@
     <ClCompile Include="Actions\loadAction.cpp" />
     <ClCompile Include="Actions\SaveAction.cpp" />
     <ClCompile Include="Actions\BringFrontAction.cpp" />
+    <ClCompile Include="Actions\BringBackAction.cpp" />
     <ClCompile Include="Actions\DeleteAction.cpp" />
     <ClCompile Include="Actions\SaveByTypeAction.cpp" />
   </ItemGroup>
@@ -117,6 +118,7 @@
     <ClInclude Include="Actions\loadAction.h" />
     <ClInclude Include="Actions\SaveAction.h" />
     <ClInclude Include="Actions\BringFrontAction.h" />
+    <ClInclude Include="Actions\BringBackAction.h" />
     <ClInclude Include="Actions\DeleteAction.h" />
     <ClInclude Include="Actions\SaveByTypeAction.h" />
   </ItemGroup>
