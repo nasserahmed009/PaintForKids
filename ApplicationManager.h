@@ -20,6 +20,7 @@ private:
 	//Pointers to Input and Output classes
 	Input *pIn;                     //Pointer to the input class
 	Output *pOut;                   //pointer to the output class
+	bool muted = false;
 public:	
 	ApplicationManager(); 
 	~ApplicationManager();
@@ -63,6 +64,8 @@ public:
 	void ClearClipboard();                    //
 	CFigure* GetSelectedFig();                //
 	CFigure* GetClipboardFig();               //
+	void setSound(bool);
+	bool getSound();
 };
 
 #endif

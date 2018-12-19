@@ -20,14 +20,19 @@ void SaveAction::ReadActionParameters()
 void SaveAction::Execute()
 {
 	Output* pOut = pManager->GetOutput();
-	Input* pIn = pManager->GetInput();
-	ReadActionParameters();
-	ofstream OutFile;
-	OutFile.open("Savefile/" + name + ".txt");
-	pManager->SaveAll(OutFile);
-	OutFile.close();
-	pManager->SaveAll(OutFile);
-	pOut->PrintMessage("Saved");
+	if (pManager->CheckDrawings()) {
+		Input* pIn = pManager->GetInput();
+		ReadActionParameters();
+		ofstream OutFile;
+		OutFile.open("Savefile/" + name + ".txt");
+		pManager->SaveAll(OutFile);
+		OutFile.close();
+		pManager->SaveAll(OutFile);
+		pOut->PrintMessage("Saved");
+	}
+	else {
+		pOut->PrintMessage("File is empty, please draw shapes first to save them");
+	}
 	
 }
 

@@ -32,7 +32,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	TO_PLAY,	    //Switch interface to Play mode
 	BRING_FRONT,	//Brings the selected figure to front
 	BRING_BACK,		//Brings the selected figure to back
-
+	MUTE_UNMUTE,	//controls the sound of the application
 	PICK_BLACK,     //pick the black color     
 	PICK_WHITE,     //pick the white color 
 	PICK_RED,       //pick the red color

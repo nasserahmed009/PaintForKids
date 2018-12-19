@@ -19,12 +19,16 @@
 #include"Actions\PickByColorAction.h"
 #include"Actions\PickByFigureAction.h"
 #include"Figures/CRectangle.h"
+#include"Actions/SoundAction.h"
 #include"Figures\CTriangle.h"
 #include"Figures/CEllipse.h"
 #include"Figures/CRhombus.h"
 #include <utility>
 #include "Actions\DeleteAction.h"
 #include "Actions/SaveByTypeAction.h"
+#include <Windows.h>
+#include <MMSystem.h>
+
 
 
 //Constructor
@@ -61,84 +65,130 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	switch (ActType)
 	{
 		case DRAW_RECT:
+			if (!muted)
+				PlaySound("Sounds\\rectangle.wav", NULL, SND_ASYNC);
 			pAct = new AddRectAction(this);
 			break;
 
 		case DRAW_LINE:
+			if (!muted)
+				PlaySound("Sounds\\line.wav", NULL, SND_ASYNC);
 			pAct = new AddLineAction(this);
 			break;
 
 		case DRAW_TRI:
+			if (!muted)
+				PlaySound("Sounds\\triangle.wav", NULL, SND_ASYNC);
 			pAct = new AddTriAction(this);
 			break;
 
 		case DRAW_ELLIPSE:
+			if(!muted)
+				PlaySound("Sounds\\ellipse.wav", NULL, SND_ASYNC);
 			pAct = new AddEllipseAction(this);
 			break;
 
 		case DRAW_RHOMBUS:
+			if (!muted)
+				PlaySound("Sounds\\rhombus.wav", NULL, SND_ASYNC);
 			pAct = new AddRhomAction(this);
 			break;
 		case TO_DRAW:
-			pOut->CreateDrawToolBar();
+			if (!muted)
+				PlaySound("Sounds\\toDraw.wav", NULL, SND_ASYNC);
+			pOut->CreateDrawToolBar(!muted);
 			pOut->ClearStatusBar();
 			break;
 		case TO_PLAY:
+			if (!muted)
+				PlaySound("Sounds\\toPlay.wav", NULL, SND_ASYNC);
 			pOut->CreatePlayToolBar();
 			pOut->ClearStatusBar();
 			break;
 
 		case SELECT:
+			if (!muted)
+				PlaySound("Sounds\\selectFigure.wav", NULL, SND_ASYNC);
 			pAct = new AddSelectAction(this);
 			break;
 		
 		case CHNG_DRAW_CLR:
+			if (!muted)
+				PlaySound("Sounds\\drawClr.wav", NULL, SND_ASYNC);
 			pAct = new ChngDrawColor(this, pOut, pIn);
 			break;
 
 		case CHNG_FILL_CLR:
+			if (!muted)
+				PlaySound("Sounds\\fillClr.wav", NULL, SND_ASYNC);
 			pAct = new ChngFillColor(this, pOut, pIn);
 			break;
 
 		case RESIZE:
+			if (!muted)
+				PlaySound("Sounds\\Resize.wav", NULL, SND_ASYNC);
 			pAct = new ResizeFigure(this, pOut, pIn);
 			break;
 
 		case CPY:
-				pAct = new CopyAction(this);
-				break;
+			if (!muted)
+				PlaySound("Sounds\\Copy.wav", NULL, SND_ASYNC);
+			pAct = new CopyAction(this);
+			break;
 		case CUT:
-				pAct = new CutAction(this);
-				break;
+			if (!muted)
+				PlaySound("Sounds\\Cut.wav", NULL, SND_ASYNC);
+			pAct = new CutAction(this);
+			break;
 		case PASTE:
-				pAct = new PasteAction(this);
-				break;
+			if (!muted)
+				PlaySound("Sounds\\paste.wav", NULL, SND_ASYNC);
+			pAct = new PasteAction(this);
+			break;
 		case BRING_FRONT:
-				pAct = new BringFrontAction(this);
-				break;
+			if (!muted)
+				PlaySound("Sounds\\bringToFront.wav", NULL, SND_ASYNC);
+			pAct = new BringFrontAction(this);
+			break;
 		case BRING_BACK:
-				pAct = new BringBackAction(this);
-				break;
+			if (!muted)
+				PlaySound("Sounds\\sendToBack.wav", NULL, SND_ASYNC);
+			pAct = new BringBackAction(this);
+			break;
 		case DEL:
-				pAct = new DeleteAction(this);
-				break;
+			if (!muted)
+				PlaySound("Sounds\\delete.wav", NULL, SND_ASYNC);
+			pAct = new DeleteAction(this);
+			break;
 		case SAVE:
-				pAct = new SaveAction(this);
-				break;
+			if (!muted)
+				PlaySound("Sounds\\save.wav", NULL, SND_ASYNC);
+			pAct = new SaveAction(this);
+			break;
 		case SAVE_BY_TYPE:
+			if (!muted)
+				PlaySound("Sounds\\saveByType.wav", NULL, SND_ASYNC);
 			pAct = new SaveByTypeAction(this);
 			break;
 		case LOAD:
-				pAct = new loadAction(this);
-				break;
+			if (!muted)
+				PlaySound("Sounds\\Load.wav", NULL, SND_ASYNC);
+			pAct = new loadAction(this);
+			break;
 		case PICK_BY_FIGURE:
-				pOut->PrintMessage("Action: a click on the Pick by figure button, Click anywhere");
-				pAct = new PickByFigureAction(this);
-				break;
+			if (!muted)
+				PlaySound("Sounds\\Pickbyfigure.wav", NULL, SND_ASYNC);
+			pAct = new PickByFigureAction(this);
+			break;
 		case PICK_BY_COLOR:
-			pOut->PrintMessage("Action: a click on the Pick by color button, Click anywhere");
+			if (!muted)
+				PlaySound("Sounds\\pickbycolor.wav", NULL, SND_ASYNC);
 			pAct = new PickByColorAction(this);
 				break;
+		case MUTE_UNMUTE:
+			pAct = new SoundAction(this);
+			pOut->CreateDrawToolBar(muted);
+			break;
 		case EXIT:
 			///create ExitAction here
 			
@@ -337,11 +387,11 @@ void ApplicationManager::SaveAll(ofstream &OutFile ) {
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Save the figures by the selected type icon
-void ApplicationManager::SaveByType(ofstream &OutFile, Figure_Type type)
+void ApplicationManager::SaveByType(ofstream &OutFile, Figure_Type Figtype)
 {
 	OutFile << getcolorname(UI.DrawColor) << "  " << getcolorname(UI.FillColor) << endl;
 	OutFile << "Number of Figures :";
-	int x = type;
+	int x = Figtype;
 	switch (x) {
 	case RECTANGLE:
 		OutFile << NumOfrect() << endl;
@@ -362,7 +412,7 @@ void ApplicationManager::SaveByType(ofstream &OutFile, Figure_Type type)
 
 	for (int i = 0; i < FigCount; i++)
 	{
-		if (FigList[i]->type == type) {
+		if (FigList[i]->type == Figtype) {
 			FigList[i]->Save(OutFile);
 			if (FigList[i]->IsSelected())
 				OutFile << getcolorname(FigList[i]->getPrevDrawColor());
@@ -440,6 +490,14 @@ CFigure * ApplicationManager::GetSelectedFig()
 CFigure * ApplicationManager::GetClipboardFig()
 {
 	return this->Clipboard;
+}
+void ApplicationManager::setSound(bool b)
+{
+	muted = b;
+}
+bool ApplicationManager::getSound()
+{
+	return muted;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //get the number of the rectangles

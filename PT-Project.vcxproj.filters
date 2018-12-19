@@ -67,6 +67,7 @@
     <ClCompile Include="Figures\CRhombus.cpp" />
     <ClCompile Include="Figures\CLine.cpp" />
     <ClCompile Include="Figures\CEllipse.cpp" />
+    <ClCompile Include="Actions\SoundAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddEllipseAction.h" />
@@ -121,6 +122,7 @@
     <ClInclude Include="Figures\CRhombus.h" />
     <ClInclude Include="Figures\CLine.h" />
     <ClInclude Include="Figures\CEllipse.h" />
+    <ClInclude Include="Actions\SoundAction.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Actions\elipse.wav" />

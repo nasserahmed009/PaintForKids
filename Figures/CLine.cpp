@@ -79,6 +79,7 @@ void CLine::Load(string s)
 		arr[k] = word;
 		k++;
 	}
+	this->type = LINE;
 	this->ID = counter;
 	this->Corner1.x = stoi(arr[2]);
 	this->Corner1.y = stoi(arr[3]);

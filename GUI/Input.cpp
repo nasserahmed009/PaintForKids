@@ -72,6 +72,7 @@ ActionType Input::GetUserAction() const
 			case ITM_SAVEBT:	    return SAVE_BY_TYPE;
 			case ITM_LOAD:          return LOAD;
 			case ITM_SWITCH:        return TO_PLAY;	
+			case ITM_SOUND:			return MUTE_UNMUTE;
 			
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}

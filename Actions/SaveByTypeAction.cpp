@@ -16,41 +16,55 @@ void SaveByTypeAction::ReadActionParameters()
 	switch (action) {
 	case DRAW_RECT:
 		type = RECTANGLE;
+		number = pManager->NumOfrect();
 		break;
 	case DRAW_ELLIPSE:
 		type = ELLIPSE;
+		number= pManager->NumOfEli();
 		break;
 	case DRAW_LINE:
 		type = LINE;
+		number = pManager->NumOfLines();
 		break;
 	case DRAW_RHOMBUS:
 		type = RHUMBOS;
+		number = pManager->NumOfRhom();
 		break;
 	case DRAW_TRI:
 		type = TRIANGLE;
+		number = pManager->NumOfTris();
 		break;
 	default:
 		EMPTY;
+		number = -1;
 		break;
 	}
-	pOut->PrintMessage("Enter name to save your file : ");
-	name = pIn->GetSrting(pOut);
-
+	if (number == 0||number==-1) {
+		pOut->PrintMessage("No figures of this type is found");
+		flag = true;
+	}
+	else {
+		pOut->PrintMessage("Enter name to save your file : ");
+		name = pIn->GetSrting(pOut);
+	}
 }
 
 
 void SaveByTypeAction::Execute()
 {
-	Output* pOut = pManager->GetOutput();
-	Input* pIn = pManager->GetInput();
-	ReadActionParameters();
-	ofstream OutFile;
-	OutFile.open("Savefile/" + name + ".txt");
-	pManager->SaveByType(OutFile,type);
-	OutFile.close();
-	pManager->SaveByType(OutFile,type);
-	pOut->PrintMessage("Saved");
-
+	if (pManager->CheckDrawings()) {
+		Output* pOut = pManager->GetOutput();
+		Input* pIn = pManager->GetInput();
+		ReadActionParameters();
+		if (!flag){
+			ofstream OutFile;
+			OutFile.open("Savefile/" + name + ".txt");
+			pManager->SaveByType(OutFile, type);
+			OutFile.close();
+			//pManager->SaveByType(OutFile, type);
+			pOut->PrintMessage("Saved");
+		}
+	}
 }
 
 SaveByTypeAction::~SaveByTypeAction()

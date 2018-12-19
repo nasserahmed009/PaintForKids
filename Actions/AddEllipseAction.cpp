@@ -17,7 +17,7 @@ void AddEllipseAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	PlaySound("Sounds\\ellipse.wav", NULL, SND_ASYNC);
+	
 
 	pOut->PrintMessage("New Ellipse: Click at midpoint");
 

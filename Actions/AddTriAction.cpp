@@ -13,7 +13,6 @@ void AddTriAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	PlaySound("Sounds\\triangle.wav", NULL, SND_ASYNC);
 	pOut->PrintMessage("New Triangle: Click at first corner");
 	
 	//Read 1st corner and store in point P1

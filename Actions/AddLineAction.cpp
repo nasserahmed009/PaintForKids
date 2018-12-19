@@ -15,7 +15,6 @@ void AddLineAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	PlaySound("Sounds\\line.wav", NULL, SND_ASYNC);
 
 	pOut->PrintMessage("New Line: Click at start point");
 	

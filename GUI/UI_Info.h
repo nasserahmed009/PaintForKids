@@ -24,7 +24,6 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_DRAW_CLR,   //Changes draw color
 	ITM_FILL_CLR,   //Changes fill color
 	ITM_RESIZE,		//Resizes figure
-	ITM_SWITCH,     //Exit item
 	ITM_SELECT,     //Select item
 	ITM_FRONT,		//Bring to front item
 	ITM_BACK,		//Bring to back item
@@ -35,6 +34,8 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_SAVE,       //Save item
 	ITM_SAVEBT,     //Save by type item
 	ITM_LOAD,       //Load item 
+	ITM_SOUND,		//Controls sound
+	ITM_SWITCH,     //Switch item
 	ITM_EXIT,	    //Exit item
 	DRAW_ITM_COUNT  //no. of menu items ==> This should be the last line in this enum
 	

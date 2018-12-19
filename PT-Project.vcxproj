@@ -138,6 +138,7 @@
     <ClCompile Include="Actions\SaveAction.cpp" />
     <ClCompile Include="Actions\BringFrontAction.cpp" />
     <ClCompile Include="Actions\BringBackAction.cpp" />
+    <ClCompile Include="Actions\SoundAction.cpp" />
     <ClCompile Include="Figures\CEllipse.cpp" />
     <ClCompile Include="Actions\ChngDrawColor.cpp" />
     <ClCompile Include="Actions\ChngFillColor.cpp" />
@@ -249,6 +250,7 @@
     <ClInclude Include="Actions\loadAction.h" />
     <ClInclude Include="Actions\SaveAction.h" />
     <ClInclude Include="Actions\SaveByTypeAction.h" />
+    <ClInclude Include="Actions\SoundAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Figures\ClassDiagram.cd" />

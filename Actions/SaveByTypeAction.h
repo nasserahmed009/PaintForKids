@@ -8,6 +8,8 @@ class SaveByTypeAction :
 private:
 	string name;
 	Figure_Type type;
+	int number;
+	bool flag=false;
 public:
 	SaveByTypeAction(ApplicationManager* pApp);
 	void ReadActionParameters();
