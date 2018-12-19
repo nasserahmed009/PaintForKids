@@ -14,7 +14,6 @@ public:
 	void ChngFigSize(double figSize);                           //Change the size of rectangle
 	bool PointInFigure(Point P1);                               //Check the point in rectangle or not
 	virtual void Draw(Output* pOut) const;                      //Draw the rectangle on the screen
-	int getID();                                                //Get the figure ID
 	void PrintInfo(Output* pOut);                               //Print the info the rectangle 
 	int getWidth();                                             //Get the width of the rectangle
 	int getHeight();                                            //Get the height of the rectangle 

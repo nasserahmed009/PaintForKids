@@ -14,14 +14,14 @@
 #include "Actions/SaveAction.h"
 #include "Actions\BringFrontAction.h"
 #include "Actions\BringBackAction.h"
-#include "CLine.h"
+#include "Figures\CLine.h"
 #include "Actions/loadAction.h"
 #include"Actions\PickByColorAction.h"
 #include"Actions\PickByFigureAction.h"
 #include"Figures/CRectangle.h"
-#include"CTriangle.h"
-#include"CEllipse.h"
-#include"CRhombus.h"
+#include"Figures\CTriangle.h"
+#include"Figures/CEllipse.h"
+#include"Figures/CRhombus.h"
 #include <utility>
 #include "Actions\DeleteAction.h"
 #include "Actions/SaveByTypeAction.h"
@@ -172,8 +172,10 @@ bool ApplicationManager::CheckDrawings()
 //Add a figure to the list of figures
 void ApplicationManager::AddFigure(CFigure* pFig)
 {
-	if(FigCount < MaxFigCount )
-		FigList[FigCount++] = pFig;	
+	if (FigCount < MaxFigCount) {
+		FigList[FigCount++] = pFig;
+		CFigure::counter++;
+	}
 }
 //Get the cut figure 
 CFigure* ApplicationManager::GetCutFig() {
@@ -283,6 +285,7 @@ void ApplicationManager::DeleteAllFigures() {
 		FigList[i] = NULL;
 	}
 	FigCount = 0;
+	CFigure::counter = 1;
 	pOut->ClearDrawArea();
 }
 ////////////////////////////////////////////////////////////////////////////////////
@@ -336,6 +339,27 @@ void ApplicationManager::SaveAll(ofstream &OutFile ) {
 //Save the figures by the selected type icon
 void ApplicationManager::SaveByType(ofstream &OutFile, Figure_Type type)
 {
+	OutFile << getcolorname(UI.DrawColor) << "  " << getcolorname(UI.FillColor) << endl;
+	OutFile << "Number of Figures :";
+	int x = type;
+	switch (x) {
+	case RECTANGLE:
+		OutFile << NumOfrect() << endl;
+		break;
+	case TRIANGLE:
+		OutFile << NumOfTris() << endl;
+		break;
+	case RHUMBOS:
+		OutFile << NumOfRhom() << endl;
+		break;
+	case ELLIPSE:
+		OutFile << NumOfEli() << endl;
+		break;
+	case LINE:
+		OutFile << NumOfLines() << endl;
+		break;
+	}
+
 	for (int i = 0; i < FigCount; i++)
 	{
 		if (FigList[i]->type == type) {

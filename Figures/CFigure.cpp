@@ -1,6 +1,6 @@
 #include "CFigure.h"
 //counter initialization
-int CFigure::counter = 0;
+int CFigure::counter = 1;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //default constractor
 CFigure::CFigure(){}
@@ -10,7 +10,7 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
 	FigGfxInfo = FigureGfxInfo;	                //Default status is non-filled.
 	Selected = false;                           //state of the new created figure unselected
-	ID = ++counter;                             //set the id for each new created figure
+	ID = counter;                             //set the id for each new created figure
 	isHidden = false;                           //
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -81,5 +81,9 @@ color CFigure::getDrawColor()
 color CFigure::getFillColor()
 {
 	return FigGfxInfo.FillClr;
+}
+int CFigure::getID()
+{
+	return ID;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////

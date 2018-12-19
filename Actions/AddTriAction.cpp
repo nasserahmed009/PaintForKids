@@ -1,5 +1,5 @@
 #include "AddTriAction.h"
-#include "../CTriangle.h"
+#include "../Figures/CTriangle.h"
 
 #include "../ApplicationManager.h"
 

@@ -72,7 +72,7 @@ void CEllipse::Load(string s)
 		arr[k] = word;
 		k++;
 	}
-	this->ID = stoi(arr[1]);
+	this->ID = counter;
 	this->Corner1.x = stoi(arr[2]);
 	this->Corner1.y = stoi(arr[3]);
 	//Checks the draw color

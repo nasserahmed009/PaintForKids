@@ -1,10 +1,10 @@
 #include "AddSelectAction.h"
 #include "../ApplicationManager.h"
 #include "../Figures/CRectangle.h"
-#include "../CLine.h"
-#include "../CRhombus.h"
-#include "../CTriangle.h"
-#include "../CEllipse.h"
+#include "../Figures/CLine.h"
+#include "../Figures/CRhombus.h"
+#include "../Figures/CTriangle.h"
+#include "../Figures/CEllipse.h"
 
 
 
@@ -49,19 +49,20 @@ void AddSelectAction::Execute()
 			clickedFigure->ChngDrawClr(MAGENTA);
 			//Checking the type of the figure and print specific message for every type;
 			if (ptrRectangle != NULL) {
-				pOut->PrintMessage("Rectangle");
+				
+				pOut->PrintMessage("Rectangle ID: " + to_string(ptrRectangle->getID()) + " Width: " + to_string(ptrRectangle->getWidth()) + " Height: " + to_string(ptrRectangle->getHeight()));
 			}
 			if (ptrLine != NULL) {
-				pOut->PrintMessage("Line");
+				pOut->PrintMessage("Line ID: " + to_string(ptrLine->getID()));
 			}
 			if (ptrRhombus != NULL) {
-				pOut->PrintMessage("Rhombus");
+				pOut->PrintMessage("Rhombus ID: " + to_string(ptrRhombus->getID()));
 			}
 			if (ptrTriangle != NULL) {
-				pOut->PrintMessage("Triangle");
+				pOut->PrintMessage("Triangle ID: " + to_string(ptrTriangle->getID()));
 			}
 			if (ptrEllipse != NULL) {
-				pOut->PrintMessage("Ellipse");
+				pOut->PrintMessage("Ellipse ID: " + to_string(ptrEllipse->getID()));
 			}
 		}
 	}

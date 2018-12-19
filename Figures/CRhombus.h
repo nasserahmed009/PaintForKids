@@ -1,7 +1,7 @@
 #ifndef CRHOM_H
 #define CRHOM_H
 
-#include "Figures\CFigure.h"
+#include "CFigure.h"
 
 class CRhombus : public CFigure
 {

@@ -1,10 +1,10 @@
 #include "PickByColorAction.h"
 #include "../ApplicationManager.h"
 #include"../Figures/CRectangle.h"
-#include"../CEllipse.h"
-#include"../CLine.h"
-#include"../CRhombus.h"
-#include"../CTriangle.h"
+#include"../Figures/CEllipse.h"
+#include"../Figures/CLine.h"
+#include"../Figures/CRhombus.h"
+#include"../Figures/CTriangle.h"
 #include<iostream>
 
 

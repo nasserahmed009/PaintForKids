@@ -84,7 +84,7 @@ void CRectangle::Load(string s)
 		arr[k] = word;
 		k++;
 	}
-	this->ID = stoi(arr[1]);
+	this->ID = counter;
 	this->Corner1.x = stoi(arr[2]);
 	this->Corner1.y = stoi(arr[3]);
 	this->Corner2.x = stoi(arr[4]);
@@ -132,8 +132,7 @@ void CRectangle::Hide(bool h)
 	isHidden = h;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//get th id of the rectangle
-int CRectangle::getID(){ return ID; }
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 bool CRectangle::checkHidden()
 {

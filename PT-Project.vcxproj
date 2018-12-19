@@ -138,7 +138,7 @@
     <ClCompile Include="Actions\SaveAction.cpp" />
     <ClCompile Include="Actions\BringFrontAction.cpp" />
     <ClCompile Include="Actions\BringBackAction.cpp" />
-    <ClCompile Include="CEllipse.cpp" />
+    <ClCompile Include="Figures\CEllipse.cpp" />
     <ClCompile Include="Actions\ChngDrawColor.cpp" />
     <ClCompile Include="Actions\ChngFillColor.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -178,8 +178,8 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
     <ClCompile Include="Actions\CopyAction.cpp" />
-    <ClCompile Include="CRhombus.cpp" />
-    <ClCompile Include="CTriangle.cpp" />
+    <ClCompile Include="Figures\CRhombus.cpp" />
+    <ClCompile Include="Figures\CTriangle.cpp" />
     <ClCompile Include="Actions\CutAction.cpp" />
     <ClCompile Include="Figures\CFigure.cpp" />
     <ClCompile Include="Figures\CRectangle.cpp" />
@@ -187,7 +187,7 @@
     <ClCompile Include="GUI\Input.cpp" />
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
-    <ClCompile Include="CLine.cpp" />
+    <ClCompile Include="Figures\CLine.cpp" />
     <ClCompile Include="Actions\loadAction.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Actions\PickByFigureAction.cpp" />
@@ -204,7 +204,7 @@
     <ClInclude Include="Actions\BringFrontAction.h" />
     <ClInclude Include="Actions\BringBackAction.h" />
     <ClInclude Include="Actions\DeleteAction.h" />
-    <ClInclude Include="CEllipse.h" />
+    <ClInclude Include="Figures\CEllipse.h" />
     <ClInclude Include="Actions\ChngDrawColor.h" />
     <ClInclude Include="Actions\ChngFillColor.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -228,8 +228,8 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
     <ClInclude Include="Actions\CopyAction.h" />
-    <ClInclude Include="CRhombus.h" />
-    <ClInclude Include="CTriangle.h" />
+    <ClInclude Include="Figures\CRhombus.h" />
+    <ClInclude Include="Figures\CTriangle.h" />
     <ClInclude Include="Actions\CutAction.h" />
     <ClInclude Include="Figures\CFigure.h" />
     <ClInclude Include="Figures\CRectangle.h" />
@@ -240,7 +240,7 @@
     <ClInclude Include="GUI\UI_Info.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
-    <ClInclude Include="CLine.h" />
+    <ClInclude Include="Figures\CLine.h" />
     <ClInclude Include="Actions\AddTriAction.h" />
     <ClInclude Include="Actions\PickByFigureAction.h" />
     <ClInclude Include="Actions\PickByColorAction.h" />
@@ -251,7 +251,7 @@
     <ClInclude Include="Actions\SaveByTypeAction.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <None Include="Figures\ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Actions\elipse.wav" />

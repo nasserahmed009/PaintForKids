@@ -1,7 +1,7 @@
 #ifndef CELLI_H
 #define CELLI_H
 
-#include "Figures\CFigure.h"
+#include "CFigure.h"
 
 class CEllipse : public CFigure
 {

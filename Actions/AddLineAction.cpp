@@ -1,6 +1,6 @@
 #include "AddLineAction.h"
 
-#include "../CLine.h"
+#include "../Figures/CLine.h"
 
 #include "../ApplicationManager.h"
 

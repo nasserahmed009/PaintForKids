@@ -1,9 +1,9 @@
 #include "loadAction.h"
 #include<iostream>
-#include"../CEllipse.h"
-#include"../CTriangle.h"
-#include"../CLine.h"
-#include"../CRhombus.h"
+#include"../Figures/CEllipse.h"
+#include"../Figures/CTriangle.h"
+#include"../Figures/CLine.h"
+#include"../Figures/CRhombus.h"
 #include <sstream>      // std::istringstream
 #include <string> 
 #include"../Figures/CRectangle.h"

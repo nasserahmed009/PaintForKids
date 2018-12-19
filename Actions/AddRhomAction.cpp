@@ -1,5 +1,5 @@
 #include "AddRhomAction.h"
-#include "../CRhombus.h"
+#include "../Figures/CRhombus.h"
 
 #include "../ApplicationManager.h"
 

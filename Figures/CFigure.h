@@ -21,13 +21,13 @@ protected:
 	bool Selected;              //true if the figure is selected.
 	GfxInfo FigGfxInfo;      	//Figure graphis info
 	color PrevDrawColor;        //
-	static int counter;         //count the numbeer of created figures in the list
 	bool isHidden=false;        //
 
 public:
 	CFigure();                                                     //Default Constractor
 	Figure_Type type;                                              //the type of figures                                       
 	CFigure(GfxInfo FigureGfxInfo);                                //Non-Default Constractor 
+	static int counter;         //count the numbeer of created figures in the list
 	void SetSelected(bool s);	                                   //select/unselect the figure
 	bool IsSelected() const;	                                   //check whether fig is selected
 	virtual bool PointInFigure(Point P1) = 0;                      //check whether the point is in the figure or not
@@ -48,5 +48,6 @@ public:
 	color getFillColor();                                          //get the fill color of the figure
 	virtual void PrintInfo(Output* pOut) = 0;	                   //print all figure info on the status bar
 	virtual void Save(ofstream &OutFile) = 0;                      //Save the figure parameters to the file
+	int getID();
 };
 #endif
