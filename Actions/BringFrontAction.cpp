@@ -34,6 +34,7 @@ void BringFrontAction::Execute() {
 		else if (dynamic_cast<CEllipse*>(selectedFigure)) { // If the selected figure is an ellipse
 			selectedFigure->GetFigPoints(P1);
 			tempFig = new CEllipse(P1, TempGfx);
+			tempFig->ChngFigSize(selectedFigure->GetFigSize());
 		}
 		else if (dynamic_cast<CTriangle*>(selectedFigure)) { // If the selected figure is a triangle
 			selectedFigure->GetFigPoints(P1, P2, P3);
@@ -42,6 +43,7 @@ void BringFrontAction::Execute() {
 		else if (dynamic_cast<CRhombus*>(selectedFigure)) { // If the selected figure is a rhombus
 			selectedFigure->GetFigPoints(P1);
 			tempFig = new CRhombus(P1, TempGfx);
+			tempFig->ChngFigSize(selectedFigure->GetFigSize());
 		}
 
 		pManager->AddFigure(tempFig);			// Adds the temporary stored figure 

@@ -34,6 +34,7 @@ void BringBackAction::Execute() {
 		else if (dynamic_cast<CEllipse*>(selectedFigure)) { // If the figure is an ellipse
 			selectedFigure->GetFigPoints(P1);
 			tempFig = new CEllipse(P1, TempGfx);
+			tempFig->ChngFigSize(selectedFigure->GetFigSize());
 		}
 		else if (dynamic_cast<CTriangle*>(selectedFigure)) { // If the figure is a triangle
 			selectedFigure->GetFigPoints(P1, P2, P3);
@@ -42,6 +43,7 @@ void BringBackAction::Execute() {
 		else if (dynamic_cast<CRhombus*>(selectedFigure)) { // If the figure is a rhombus
 			selectedFigure->GetFigPoints(P1);
 			tempFig = new CRhombus(P1, TempGfx);
+			tempFig->ChngFigSize(selectedFigure->GetFigSize());
 		}
 
 		pManager->AddFigureOnTop(tempFig); // Adds the copied figure on top of the figure list
