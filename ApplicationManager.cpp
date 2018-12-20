@@ -1,31 +1,6 @@
 #include "ApplicationManager.h"
-#include "Actions\AddRectAction.h"
-#include "Actions\AddLineAction.h"
-#include "Actions\AddEllipseAction.h"
-#include "Actions\AddTriAction.h"
-#include "Actions\AddRhomAction.h"
-#include "Actions\AddSelectAction.h"
-#include "Actions\CopyAction.h"
-#include "Actions\PasteAction.h"
-#include "Actions\CutAction.h"
-#include "Actions\ChngDrawColor.h"
-#include "Actions\ChngFillColor.h"
-#include "Actions\ResizeFigure.h"
-#include "Actions/SaveAction.h"
-#include "Actions\BringFrontAction.h"
-#include "Actions\BringBackAction.h"
-#include "Figures\CLine.h"
-#include "Actions/loadAction.h"
-#include"Actions\PickByColorAction.h"
-#include"Actions\PickByFigureAction.h"
-#include"Figures/CRectangle.h"
-#include"Actions/SoundAction.h"
-#include"Figures\CTriangle.h"
-#include"Figures/CEllipse.h"
-#include"Figures/CRhombus.h"
-#include <utility>
-#include "Actions\DeleteAction.h"
-#include "Actions/SaveByTypeAction.h"
+#include "includeFiles/AllFigures.h"
+#include "includeFiles/AllActions.h"
 #include <Windows.h>
 #include <MMSystem.h>
 
@@ -65,32 +40,22 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	switch (ActType)
 	{
 		case DRAW_RECT:
-			if (!muted)
-				PlaySound("Sounds\\rectangle.wav", NULL, SND_ASYNC);
 			pAct = new AddRectAction(this);
 			break;
 
 		case DRAW_LINE:
-			if (!muted)
-				PlaySound("Sounds\\line.wav", NULL, SND_ASYNC);
 			pAct = new AddLineAction(this);
 			break;
 
 		case DRAW_TRI:
-			if (!muted)
-				PlaySound("Sounds\\triangle.wav", NULL, SND_ASYNC);
 			pAct = new AddTriAction(this);
 			break;
 
 		case DRAW_ELLIPSE:
-			if(!muted)
-				PlaySound("Sounds\\ellipse.wav", NULL, SND_ASYNC);
 			pAct = new AddEllipseAction(this);
 			break;
 
 		case DRAW_RHOMBUS:
-			if (!muted)
-				PlaySound("Sounds\\rhombus.wav", NULL, SND_ASYNC);
 			pAct = new AddRhomAction(this);
 			break;
 		case TO_DRAW:
@@ -107,84 +72,54 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 
 		case SELECT:
-			if (!muted)
-				PlaySound("Sounds\\selectFigure.wav", NULL, SND_ASYNC);
 			pAct = new AddSelectAction(this);
 			break;
 		
 		case CHNG_DRAW_CLR:
-			if (!muted)
-				PlaySound("Sounds\\drawClr.wav", NULL, SND_ASYNC);
 			pAct = new ChngDrawColor(this, pOut, pIn);
 			break;
 
 		case CHNG_FILL_CLR:
-			if (!muted)
-				PlaySound("Sounds\\fillClr.wav", NULL, SND_ASYNC);
 			pAct = new ChngFillColor(this, pOut, pIn);
 			break;
 
 		case RESIZE:
-			if (!muted)
-				PlaySound("Sounds\\Resize.wav", NULL, SND_ASYNC);
 			pAct = new ResizeFigure(this, pOut, pIn);
 			break;
 
 		case CPY:
-			if (!muted)
-				PlaySound("Sounds\\Copy.wav", NULL, SND_ASYNC);
 			pAct = new CopyAction(this);
 			break;
 		case CUT:
-			if (!muted)
-				PlaySound("Sounds\\Cut.wav", NULL, SND_ASYNC);
 			pAct = new CutAction(this);
 			break;
 		case PASTE:
-			if (!muted)
-				PlaySound("Sounds\\paste.wav", NULL, SND_ASYNC);
 			pAct = new PasteAction(this);
 			break;
 		case BRING_FRONT:
-			if (!muted)
-				PlaySound("Sounds\\bringToFront.wav", NULL, SND_ASYNC);
 			pAct = new BringFrontAction(this);
 			break;
 		case BRING_BACK:
-			if (!muted)
-				PlaySound("Sounds\\sendToBack.wav", NULL, SND_ASYNC);
 			pAct = new BringBackAction(this);
 			break;
 		case DEL:
-			if (!muted)
-				PlaySound("Sounds\\delete.wav", NULL, SND_ASYNC);
 			pAct = new DeleteAction(this);
 			break;
 		case SAVE:
-			if (!muted)
-				PlaySound("Sounds\\save.wav", NULL, SND_ASYNC);
 			pAct = new SaveAction(this);
 			break;
 		case SAVE_BY_TYPE:
-			if (!muted)
-				PlaySound("Sounds\\saveByType.wav", NULL, SND_ASYNC);
 			pAct = new SaveByTypeAction(this);
 			break;
 		case LOAD:
-			if (!muted)
-				PlaySound("Sounds\\Load.wav", NULL, SND_ASYNC);
 			pAct = new loadAction(this);
 			break;
 		case PICK_BY_FIGURE:
-			if (!muted)
-				PlaySound("Sounds\\Pickbyfigure.wav", NULL, SND_ASYNC);
 			pAct = new PickByFigureAction(this);
 			break;
 		case PICK_BY_COLOR:
-			if (!muted)
-				PlaySound("Sounds\\pickbycolor.wav", NULL, SND_ASYNC);
 			pAct = new PickByColorAction(this);
-				break;
+			break;
 		case MUTE_UNMUTE:
 			pAct = new SoundAction(this);
 			pOut->CreateDrawToolBar(muted);

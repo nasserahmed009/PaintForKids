@@ -1,15 +1,13 @@
 #include "AddSelectAction.h"
 #include "../ApplicationManager.h"
-#include "../Figures/CRectangle.h"
-#include "../Figures/CLine.h"
-#include "../Figures/CRhombus.h"
-#include "../Figures/CTriangle.h"
-#include "../Figures/CEllipse.h"
+#include "../includeFiles/AllFigures.h"
 
 
 
 AddSelectAction::AddSelectAction(ApplicationManager *pApp):Action(pApp)
 {
+	if (!pManager->getSound())
+		PlaySound("Sounds\\selectFigure.wav", NULL, SND_ASYNC);
 }
 
 void AddSelectAction::ReadActionParameters()

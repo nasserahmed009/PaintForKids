@@ -123,6 +123,8 @@
     <ClInclude Include="Figures\CLine.h" />
     <ClInclude Include="Figures\CEllipse.h" />
     <ClInclude Include="Actions\SoundAction.h" />
+    <ClInclude Include="includeFiles\AllFigures.h" />
+    <ClInclude Include="includeFiles\AllActions.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Actions\elipse.wav" />

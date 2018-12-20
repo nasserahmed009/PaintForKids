@@ -174,6 +174,7 @@ void Output::CreateDrawToolBar(bool m)
 	//Draw a line under the toolbar
 	pWind->SetPen(RED, 3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::DrawColorPallete(int x) const //x -> 1 : Fill color , x-> 2 : Draw color

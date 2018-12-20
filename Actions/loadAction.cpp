@@ -1,16 +1,14 @@
 #include "loadAction.h"
 #include<iostream>
-#include"../Figures/CEllipse.h"
-#include"../Figures/CTriangle.h"
-#include"../Figures/CLine.h"
-#include"../Figures/CRhombus.h"
-#include <sstream>      // std::istringstream
+#include "../includeFiles/AllFigures.h"
+#include <sstream>      
 #include <string> 
-#include"../Figures/CRectangle.h"
 using namespace std;
 
 loadAction::loadAction(ApplicationManager * pApp) :Action(pApp)
 {
+	if (!pManager->getSound())
+		PlaySound("Sounds\\Load.wav", NULL, SND_ASYNC);
 }
 
 void loadAction::ReadActionParameters()

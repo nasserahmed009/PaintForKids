@@ -4,6 +4,8 @@
 
 SaveAction::SaveAction(ApplicationManager* pApp):Action(pApp)
 {
+	if (!pManager->getSound())
+		PlaySound("Sounds\\save.wav", NULL, SND_ASYNC);
 }
 
 void SaveAction::ReadActionParameters()

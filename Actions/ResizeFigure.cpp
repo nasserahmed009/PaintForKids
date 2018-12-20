@@ -6,6 +6,8 @@ ResizeFigure::ResizeFigure(ApplicationManager * pApp, Output* pOut, Input* pIn) 
 {
 	this->pOut = pOut;
 	this->pIn = pIn;
+	if (!pManager->getSound())
+		PlaySound("Sounds\\Resize.wav", NULL, SND_ASYNC);
 }
 
 void ResizeFigure::ReadActionParameters() {

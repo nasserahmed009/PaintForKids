@@ -8,7 +8,10 @@
 
 
 AddRectAction::AddRectAction(ApplicationManager * pApp):Action(pApp)
-{}
+{
+	if (!pManager->getSound())
+		PlaySound("Sounds\\rectangle.wav", NULL, SND_ASYNC);
+}
 
 void AddRectAction::ReadActionParameters() 
 {	

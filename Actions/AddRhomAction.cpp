@@ -4,7 +4,10 @@
 #include "../ApplicationManager.h"
 
 AddRhomAction::AddRhomAction(ApplicationManager * pApp):Action(pApp)
-{}
+{
+	if (!pManager->getSound())
+		PlaySound("Sounds\\rhombus.wav", NULL, SND_ASYNC);
+}
 
 void AddRhomAction::ReadActionParameters() 
 {	

@@ -5,6 +5,8 @@
 
 DeleteAction::DeleteAction(ApplicationManager *pApp) :Action(pApp)
 {
+	if (!pManager->getSound())
+		PlaySound("Sounds\\delete.wav", NULL, SND_ASYNC);
 }
 
 void DeleteAction::ReadActionParameters()

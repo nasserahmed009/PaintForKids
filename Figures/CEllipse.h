@@ -6,12 +6,14 @@
 class CEllipse : public CFigure
 {
 private:
-	Point Corner1, P2, P3;     //Corner point and 2 point for resize
-	int dx, dy;
+	Point Corner1, P2, P3;					   //Corner point and 2 point for resize
+	int dx, dy;								   //Delta varibles to add to the corner
+	double figSize;							   //Indicates the figure size
 public:
 	CEllipse();                                //Default constractor
 	CEllipse(Point , GfxInfo FigureGfxInfo );  //Non-default constractor
 	void ChngFigSize(double figSize);          //Change the size of the ellipse
+	double GetFigSize();					   //Returns the figure size
 	virtual void Draw(Output* pOut) const;     //Draw the Ellipse
 	bool PointInFigure(Point P1);              //Check if the point is in the ellipse or not
 	void PrintInfo(Output* pOut);              //Print the info of the Ellipse

@@ -1,16 +1,14 @@
 #include "PickByFigureAction.h"
 #include "../ApplicationManager.h"
-#include"../Figures/CRectangle.h"
-#include"../Figures/CEllipse.h"
-#include"../Figures/CLine.h"
-#include"../Figures/CRhombus.h"
-#include"../Figures/CTriangle.h"
+#include "../includeFiles/AllFigures.h"
 #include<iostream>
 
 
 
 PickByFigureAction::PickByFigureAction(ApplicationManager *pApp):Action(pApp)
 {
+	if (!pManager->getSound())
+		PlaySound("Sounds\\Pickbyfigure.wav", NULL, SND_ASYNC);
 }
 
 void PickByFigureAction::ReadActionParameters()
