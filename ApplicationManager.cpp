@@ -86,7 +86,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case RESIZE:
 			pAct = new ResizeFigure(this, pOut, pIn);
 			break;
-
 		case CPY:
 			pAct = new CopyAction(this);
 			break;
@@ -125,8 +124,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pOut->CreateDrawToolBar(muted);
 			break;
 		case EXIT:
-			///create ExitAction here
-			pOut->PrintMessage("hi");
+			pAct = new ExitAction(this);
+			pOut->PrintMessage("Fuck");
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no action
@@ -271,6 +270,7 @@ void ApplicationManager::DeleteSelectedFigure()
 //Delete all the figures from the list
 void ApplicationManager::DeleteAllFigures() {
 	for (int i = 0; i < FigCount; i++) {
+		delete FigList[i];
 		FigList[i] = NULL;
 	}
 	FigCount = 0;

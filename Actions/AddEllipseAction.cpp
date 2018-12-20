@@ -26,7 +26,10 @@ void AddEllipseAction::ReadActionParameters()
 
 	//Read midpoint and store in point P1
 	pIn->GetPointClicked(P1.x, P1.y);
-
+	if (!((P1.y-150) >= UI.ToolBarHeight && (P1.y+150) < UI.height - UI.StatusBarHeight)) {
+		valid = false;
+		return;
+	}
 	ElliGfxInfo.isFilled = true;	//default is not filled
 	//get drawing, filling colors and pen width from the interface
 	ElliGfxInfo.DrawClr = pOut->getCrntDrawColor();
@@ -41,10 +44,20 @@ void AddEllipseAction::Execute()
 {
 	//This action needs to read some parameters first
 	ReadActionParameters();
+	Output* pOut = pManager->GetOutput();
 
-	//Create a ellipse with the parameters read from the user
-	CEllipse *E=new CEllipse(P1, ElliGfxInfo);
+	//if  the clicked point is in the drawing area
+	if (valid) {
 
-	//Add the ellipse to the list of figures
-	pManager->AddFigure(E);
+		//Create a ellipse with the parameters read from the user
+		CEllipse *E = new CEllipse(P1, ElliGfxInfo);
+
+		//Add the ellipse to the list of figures
+		pManager->AddFigure(E);
+
+	}
+	// if the point isn't on the drawing area
+	else {
+		pOut->PrintMessage("Error: Can't draw on the toolbar or the status bar");
+	}
 }

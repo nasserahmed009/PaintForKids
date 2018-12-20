@@ -6,6 +6,7 @@ class AddLineAction :
 
 Point P1, P2; //Line Points
 	GfxInfo LineGfxInfo;
+	bool valid = true;
 public:
 	AddLineAction(ApplicationManager *pApp);
 

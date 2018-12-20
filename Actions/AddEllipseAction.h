@@ -9,6 +9,7 @@ class AddEllipseAction: public Action
 private:
 	Point P1; //Ellipse Midpoint
 	GfxInfo ElliGfxInfo;
+	bool valid = true; //checks if the points are on the drawing area
 public:
 	AddEllipseAction(ApplicationManager *pApp);
 

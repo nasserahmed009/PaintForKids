@@ -20,3 +20,4 @@
 #include "../Actions/SoundAction.h"
 #include "../Actions/DeleteAction.h"
 #include "../Actions/SaveByTypeAction.h"
+#include"../Actions/ExitAction.h"
