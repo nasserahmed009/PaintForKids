@@ -48,7 +48,6 @@ void BringBackAction::Execute() {
 
 		pManager->AddFigureOnTop(tempFig);
 		pManager->DeleteFigure(selectedFigure);
-
 		pManager->SetSelectedFig(NULL);
 		pManager->DeselectAll();
 		pOut->PrintMessage("Figure brought to back");

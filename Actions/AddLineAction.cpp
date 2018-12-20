@@ -23,6 +23,7 @@ void AddLineAction::ReadActionParameters()
 	
 	//Read start point and store in point P1
 	pIn->GetPointClicked(P1.x, P1.y);
+	//checks if the points are in the drawing area
 	if (!(P1.y >= UI.ToolBarHeight && P1.y < UI.height - UI.StatusBarHeight)) {
 		valid = false;
 		return;

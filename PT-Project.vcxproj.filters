@@ -68,6 +68,7 @@
     <ClCompile Include="Figures\CLine.cpp" />
     <ClCompile Include="Figures\CEllipse.cpp" />
     <ClCompile Include="Actions\SoundAction.cpp" />
+    <ClCompile Include="Actions\ExitAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddEllipseAction.h" />
@@ -125,6 +126,7 @@
     <ClInclude Include="Actions\SoundAction.h" />
     <ClInclude Include="includeFiles\AllFigures.h" />
     <ClInclude Include="includeFiles\AllActions.h" />
+    <ClInclude Include="Actions\ExitAction.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Actions\elipse.wav" />
