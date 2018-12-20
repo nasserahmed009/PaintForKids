@@ -72,7 +72,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 
 		case SELECT:
-			pAct = new AddSelectAction(this);
+			pAct = new SelectAction(this);
 			break;
 		
 		case CHNG_DRAW_CLR:

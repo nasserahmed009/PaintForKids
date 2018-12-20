@@ -12,7 +12,7 @@ private:
 public:
 	CTriangle();
 	CTriangle(Point , Point, Point , GfxInfo FigureGfxInfo );
-	void ChngFigSize(double figSize);
+	bool ChngFigSize(double figSize);
 	virtual void Draw(Output* pOut) const;
 	bool PointInFigure(Point P1);
 	void PrintInfo(Output* pOut);

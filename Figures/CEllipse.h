@@ -12,7 +12,7 @@ private:
 public:
 	CEllipse();                                //Default constractor
 	CEllipse(Point , GfxInfo FigureGfxInfo );  //Non-default constractor
-	void ChngFigSize(double figSize);          //Change the size of the ellipse
+	bool ChngFigSize(double figSize);          //Change the size of the ellipse
 	double GetFigSize();					   //Returns the figure size
 	virtual void Draw(Output* pOut) const;     //Draw the Ellipse
 	bool PointInFigure(Point P1);              //Check if the point is in the ellipse or not

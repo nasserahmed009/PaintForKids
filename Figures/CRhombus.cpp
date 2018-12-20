@@ -21,21 +21,33 @@ CRhombus::CRhombus(Point P, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 	figSize = 1.0;
 }
 
-void CRhombus::ChngFigSize(double figSize)
+bool CRhombus::ChngFigSize(double figSize)
 {
-	P1.x -= Corner1.x; P1.y -= Corner1.y;
-	P2.x -= Corner1.x; P2.y -= Corner1.y;
-	P3.x -= Corner1.x; P3.y -= Corner1.y;
-	P4.x -= Corner1.x; P4.y -= Corner1.y;
-	P1.x *= figSize; P1.y *= figSize;
-	P2.x *= figSize; P2.y *= figSize;
-	P3.x *= figSize; P3.y *= figSize;
-	P4.x *= figSize; P4.y *= figSize;
-	P1.x += Corner1.x; P1.y += Corner1.y;
-	P2.x += Corner1.x; P2.y += Corner1.y;
-	P3.x += Corner1.x; P3.y += Corner1.y;
-	P4.x += Corner1.x; P4.y += Corner1.y;
-	this->figSize = this->figSize * figSize;
+	Point tempP1{ 0,0 }, tempP2{ 0,0 }, tempP3{ 0,0 }, tempP4{ 0,0 };
+	
+
+	tempP2.x = P2.x - Corner1.x; tempP2.y = P2.y - Corner1.y;
+	tempP4.x = P4.x - Corner1.x; tempP4.y = P4.y - Corner1.y;
+	tempP2.x *= figSize; tempP2.y *= figSize;
+	tempP4.x *= figSize; tempP4.y *= figSize;
+	tempP2.x += Corner1.x; tempP2.y += Corner1.y;
+	tempP4.x += Corner1.x; tempP4.y += Corner1.y;
+	if ((tempP2.y >= UI.ToolBarHeight && tempP2.y < UI.height - UI.StatusBarHeight) && (tempP4.y >= UI.ToolBarHeight && tempP4.y < UI.height - UI.StatusBarHeight)) {
+		P1.x -= Corner1.x; P1.y -= Corner1.y;
+		P3.x -= Corner1.x; P3.y -= Corner1.y;
+		P1.x *= figSize; P1.y *= figSize;
+		P3.x *= figSize; P3.y *= figSize;
+		P1.x += Corner1.x; P1.y += Corner1.y;
+		P3.x += Corner1.x; P3.y += Corner1.y;
+		P2.x = tempP2.x;
+		P2.y = tempP2.y;
+		P4.x = tempP4.x;
+		P4.y = tempP4.y;
+
+		this->figSize = this->figSize * figSize;
+		return true;
+	}
+	return false;
 }
 
 void CRhombus::Draw(Output* pOut) const

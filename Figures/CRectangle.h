@@ -11,7 +11,7 @@ private:
 public:
 	CRectangle();                                               //Default Constractor
 	CRectangle(Point , Point, GfxInfo FigureGfxInfo );          //Non-default Constractor
-	void ChngFigSize(double figSize);                           //Change the size of rectangle
+	bool ChngFigSize(double figSize);                           //Change the size of rectangle
 	bool PointInFigure(Point P1);                               //Check the point in rectangle or not
 	virtual void Draw(Output* pOut) const;                      //Draw the rectangle on the screen
 	void PrintInfo(Output* pOut);                               //Print the info the rectangle 

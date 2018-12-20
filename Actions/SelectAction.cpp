@@ -1,16 +1,16 @@
-#include "AddSelectAction.h"
+#include "SelectAction.h"
 #include "../ApplicationManager.h"
 #include "../includeFiles/AllFigures.h"
+#include <cmath>
 
 
-
-AddSelectAction::AddSelectAction(ApplicationManager *pApp):Action(pApp)
+SelectAction::SelectAction(ApplicationManager *pApp):Action(pApp)
 {
 	if (!pManager->getSound())
 		PlaySound("Sounds\\selectFigure.wav", NULL, SND_ASYNC);
 }
 
-void AddSelectAction::ReadActionParameters()
+void SelectAction::ReadActionParameters()
 {
 	//Get a Pointer to the Input / Output Interfaces
 	Input* pIn = pManager->GetInput();
@@ -18,7 +18,7 @@ void AddSelectAction::ReadActionParameters()
 
 }
 
-void AddSelectAction::Execute()
+void SelectAction::Execute()
 {
 	Output* pOut = pManager->GetOutput();
 	
@@ -51,16 +51,23 @@ void AddSelectAction::Execute()
 				pOut->PrintMessage("Rectangle ID: " + to_string(ptrRectangle->getID()) + " Width: " + to_string(ptrRectangle->getWidth()) + " Height: " + to_string(ptrRectangle->getHeight()));
 			}
 			if (ptrLine != NULL) {
-				pOut->PrintMessage("Line ID: " + to_string(ptrLine->getID()));
+				Point P1, P2;
+				ptrLine->GetFigPoints(P1, P2);
+				float length = sqrt( pow((P2.x - P1.x),2) + pow((P2.y-P1.y),2) );
+				pOut->PrintMessage("Line ID: " + to_string(ptrLine->getID()) + " Length : " + to_string(length));
 			}
 			if (ptrRhombus != NULL) {
-				pOut->PrintMessage("Rhombus ID: " + to_string(ptrRhombus->getID()));
+				pOut->PrintMessage("Rhombus ID: " + to_string(ptrRhombus->getID()) + " Width = 300 Height = 300");
 			}
 			if (ptrTriangle != NULL) {
-				pOut->PrintMessage("Triangle ID: " + to_string(ptrTriangle->getID()));
+				Point P1, P2, P3;
+				ptrTriangle->GetFigPoints(P1, P2, P3);
+				pOut->PrintMessage("Triangle ID: " + to_string(ptrTriangle->getID()) + " Corner1 ("+ to_string(P1.x) + "," + to_string(P1.y) + ")" + " Corner2 (" + to_string(P2.x) + "," + to_string(P2.y) + ")"+ " Corner3 (" + to_string(P3.x) + "," + to_string(P3.y) + ")");
+
+
 			}
 			if (ptrEllipse != NULL) {
-				pOut->PrintMessage("Ellipse ID: " + to_string(ptrEllipse->getID()));
+				pOut->PrintMessage("Ellipse ID: " + to_string(ptrEllipse->getID()) + "Width = 300 Height = 300");
 			}
 		}
 	}
@@ -71,6 +78,6 @@ void AddSelectAction::Execute()
 }
 
 
-AddSelectAction::~AddSelectAction()
+SelectAction::~SelectAction()
 {
 }

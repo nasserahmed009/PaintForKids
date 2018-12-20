@@ -27,6 +27,7 @@ void PickByFigureAction::Execute()
 	bool ended = true;
 	ActionType act = EMPTY;
 	string msg;
+	//checks if there is drawings then generates a random number to select a random figure
 	if (pManager->CheckDrawings()) {
 		do {
 			int range = 5;
@@ -62,11 +63,12 @@ void PickByFigureAction::Execute()
 			}
 		} while (numOfSelected == 0);
 		pOut->PrintMessage("Select All " + msg);
+		//Game loop
 		while (numOfSelected > 0) {
 			pIn->GetPointClicked(pClicked.x, pClicked.y);
 			CFigure* selected = pManager->GetFigure(pClicked.x, pClicked.y);
+			//checks if the user clicks on any action
 			if (pClicked.y >= 0 && pClicked.y < UI.ToolBarHeight) {
-				//pOut->PrintMessage("Game Restarted");
 				int ClickedItemOrder = (pClicked.x / UI.MenuItemWidth);
 				switch (ClickedItemOrder)
 				{
@@ -89,13 +91,15 @@ void PickByFigureAction::Execute()
 					break;
 				}
 			}
+			//checks if the user clicked on an empty area in the drawing area
 			if (selected == NULL) {
 				continue;
 			}
+			//checks if the user clicked on an hidden figure and ignores the click
 			if (selected->checkHidden()) {
 				continue;
 			}
-			
+			//checks if the user selected a correct or wrong figure
 			switch (num) {
 			case 2: {
 				CRectangle* rPtr = dynamic_cast<CRectangle*>(selected);
@@ -160,12 +164,14 @@ void PickByFigureAction::Execute()
 			}
 				break;
 			}
+			//updates interface to hide selected figures
 			pOut->ClearDrawArea();
 			pManager->UpdateInterface();
 		}
 		if (ended) {
 			pOut->PrintMessage("Game Ended, Final score is : Correct picks= " + std::to_string(CorrectPicks) + " , Wrong picks= " + std::to_string(WrongPicks));
 		}
+		//unhides all the figures 
 		pManager->Hide_UnhideAll(false);
 		pManager->UpdateInterface();
 		if (!ended) {

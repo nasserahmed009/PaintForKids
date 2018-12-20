@@ -5,7 +5,6 @@
     <ClCompile Include="Actions\AddLineAction.cpp" />
     <ClCompile Include="Actions\AddRhomAction.cpp" />
     <ClCompile Include="Actions\AddTriAction.cpp" />
-    <ClCompile Include="Actions\AddSelectAction.cpp" />
     <ClCompile Include="Actions\ChngDrawColor.cpp" />
     <ClCompile Include="Actions\ChngFillColor.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -69,12 +68,12 @@
     <ClCompile Include="Figures\CEllipse.cpp" />
     <ClCompile Include="Actions\SoundAction.cpp" />
     <ClCompile Include="Actions\ExitAction.cpp" />
+    <ClCompile Include="Actions\SelectAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddEllipseAction.h" />
     <ClInclude Include="Actions\AddLineAction.h" />
     <ClInclude Include="Actions\AddRhomAction.h" />
-    <ClInclude Include="Actions\AddSelectAction.h" />
     <ClInclude Include="Actions\ChngDrawColor.h" />
     <ClInclude Include="Actions\ChngFillColor.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -127,6 +126,7 @@
     <ClInclude Include="includeFiles\AllFigures.h" />
     <ClInclude Include="includeFiles\AllActions.h" />
     <ClInclude Include="Actions\ExitAction.h" />
+    <ClInclude Include="Actions\SelectAction.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Actions\elipse.wav" />

@@ -2,6 +2,7 @@
 #include<iostream>
 #include <sstream>      // std::istringstream
 #include <string> 
+#include "../ApplicationManager.h"
 using namespace std;
 CRectangle::CRectangle()  
 {
@@ -16,15 +17,25 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(Figure
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Rectagle Change Figure Size 
-void CRectangle::ChngFigSize(double figSize)
+bool CRectangle::ChngFigSize(double figSize)
 {
+	Point tempP1{ 0,0 }, tempP2{ 0,0 };
 	Point C = { (Corner1.x + Corner2.x) / 2 , (Corner1.y + Corner2.y) / 2 };
-	Corner1.x -= C.x; Corner1.y -= C.y;
-	Corner2.x -= C.x; Corner2.y -= C.y;
-	Corner1.x *= figSize; Corner1.y *= figSize;
-	Corner2.x *= figSize; Corner2.y *= figSize;
-	Corner1.x += C.x; Corner1.y += C.y;
-	Corner2.x += C.x; Corner2.y += C.y;
+	tempP1.x = Corner1.x - C.x; tempP1.y = Corner1.y - C.y;
+	tempP2.x = Corner2.x - C.x; tempP2.y = Corner2.y - C.y;
+	tempP1.x = tempP1.x * figSize; tempP1.y = tempP1.y * figSize;
+	tempP2.x = tempP2.x * figSize; tempP2.y = tempP2.y * figSize;
+	tempP1.x += C.x; tempP1.y += C.y;
+	tempP2.x += C.x; tempP2.y += C.y;
+
+	if ((tempP1.y >= UI.ToolBarHeight && tempP1.y < UI.height - UI.StatusBarHeight) && (tempP2.y >= UI.ToolBarHeight && tempP2.y < UI.height - UI.StatusBarHeight)) {
+		Corner1.x = tempP1.x;
+		Corner1.y = tempP1.y;
+		Corner2.x = tempP2.x;
+		Corner2.y = tempP2.y;
+		return true;
+	}
+	return false;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //function to check if the point is in figure or not

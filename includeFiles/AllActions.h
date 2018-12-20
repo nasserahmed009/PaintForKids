@@ -4,7 +4,7 @@
 #include "../Actions/AddEllipseAction.h"
 #include "../Actions/AddTriAction.h"
 #include "../Actions/AddRhomAction.h"
-#include "../Actions/AddSelectAction.h"
+#include "../Actions/SelectAction.h"
 #include "../Actions/CopyAction.h"
 #include "../Actions/PasteAction.h"
 #include "../Actions/CutAction.h"

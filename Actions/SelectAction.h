@@ -1,14 +1,14 @@
 #pragma once
 #include "Action.h"
-class AddSelectAction :
+class SelectAction :
 	public Action
 {
 protected:
 	Point pClicked;
 public:
-	AddSelectAction(ApplicationManager *pApp);
+	SelectAction(ApplicationManager *pApp);
 	void ReadActionParameters();
 	void Execute();
-	~AddSelectAction();
+	~SelectAction();
 };
 

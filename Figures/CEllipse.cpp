@@ -2,6 +2,7 @@
 #include<iostream>
 #include <sstream>      // std::istringstream
 #include <string> 
+#include "../ApplicationManager.h"
 using namespace std;
 CEllipse::CEllipse() { }
 ////////////////////////////////////////////////////////////////////////////////////
@@ -16,16 +17,26 @@ CEllipse::CEllipse(Point Corner1,  GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //change the figure size
-void CEllipse::ChngFigSize(double figSize) 
+bool CEllipse::ChngFigSize(double figSize) 
 {
+	Point tempP2{ 0,0 }, tempP3{ 0,0 };
 	Point C = { (P2.x + P3.x) / 2 , (P2.y + P3.y) / 2 };
-	P2.x -= C.x; P2.y -= C.y;
-	P3.x -= C.x; P3.y -= C.y;
-	P2.x *= figSize; P2.y *= figSize;
-	P3.x *= figSize; P3.y *= figSize;
-	P2.x += C.x; P2.y += C.y;
-	P3.x += C.x; P3.y += C.y;
-	this->figSize = this->figSize * figSize;
+	tempP2.x = P2.x - C.x; tempP2.y = P2.y - C.y;
+	tempP3.x = P3.x - C.x; tempP3.y = P3.y - C.y;
+	tempP2.x *= figSize; tempP2.y *= figSize;
+	tempP3.x *= figSize; tempP3.y *= figSize;
+	tempP2.x += C.x; tempP2.y += C.y;
+	tempP3.x += C.x; tempP3.y += C.y;
+	if ((tempP2.y >= UI.ToolBarHeight && tempP2.y < UI.height - UI.StatusBarHeight) && (tempP3.y >= UI.ToolBarHeight && tempP3.y < UI.height - UI.StatusBarHeight)) {
+		P2.x = tempP2.x;
+		P2.y = tempP2.y;
+		P3.x = tempP3.x;
+		P3.y = tempP3.y;
+		this->figSize = this->figSize * figSize;
+		return true;
+	}
+	return false;
+
 }
 
 double CEllipse::GetFigSize() // returns the figure size of the ellipse

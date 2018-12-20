@@ -15,18 +15,33 @@ CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo):CFigur
 }
 
 
-void CTriangle::ChngFigSize(double figSize)
+bool CTriangle::ChngFigSize(double figSize)
 {
+	Point tempP1{ 0,0 }, tempP2{ 0,0 }, tempP3{ 0,0 };
 	Point C = { (Corner1.x + Corner2.x + Corner3.x) / 3 , (Corner1.y + Corner2.y + Corner3.y) / 3 };
-	Corner1.x -= C.x; Corner1.y -= C.y;
-	Corner2.x -= C.x; Corner2.y -= C.y;
-	Corner3.x -= C.x; Corner3.y -= C.y;
-	Corner1.x *= figSize; Corner1.y *= figSize;
-	Corner2.x *= figSize; Corner2.y *= figSize;
-	Corner3.x *= figSize; Corner3.y *= figSize;
-	Corner1.x += C.x; Corner1.y += C.y;
-	Corner2.x += C.x; Corner2.y += C.y;
-	Corner3.x += C.x; Corner3.y += C.y;
+	tempP1.x = Corner1.x - C.x; tempP1.y = Corner1.y - C.y;
+	tempP2.x = Corner2.x - C.x; tempP2.y = Corner2.y - C.y;
+	tempP3.x = Corner3.x - C.x; tempP3.y = Corner3.y - C.y;
+
+
+	tempP1.x *= figSize; tempP1.y *= figSize;
+	tempP2.x *= figSize; tempP2.y *= figSize;
+	tempP3.x *= figSize; tempP3.y *= figSize;
+	tempP1.x += C.x; tempP1.y += C.y;
+	tempP2.x += C.x; tempP2.y += C.y;
+	tempP3.x += C.x; tempP3.y += C.y;
+
+	if ((tempP1.y >= UI.ToolBarHeight && tempP1.y < UI.height - UI.StatusBarHeight) && (tempP2.y >= UI.ToolBarHeight && tempP2.y < UI.height - UI.StatusBarHeight) && (tempP3.y >= UI.ToolBarHeight && tempP3.y < UI.height - UI.StatusBarHeight)) {
+		Corner1.x = tempP1.x;
+		Corner1.y = tempP1.y;
+		Corner2.x = tempP2.x;
+		Corner2.y = tempP2.y;
+		Corner3.x = tempP3.x;
+		Corner3.y = tempP3.y;
+		return true;
+	}
+	return false;
+
 }
 
 void CTriangle::Draw(Output* pOut) const

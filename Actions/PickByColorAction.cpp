@@ -21,50 +21,45 @@ void PickByColorAction::Execute()
 	int CorrectPicks = 0;
 	int WrongPicks = 0;
 	int numOfSelected = 0;
-	int num;
+	int num;		//variable to store random number
 	string msg;
 	bool ended = true;
 	ActionType act = EMPTY;
 	if (pManager->CheckDrawings()) {
+		//generates a random number and selects a color that exists in the draw area
 		do {
 			int range = 5;
 			num = std::rand() % range + 1;
 
 			switch (num) {
-			case 1: {
+			case 1:
 				msg = "Black Figures";
 				numOfSelected = pManager->NumOfBlack();
-
-			}
-					break;
-			case 2: {
+				break;
+			case 2:
 				msg = "White Figures";
 				numOfSelected = pManager->NumOfWhite();
-			}
-					break;
-			case 3: {
+				break;
+			case 3:
 				msg = "Red Figures";
 				numOfSelected = pManager->NumOfRed();
-			}
-					break;
-			case 4: {
+				break;
+			case 4:
 				msg = "Green Figures";
 				numOfSelected = pManager->NumOfGreen();
-			}
-					break;
-			case 5: {
+				break;
+			case 5:
 				msg = "Blue Figures";
 				numOfSelected = pManager->NumOfBlue();
-			}
-					break;
+				break;
 			}
 		} while (numOfSelected == 0);
 		pOut->PrintMessage("Select All " + msg);
 		while (numOfSelected > 0) {
 			pIn->GetPointClicked(pClicked.x, pClicked.y);
 			CFigure* selected = pManager->GetFigure(pClicked.x, pClicked.y);
+			//Checks if the user clicked on any icon
 			if (pClicked.y >= 0 && pClicked.y < UI.ToolBarHeight) {
-				//pOut->PrintMessage("Game Restarted");
 				int ClickedItemOrder = (pClicked.x / UI.MenuItemWidth);
 				switch (ClickedItemOrder)
 				{
@@ -87,15 +82,19 @@ void PickByColorAction::Execute()
 					break;
 				}
 			}
+			//checks if the user clicks on the drawing area
 			if (selected == NULL) {
 				continue;
 			}
+			//checks if the user selects a hidden figure
 			if (selected->checkHidden()) {
 				continue;
 			}
+			//creates a line pointer to check if the selected is not a line
 			CLine* rPtr = dynamic_cast<CLine*>(selected);
 			GfxInfo g1;
 			g1 = selected->GetFigGfxInfo();
+			//Switch case to check if the selected figure has the right color or not
 			switch (num) {
 			case 1: {
 				GfxInfo g1;
@@ -219,12 +218,15 @@ void PickByColorAction::Execute()
 		if (ended) {
 			pOut->PrintMessage("Game Ended, Final score is : Correct picks= " + std::to_string(CorrectPicks) + " , Wrong picks= " + std::to_string(WrongPicks));
 		}
+		//unhides all figures and updates interface to restore everyting after the game ends
 		pManager->Hide_UnhideAll(false);
 		pManager->UpdateInterface();
+		//if the game didn't end and the user interrupted it by clicking on any other action
 		if (!ended) {
 			pManager->ExecuteAction(act);
 		}
 	}
+	//if the user didn't draw any shape before playing
 	else {
 		pOut->PrintMessage("You need to draw some shapes before you play");
 	}
