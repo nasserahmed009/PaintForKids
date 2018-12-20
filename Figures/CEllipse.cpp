@@ -54,7 +54,7 @@ void CEllipse::Draw(Output* pOut) const
 //Check if the point in the figure or not
 bool CEllipse::PointInFigure(Point Corner1)
 {
-	bool condition = (pow( (Corner1.x - this->Corner1.x)*1.0 / (dx*figSize) , 2)+pow((Corner1.y - this->Corner1.y)*1.0 / (dy*figSize), 2) <= 1);
+	bool condition = (pow( (Corner1.x - this->Corner1.x)*1.0 / dx , 2)+pow((Corner1.y - this->Corner1.y)*1.0 / dy, 2) <= 1);
 	if (condition) {
 		return true;
 	}

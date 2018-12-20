@@ -59,7 +59,7 @@ void CRhombus::Draw(Output* pOut) const
 bool CRhombus::PointInFigure(Point P1)
 {
 	// Check if the point lies inside the rhombus or no
-	bool condition = ( (abs((P1.x - Corner1.x)*1.0 / (d*figSize)) + abs((P1.y - Corner1.y)*1.0 / (d*figSize))) <= 1 );
+	bool condition = ( (abs((P1.x - Corner1.x)*1.0 / d) + abs((P1.y - Corner1.y)*1.0 / d)) <= 1 );
 	if (condition) {
 		return true;
 	}
