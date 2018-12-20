@@ -161,19 +161,21 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 		CFigure::counter++;
 	}
 }
+
 //Get the cut figure 
 CFigure* ApplicationManager::GetCutFig() {
 	return CutFig;
 }
+
 ////////////////////////////////////////////////////////////////////////////////////
-//
+//Sets the cut figure
 void ApplicationManager::SetCutFig(CFigure* pFig) {
 	if (pFig != NULL)
 		pFig->ChngFillClr(UI.CutColor);
 	CutFig = pFig;
 }
 ////////////////////////////////////////////////////////////////////////////////////
-//get the figure 
+//Get the figure given a point 
 CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
 	Point P1;
@@ -195,22 +197,24 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	//Remember that ApplicationManager only calls functions do NOT implement it.
 }
 
+//Adds a figure to the top of the figure list
 void ApplicationManager::AddFigureOnTop(CFigure * pFig)
 {
 	if (FigCount < MaxFigCount) {
 		for (int i = FigCount - 1; i >= 0; i--) {
-			FigList[i + 1] = FigList[i];
+			FigList[i + 1] = FigList[i];			// shifts the figures 
 		}
 		FigCount++;
 		FigList[0] = pFig;
 	}
 }
 
+//Deletes a figure
 void ApplicationManager::DeleteFigure(CFigure* pFig) {
 		for (int i = 0; i < FigCount ; i++) {
 			if (FigList[i] == pFig) {
 				delete FigList[i];
-				for (int j = i; j < FigCount - 1; j++) {
+				for (int j = i; j < FigCount - 1; j++) { // shifts the figures after figure i
 					FigList[j] = FigList[j + 1];
 				}
 				FigList[FigCount - 1] = NULL;
