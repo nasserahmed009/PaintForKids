@@ -20,12 +20,18 @@ void AddLineAction::ReadActionParameters()
 	
 	//Read start point and store in point P1
 	pIn->GetPointClicked(P1.x, P1.y);
-
+	if (!(P1.y >= UI.ToolBarHeight && P1.y < UI.height - UI.StatusBarHeight)) {
+		valid = false;
+		return;
+	}
 	pOut->PrintMessage("New Line: Click at end point");
 
 	//Read end point and store in point P2
 	pIn->GetPointClicked(P2.x, P2.y);
-
+	if (!(P2.y >= UI.ToolBarHeight && P2.y < UI.height - UI.StatusBarHeight)) {
+		valid = false;
+		return;
+	}
 	LineGfxInfo.isFilled = false;	//default is not filled
 	//get drawing, filling colors and pen width from the interface
 	LineGfxInfo.DrawClr = pOut->getCrntDrawColor();
@@ -40,10 +46,20 @@ void AddLineAction::Execute()
 {
 	//This action needs to read some parameters first
 	ReadActionParameters();
-	
-	//Create a line with the parameters read from the user
-	CLine *L=new CLine(P1, P2, LineGfxInfo);
+	Output* pOut = pManager->GetOutput();
 
-	//Add the line to the list of figures
-	pManager->AddFigure(L);
+	//if  the clicked point is in the drawing area
+	if (valid) {
+
+		//Create a line with the parameters read from the user
+		CLine *L = new CLine(P1, P2, LineGfxInfo);
+
+		//Add the line to the list of figures
+		pManager->AddFigure(L);
+
+	}
+	// if the point isn't on the drawing area
+	else {
+		pOut->PrintMessage("Error: Can't draw on the toolbar or the status bar");
+	}
 }

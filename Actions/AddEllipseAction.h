@@ -9,6 +9,7 @@ class AddEllipseAction: public Action
 private:
 	Point P1; //Ellipse Midpoint
 	GfxInfo ElliGfxInfo;
+	bool valid = true;
 public:
 	AddEllipseAction(ApplicationManager *pApp);
 

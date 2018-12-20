@@ -16,9 +16,10 @@ void AddRhomAction::ReadActionParameters()
 	
 	//Read Midpoint and store in point P1
 	pIn->GetPointClicked(P1.x, P1.y);
-
-
-
+	if (!((P1.y-150) >= UI.ToolBarHeight && (P1.y+150) < UI.height - UI.StatusBarHeight)) {
+		valid = false;
+		return;
+	}
 	RhomGfxInfo.isFilled = true;	//default is not filled
 	//get drawing, filling colors and pen width from the interface
 	RhomGfxInfo.DrawClr = pOut->getCrntDrawColor();
@@ -33,10 +34,20 @@ void AddRhomAction::Execute()
 {
 	//This action needs to read some parameters first
 	ReadActionParameters();
-	
-	//Create a rhombus with the parameters read from the user
-	CRhombus *R=new CRhombus(P1, RhomGfxInfo);
+	Output* pOut = pManager->GetOutput();
 
-	//Add the rhombus to the list of figures
-	pManager->AddFigure(R);
+	//if  the clicked point is in the drawing area
+	if (valid) {
+
+		//Create a rhombus with the parameters read from the user
+		CRhombus *R = new CRhombus(P1, RhomGfxInfo);
+
+		//Add the rhombus to the list of figures
+		pManager->AddFigure(R);
+
+	}
+	// if the point isn't on the drawing area
+	else {
+		pOut->PrintMessage("Error: The figure will be drawn out of the drawing area.");
+	}
 }

@@ -9,6 +9,7 @@ class AddRhomAction: public Action
 private:
 	Point P1; //Rhombus Midpoint
 	GfxInfo RhomGfxInfo;
+	bool valid = true;
 public:
 	AddRhomAction(ApplicationManager *pApp);
 

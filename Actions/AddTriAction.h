@@ -9,6 +9,7 @@ class AddTriAction: public Action
 private:
 	Point P1, P2 , P3; //Rectangle Corners
 	GfxInfo TriGfxInfo;
+	bool valid = true;
 public:
 	AddTriAction(ApplicationManager *pApp);
 
