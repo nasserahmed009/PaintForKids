@@ -19,15 +19,15 @@ void ChngFillColor::Execute()
 	pOut->DrawColorPallete(1); // Draws the pallete
 	ChooseClr = pIn->GetClr(); // Gets the input from the user 
 	switch (ChooseClr) {
-	case PICK_BLACK: UI.FillColor = BLACK;
+	case PICK_BLACK: UI.FillColor = BLACK; pOut->PrintMessage("Fill Color changed to Black");
 		break;
-	case PICK_WHITE: UI.FillColor = WHITE;
+	case PICK_WHITE: UI.FillColor = WHITE; pOut->PrintMessage("Fill Color changed to White");
 		break;
-	case PICK_RED:   UI.FillColor = RED;
+	case PICK_RED:   UI.FillColor = RED; pOut->PrintMessage("Fill Color changed to Red");
 		break;
-	case PICK_GREEN: UI.FillColor = GREEN;
+	case PICK_GREEN: UI.FillColor = GREEN; pOut->PrintMessage("Fill Color changed to Green");
 		break;
-	case PICK_BLUE:  UI.FillColor = BLUE;
+	case PICK_BLUE:  UI.FillColor = BLUE; pOut->PrintMessage("Fill Color changed to Blue");
 		break;
 	}
 	if (pManager->GetSelectedFig() != NULL) {
