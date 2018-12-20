@@ -37,6 +37,7 @@ void CutAction::Execute() {
 	else if (dynamic_cast<CEllipse*>(selectedFigure)) { // If the figure is an ellipse, create a copy of it
 		selectedFigure->GetFigPoints(P1);
 		copiedFigure = new CEllipse(P1, TempGfx);
+		copiedFigure->ChngFigSize(selectedFigure->GetFigSize());
 	}
 	else if (dynamic_cast<CTriangle*>(selectedFigure)) { // If the figure is a triangle, create a copy of it
 		selectedFigure->GetFigPoints(P1, P2, P3);
@@ -45,6 +46,7 @@ void CutAction::Execute() {
 	else if (dynamic_cast<CRhombus*>(selectedFigure)) { // If the figure is a rhombus, create a copy of it
 		selectedFigure->GetFigPoints(P1);
 		copiedFigure = new CRhombus(P1, TempGfx);
+		copiedFigure->ChngFigSize(selectedFigure->GetFigSize());
 	}
 
 	if (pManager->GetCutFig() != NULL) { // If there was a cut figure before this one, reset it's fill color to the original color
