@@ -16,8 +16,8 @@ void ChngFillColor::ReadActionParameters() {
 void ChngFillColor::Execute()
 {
 	pOut->PrintMessage("Choose a color for object to be filled with");
-	pOut->DrawColorPallete(1);
-	ChooseClr = pIn->GetClr();
+	pOut->DrawColorPallete(1); // Draws the pallete
+	ChooseClr = pIn->GetClr(); // Gets the input from the user 
 	switch (ChooseClr) {
 	case PICK_BLACK: UI.FillColor = BLACK;
 		break;
@@ -32,7 +32,7 @@ void ChngFillColor::Execute()
 	}
 	if (pManager->GetSelectedFig() != NULL) {
 		pManager->DeselectAll();
-		(pManager->GetSelectedFig())->ChngFillClr(UI.FillColor);
+		(pManager->GetSelectedFig())->ChngFillClr(UI.FillColor); // Changes the draw color to the color selected from UI
 		pManager->SetSelectedFig(NULL);
 	}
 	pOut->ClearColorPallete();
