@@ -55,7 +55,7 @@ void SelectAction::Execute()
 				pOut->PrintMessage("Line ID: " + to_string(ptrLine->getID()) + " Length : " + to_string(length));
 			}
 			if (ptrRhombus != NULL) {
-				pOut->PrintMessage("Rhombus ID: " + to_string(ptrRhombus->getID()) + " Width = 300 Height = 300");
+				pOut->PrintMessage("Rhombus ID: " + to_string(ptrRhombus->getID()));
 			}
 			if (ptrTriangle != NULL) {
 				Point P1, P2, P3;
@@ -65,7 +65,7 @@ void SelectAction::Execute()
 
 			}
 			if (ptrEllipse != NULL) {
-				pOut->PrintMessage("Ellipse ID: " + to_string(ptrEllipse->getID()) + "Width = 300 Height = 300");
+				pOut->PrintMessage("Ellipse ID: " + to_string(ptrEllipse->getID()));
 			}
 		}
 	}
