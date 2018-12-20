@@ -45,7 +45,6 @@ void SelectAction::Execute()
 			clickedFigure->ChngDrawClr(MAGENTA);
 			//Checking the type of the figure and print specific message for every type;
 			if (ptrRectangle != NULL) {
-				
 				pOut->PrintMessage("Rectangle ID: " + to_string(ptrRectangle->getID()) + " Width: " + to_string(ptrRectangle->getWidth()) + " Height: " + to_string(ptrRectangle->getHeight()));
 			}
 			if (ptrLine != NULL) {
@@ -55,17 +54,20 @@ void SelectAction::Execute()
 				pOut->PrintMessage("Line ID: " + to_string(ptrLine->getID()) + " Length : " + to_string(length));
 			}
 			if (ptrRhombus != NULL) {
-				pOut->PrintMessage("Rhombus ID: " + to_string(ptrRhombus->getID()));
+				Point P1;
+				ptrRhombus->GetFigPoints(P1);
+				pOut->PrintMessage("Rhombus ID: " + to_string(ptrRhombus->getID()) + " Center (" + to_string(P1.x) + "," + to_string(P1.y) + ")");
 			}
 			if (ptrTriangle != NULL) {
 				Point P1, P2, P3;
 				ptrTriangle->GetFigPoints(P1, P2, P3);
 				pOut->PrintMessage("Triangle ID: " + to_string(ptrTriangle->getID()) + " Corner1 ("+ to_string(P1.x) + "," + to_string(P1.y) + ")" + " Corner2 (" + to_string(P2.x) + "," + to_string(P2.y) + ")"+ " Corner3 (" + to_string(P3.x) + "," + to_string(P3.y) + ")");
-
-
 			}
 			if (ptrEllipse != NULL) {
-				pOut->PrintMessage("Ellipse ID: " + to_string(ptrEllipse->getID()));
+				Point P1;
+				ptrEllipse->GetFigPoints(P1);
+				pOut->PrintMessage("Ellipse ID: " + to_string(ptrEllipse->getID()) + " Center (" + to_string(P1.x) + "," + to_string(P1.y) + ")");
+
 			}
 		}
 	}
