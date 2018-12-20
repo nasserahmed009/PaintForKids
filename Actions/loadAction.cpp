@@ -29,8 +29,9 @@ void loadAction::Execute()
 	CFigure* Fig;
 	string read;
 	bool Empty = false;
+	//checks if the file is open
 	if (File.is_open()) {
-		while (!File.eof()) {
+		while (!File.eof()) {		//checks if the file didn't end
 			getline(File, read); // Saves the line in STRING.
 			if (read.find("Number") != -1) {
 				istringstream iss(read);
@@ -50,36 +51,43 @@ void loadAction::Execute()
 						break;
 				}
 			}
+			//if the figure is ellipse
 			if (read.find("Ellipse")!=-1) {
 				Fig = new CEllipse;
 				Fig->Load(read);
 				pManager->AddFigure(Fig);
 			}
+			//if the figure is triangle
 			else if (read.find("Triangle")!=-1) {
 				Fig = new CTriangle;
 				Fig->Load(read);
 				pManager->AddFigure(Fig);
 			}
+			//if the figure is rectangle
 			else if (read.find("Rectangle")!=-1) {
 				Fig = new CRectangle;
 				Fig->Load(read);
 				pManager->AddFigure(Fig);
 			}
+			//if the figure is rhombus
 			else if (read.find("Rhombus")!=-1) {
 				Fig = new CRhombus;
 				Fig->Load(read);
 				pManager->AddFigure(Fig);
 			}
+			//if the figure is line
 			else if (read.find("Line")!=-1) {
 				Fig = new CLine;
 				Fig->Load(read);
 				pManager->AddFigure(Fig);
 			}
 		}
+		//if the file isn't empty
 		if(!Empty)
 			pOut->PrintMessage("Loaded Successfully");
 		File.close();
 	}
+	//if the file doesn't exist
 	else {
 		pOut->PrintMessage("Couldn't find the file");
 

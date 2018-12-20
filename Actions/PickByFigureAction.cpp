@@ -178,6 +178,7 @@ void PickByFigureAction::Execute()
 			pManager->ExecuteAction(act);
 		}
 	}
+	//if the user didn't draw shapes before playing
 	else {
 		pOut->PrintMessage("You need to draw some shapes before you play");
 	}

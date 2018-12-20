@@ -84,15 +84,17 @@ void PasteAction::Execute() {
 
 	}
 
-	if ((pManager->GetCutFig() != NULL) && FigPasted) { // If the figure is cut and not copied
-		pManager->DeleteFigure(pManager->GetCutFig()); // Delete the figure and reset the CutFig to NULL
-		pManager->SetCutFig(NULL);
-		pManager->UpdateInterface();
-	}
-	else {
-		(pManager->GetCutFig())->ChngFillClr((pManager->GetClipboardFig())->GetFigGfxInfo().FillClr);
-		pManager->SetCutFig(NULL);
-		pManager->ClearClipboard();
+	if (pManager->GetCutFig() != NULL) { // If the figure is cut and not copied
+		if (FigPasted) {
+			pManager->DeleteFigure(pManager->GetCutFig()); // Delete the figure and reset the CutFig to NULL
+			pManager->SetCutFig(NULL);
+			pManager->UpdateInterface();
+		}
+		else {
+			(pManager->GetCutFig())->ChngFillClr((pManager->GetClipboardFig())->GetFigGfxInfo().FillClr);
+			pManager->SetCutFig(NULL);
+			pManager->ClearClipboard();
+		}
 	}
 
 	pManager->SetSelectedFig(NULL); // Reset the selectedFig to NULL

@@ -23,10 +23,8 @@ void SelectAction::Execute()
 	Output* pOut = pManager->GetOutput();
 	
 	ReadActionParameters();
-
+	// get the clicked figure
 	CFigure* clickedFigure = pManager->GetFigure(pClicked.x, pClicked.y);
-	//color selectedPrevColor = clickedFigure->getDrawColor();
-
 
 	CRectangle* ptrRectangle = dynamic_cast <CRectangle*>(clickedFigure);
 	CLine* ptrLine = dynamic_cast <CLine*>(clickedFigure);
@@ -41,9 +39,9 @@ void SelectAction::Execute()
 		}
 		else {											// the figure isn't already selected
 			pManager->DeselectAll();					// deselects the selected figure
-			clickedFigure->SetSelected(true);
+			clickedFigure->SetSelected(true);			// make the clickedfigure selected
 			pManager->SetSelectedFig(clickedFigure);
-			clickedFigure->setPrevDrawColor(clickedFigure->getDrawColor());
+			clickedFigure->setPrevDrawColor(clickedFigure->getDrawColor()); 
 			clickedFigure->ChngDrawClr(MAGENTA);
 			//Checking the type of the figure and print specific message for every type;
 			if (ptrRectangle != NULL) {
