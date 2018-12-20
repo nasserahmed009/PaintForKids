@@ -40,6 +40,7 @@ public:
 	virtual void GetFigPoints(Point &P1, Point &P2);               //gets 2 points of figure
 	virtual void GetFigPoints(Point &P1, Point &P2, Point &P3);    //gets 3 points of figure
 	virtual GfxInfo GetFigGfxInfo();                               //get the graphics info of the figure 
+	virtual double GetFigSize();								   //get the fig size
 	virtual bool checkHidden() = 0;                                //
 	virtual void Load(string) = 0;	                               //Load the figure parameters to the file
 	void setPrevDrawColor(color c);                                //

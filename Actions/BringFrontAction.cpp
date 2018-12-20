@@ -4,6 +4,8 @@
 
 BringFrontAction::BringFrontAction(ApplicationManager * pApp) :Action(pApp)
 {
+	if (!pManager->getSound())
+		PlaySound("Sounds\\bringToFront.wav", NULL, SND_ASYNC);
 }
 
 void BringFrontAction::ReadActionParameters() {

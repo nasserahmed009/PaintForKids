@@ -251,6 +251,8 @@
     <ClInclude Include="Actions\SaveAction.h" />
     <ClInclude Include="Actions\SaveByTypeAction.h" />
     <ClInclude Include="Actions\SoundAction.h" />
+    <ClInclude Include="includeFiles\AllActions.h" />
+    <ClInclude Include="includeFiles\AllFigures.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Figures\ClassDiagram.cd" />

@@ -4,6 +4,8 @@
 
 SaveByTypeAction::SaveByTypeAction(ApplicationManager* pApp) :Action(pApp)
 {
+	if (!pManager->getSound())
+		PlaySound("Sounds\\saveByType.wav", NULL, SND_ASYNC);
 }
 
 void SaveByTypeAction::ReadActionParameters()

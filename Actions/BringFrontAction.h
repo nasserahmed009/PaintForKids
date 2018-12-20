@@ -1,11 +1,7 @@
 #pragma once
 #include "Action.h"
 #include "../ApplicationManager.h"
-#include "../Figures/CRectangle.h"
-#include "../Figures/CTriangle.h"
-#include "../Figures/CRhombus.h"
-#include "../Figures/CEllipse.h"
-#include "../Figures/CLine.h"
+#include "../includeFiles/AllFigures.h"
 class BringFrontAction : public Action
 {
 private:

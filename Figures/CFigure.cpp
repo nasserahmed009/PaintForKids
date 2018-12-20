@@ -58,6 +58,10 @@ GfxInfo CFigure::GetFigGfxInfo()
 {
 	return FigGfxInfo;
 }
+double CFigure::GetFigSize()
+{
+	return 1;
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 void CFigure::setPrevDrawColor(color c)

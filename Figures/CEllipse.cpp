@@ -3,7 +3,7 @@
 #include <sstream>      // std::istringstream
 #include <string> 
 using namespace std;
-CEllipse::CEllipse(){}
+CEllipse::CEllipse() { }
 ////////////////////////////////////////////////////////////////////////////////////
 CEllipse::CEllipse(Point Corner1,  GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
@@ -12,6 +12,7 @@ CEllipse::CEllipse(Point Corner1,  GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 	P2 = { Corner1.x + dx, Corner1.y + dy}; //Upper right corner
 	P3 = { Corner1.x - dx, Corner1.y - dy}; //Lower left corner
 	type=Figure_Type::ELLIPSE;
+	figSize = 1.0;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //change the figure size
@@ -24,6 +25,12 @@ void CEllipse::ChngFigSize(double figSize)
 	P3.x *= figSize; P3.y *= figSize;
 	P2.x += C.x; P2.y += C.y;
 	P3.x += C.x; P3.y += C.y;
+	this->figSize = this->figSize * figSize;
+}
+
+double CEllipse::GetFigSize() // returns the figure size of the ellipse
+{
+	return figSize;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Draw the Ellipse
@@ -43,7 +50,7 @@ bool CEllipse::PointInFigure(Point Corner1)
 	return false;
 }
 ////////////////////////////////////////////////////////////////////////////////////
-//Print all the info ofthe ellipse
+//Print all the info of the ellipse
 void CEllipse::PrintInfo(Output * pOut)
 {
 }

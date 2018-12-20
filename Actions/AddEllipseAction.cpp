@@ -10,7 +10,10 @@
 
 
 AddEllipseAction::AddEllipseAction(ApplicationManager * pApp):Action(pApp)
-{}
+{
+	if (!pManager->getSound())
+		PlaySound("Sounds\\ellipse.wav", NULL, SND_ASYNC);
+}
 
 void AddEllipseAction::ReadActionParameters() 
 {	

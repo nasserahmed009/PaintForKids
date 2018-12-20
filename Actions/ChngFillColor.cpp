@@ -6,6 +6,8 @@ ChngFillColor::ChngFillColor(ApplicationManager * pApp, Output* pOut, Input* pIn
 {
 	this->pOut = pOut;
 	this->pIn = pIn;
+	if (!pManager->getSound())
+		PlaySound("Sounds\\fillClr.wav", NULL, SND_ASYNC);
 }
 
 void ChngFillColor::ReadActionParameters() {

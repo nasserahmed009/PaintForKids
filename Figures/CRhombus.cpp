@@ -1,11 +1,12 @@
 #include "CRhombus.h"
-#include<iostream>
-#include <sstream>      // std::istringstream
+#include <iostream>
+#include <sstream>
 #include <string> 
 using namespace std;
 
 CRhombus::CRhombus()
 {
+	
 }
 
 CRhombus::CRhombus(Point P, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
@@ -17,7 +18,7 @@ CRhombus::CRhombus(Point P, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 	P3.x = Corner1.x - d; P3.y = Corner1.y;
 	P4.x = Corner1.x; P4.y = Corner1.y - d;
 	type = Figure_Type::RHUMBOS;
-
+	figSize = 1.0;
 }
 
 void CRhombus::ChngFigSize(double figSize)
@@ -34,6 +35,7 @@ void CRhombus::ChngFigSize(double figSize)
 	P2.x += Corner1.x; P2.y += Corner1.y;
 	P3.x += Corner1.x; P3.y += Corner1.y;
 	P4.x += Corner1.x; P4.y += Corner1.y;
+	this->figSize = this->figSize * figSize;
 }
 
 void CRhombus::Draw(Output* pOut) const
@@ -55,6 +57,11 @@ bool CRhombus::PointInFigure(Point P1)
 Point CRhombus::getCenter()
 {
 	return Corner1;
+}
+
+double CRhombus::GetFigSize() // returns the figure size of the rhombus
+{
+	return this->figSize;
 }
 
 void CRhombus::PrintInfo(Output * pOut)

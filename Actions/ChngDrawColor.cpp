@@ -6,6 +6,8 @@ ChngDrawColor::ChngDrawColor(ApplicationManager * pApp,Output* pOut, Input* pIn)
 {
 	this->pOut = pOut;
 	this->pIn = pIn;
+	if (!pManager->getSound())
+		PlaySound("Sounds\\drawClr.wav", NULL, SND_ASYNC);
 }
 
 void ChngDrawColor::ReadActionParameters() {

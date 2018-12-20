@@ -4,6 +4,8 @@
 
 BringBackAction::BringBackAction(ApplicationManager * pApp) :Action(pApp)
 {
+	if (!pManager->getSound())
+		PlaySound("Sounds\\sendToBack.wav", NULL, SND_ASYNC);
 }
 
 void BringBackAction::ReadActionParameters() {

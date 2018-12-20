@@ -6,7 +6,10 @@
 #include "../GUI/Input.h"
 #include "../GUI/Output.h"
 AddTriAction::AddTriAction(ApplicationManager * pApp):Action(pApp)
-{}
+{
+	if (!pManager->getSound())
+		PlaySound("Sounds\\triangle.wav", NULL, SND_ASYNC);
+}
 
 void AddTriAction::ReadActionParameters() 
 {	

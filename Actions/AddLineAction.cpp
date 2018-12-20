@@ -8,7 +8,10 @@
 #include "../GUI/Output.h"
 
 AddLineAction::AddLineAction(ApplicationManager * pApp):Action(pApp)
-{}
+{
+	if (!pManager->getSound())
+		PlaySound("Sounds\\line.wav", NULL, SND_ASYNC);
+}
 
 void AddLineAction::ReadActionParameters() 
 {	
