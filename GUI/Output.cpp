@@ -6,7 +6,7 @@ Output::Output()
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
 	
-	UI.width = 1605;
+	UI.width = 1276;
 	UI.height = 780;
 	UI.wx = 5;
 	UI.wy =5;
@@ -14,7 +14,7 @@ Output::Output()
 	
 	UI.StatusBarHeight = 50;
 	UI.ToolBarHeight = 50;
-	UI.MenuItemWidth = 70;
+	UI.MenuItemWidth = 60;
 	UI.ColorBarHeight = 40;
 	UI.ColorItemWidth = 40;
 	UI.ResizeItemWidth = 40;
@@ -32,7 +32,7 @@ Output::Output()
 	//Create the output window
 	pWind = CreateWind(UI.width, UI.height, UI.wx, UI.wy);
 	//Change the title
-	pWind->ChangeTitle("Paint for Kids - Programming Techniques Project");
+	pWind->ChangeTitle("Paint for Kids");
 	
 	CreateDrawToolBar();
 	CreateStatusBar();
@@ -107,7 +107,7 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_PST] = "images\\MenuItems\\Menu_Paste.jpg";
 	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\Menu_Save.jpg";
 	MenuItemImages[ITM_SAVEBT] = "images\\MenuItems\\Menu_SaveByType.jpg";
-	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\Menu_Load1.jpg";
+	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\Menu_Load.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 	MenuItemImages[ITM_SOUND] = "images\\MenuItems\\unmute.jpg";
 	
