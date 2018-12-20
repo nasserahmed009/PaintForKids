@@ -16,14 +16,14 @@ CEllipse::CEllipse(Point Corner1,  GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //change the figure size
-void CEllipse::ChngFigSize(double figSize) 
+void CEllipse::ChngFigSize(double figSize)  // Changes the points of the figure according to the figSize
 {
-	Point C = { (P2.x + P3.x) / 2 , (P2.y + P3.y) / 2 };
-	P2.x -= C.x; P2.y -= C.y;
+	Point C = { (P2.x + P3.x) / 2 , (P2.y + P3.y) / 2 }; // Gets the centroid
+	P2.x -= C.x; P2.y -= C.y; // Translates the axis back to origin
 	P3.x -= C.x; P3.y -= C.y;
-	P2.x *= figSize; P2.y *= figSize;
+	P2.x *= figSize; P2.y *= figSize;  // Multiplies the point by the figSize ratio
 	P3.x *= figSize; P3.y *= figSize;
-	P2.x += C.x; P2.y += C.y;
+	P2.x += C.x; P2.y += C.y; // Translates the axis back to it's original location
 	P3.x += C.x; P3.y += C.y;
 	this->figSize = this->figSize * figSize;
 }

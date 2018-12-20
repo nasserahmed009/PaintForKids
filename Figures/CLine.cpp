@@ -15,14 +15,14 @@ CLine::CLine(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 }
 	
 
-void CLine::ChngFigSize(double figSize)
+void CLine::ChngFigSize(double figSize) // Changes size of figure
 {
-	Point C = { (Corner1.x + Corner2.x) / 2 , (Corner1.y + Corner2.y) / 2 };
-	Corner1.x -= C.x; Corner1.y -= C.y;
+	Point C = { (Corner1.x + Corner2.x) / 2 , (Corner1.y + Corner2.y) / 2 }; // Gets the centroid
+	Corner1.x -= C.x; Corner1.y -= C.y; // Translates the axis back to origin
 	Corner2.x -= C.x; Corner2.y -= C.y;
-	Corner1.x *= figSize; Corner1.y *= figSize;
+	Corner1.x *= figSize; Corner1.y *= figSize; // Multiplies the point by the figSize ratio
 	Corner2.x *= figSize; Corner2.y *= figSize;
-	Corner1.x += C.x; Corner1.y += C.y;
+	Corner1.x += C.x; Corner1.y += C.y; // Translates the axis back to it's original location
 	Corner2.x += C.x; Corner2.y += C.y;
 }
 

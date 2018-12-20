@@ -24,19 +24,19 @@ void ResizeFigure::Execute() {
 	Size = pIn->GetSize();
 	switch (Size) {
 		case PICK_QUARTER:
-			(pManager->GetSelectedFig())->ChngFigSize(0.25);
+			(pManager->GetSelectedFig())->ChngFigSize(0.25); // Changes the figure size by 1/4 of it's current size
 			pOut->PrintMessage("Figure resized to quarter it's size");
 			break;
 		case PICK_HALF: 
-			(pManager->GetSelectedFig())->ChngFigSize(0.5);
+			(pManager->GetSelectedFig())->ChngFigSize(0.5); // Changes the figure size by 1/2 of it's current size
 			pOut->PrintMessage("Figure resized to half it's size");
 			break;
 		case PICK_DOUBLE:   
-			(pManager->GetSelectedFig())->ChngFigSize(2);
+			(pManager->GetSelectedFig())->ChngFigSize(2); // Changes the figure size by 2 of it's current size
 			pOut->PrintMessage("Figure resized to double it's size");
 			break;
 		case PICK_QUAD:
-			(pManager->GetSelectedFig())->ChngFigSize(4);
+			(pManager->GetSelectedFig())->ChngFigSize(4); // Changes the figure size by 4 of it's current size
 			pOut->PrintMessage("Figure resized to four times it's size");
 			break;
 	}

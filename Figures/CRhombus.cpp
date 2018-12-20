@@ -21,17 +21,17 @@ CRhombus::CRhombus(Point P, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 	figSize = 1.0;
 }
 
-void CRhombus::ChngFigSize(double figSize)
+void CRhombus::ChngFigSize(double figSize) 
 {
-	P1.x -= Corner1.x; P1.y -= Corner1.y;
+	P1.x -= Corner1.x; P1.y -= Corner1.y;  // Translates the axis back to origin
 	P2.x -= Corner1.x; P2.y -= Corner1.y;
 	P3.x -= Corner1.x; P3.y -= Corner1.y;
 	P4.x -= Corner1.x; P4.y -= Corner1.y;
-	P1.x *= figSize; P1.y *= figSize;
+	P1.x *= figSize; P1.y *= figSize; // Multiplies the point by the figSize ratio
 	P2.x *= figSize; P2.y *= figSize;
 	P3.x *= figSize; P3.y *= figSize;
 	P4.x *= figSize; P4.y *= figSize;
-	P1.x += Corner1.x; P1.y += Corner1.y;
+	P1.x += Corner1.x; P1.y += Corner1.y; // Translates the axis back to it's original location
 	P2.x += Corner1.x; P2.y += Corner1.y;
 	P3.x += Corner1.x; P3.y += Corner1.y;
 	P4.x += Corner1.x; P4.y += Corner1.y;

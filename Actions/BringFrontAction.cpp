@@ -17,39 +17,38 @@ void BringFrontAction::Execute() {
 		pOut->PrintMessage("No figure is selected");
 	}
 	else {
-		CFigure* selectedFigure = pManager->GetSelectedFig();
+		CFigure* selectedFigure = pManager->GetSelectedFig(); // Gets the selected figure
 		CFigure* tempFig;
-		Point P1 = { 0,0 }, P2 = { 0,0 }, P3 = { 0,0 }; GfxInfo TempGfx;
+		Point P1 = { 0,0 }, P2 = { 0,0 }, P3 = { 0,0 }; GfxInfo TempGfx; // Temporary variables
 		TempGfx = selectedFigure->GetFigGfxInfo();
-		TempGfx.DrawClr = selectedFigure->getPrevDrawColor();
-		if (dynamic_cast<CRectangle*>(selectedFigure)) {
+		TempGfx.DrawClr = selectedFigure->getPrevDrawColor(); // Gets the original color of the selectedFigure (not MAGENTA)
+
+		if (dynamic_cast<CRectangle*>(selectedFigure)) { // If the selected figure is a rectangle
 			selectedFigure->GetFigPoints(P1, P2);
 			tempFig = new CRectangle(P1, P2, TempGfx);
 		}
-		else if (dynamic_cast<CLine*>(selectedFigure)) {
+		else if (dynamic_cast<CLine*>(selectedFigure)) { // If the selected figure is a line
 			selectedFigure->GetFigPoints(P1, P2);
 			tempFig = new CLine(P1, P2, TempGfx);
 		}
-		else if (dynamic_cast<CEllipse*>(selectedFigure)) {
+		else if (dynamic_cast<CEllipse*>(selectedFigure)) { // If the selected figure is an ellipse
 			selectedFigure->GetFigPoints(P1);
-
 			tempFig = new CEllipse(P1, TempGfx);
 		}
-		else if (dynamic_cast<CTriangle*>(selectedFigure)) {
+		else if (dynamic_cast<CTriangle*>(selectedFigure)) { // If the selected figure is a triangle
 			selectedFigure->GetFigPoints(P1, P2, P3);
-
 			tempFig = new CTriangle(P1, P2, P3, TempGfx);
 		}
-		else if (dynamic_cast<CRhombus*>(selectedFigure)) {
+		else if (dynamic_cast<CRhombus*>(selectedFigure)) { // If the selected figure is a rhombus
 			selectedFigure->GetFigPoints(P1);
-
 			tempFig = new CRhombus(P1, TempGfx);
 		}
 
-		pManager->AddFigure(tempFig);
-		pManager->DeleteFigure(selectedFigure);
+		pManager->AddFigure(tempFig);			// Adds the temporary stored figure 
+		pManager->DeleteFigure(selectedFigure); // Deletes the selected figure
 		pManager->SetSelectedFig(NULL);
 		pManager->DeselectAll();
+
 		pOut->PrintMessage("Figure brought to front");
 	}
 }
