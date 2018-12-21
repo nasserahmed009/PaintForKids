@@ -1,0 +1,6 @@
+BLUE  GREEN
+Number of Figures :2
+Ellipse 1 373 426 0.5 BLUE GREEN
+
+Ellipse 2 583 433 1 BLUE GREEN
+
