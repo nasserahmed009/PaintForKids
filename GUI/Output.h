@@ -1,7 +1,6 @@
 #ifndef OUPTUT_H
 #define OUPTUT_H
 #include "Input.h"
-
 class Output	//The application manager should have a pointer to this class
 {
 private:	
@@ -11,6 +10,7 @@ public:
 
 	window* CreateWind(int, int, int , int) const; //creates the application window
 	void CreateDrawToolBar() const;	               //creates Draw mode toolbar & menu
+	void CreateDrawToolBar(bool m);	
 	void CreatePlayToolBar() const;	               //creates Play mode toolbar & menu
 	void CreateStatusBar() const;	               //create the status bar
 	void CreateToolBar() const;                    //create the tool bar 
@@ -22,11 +22,11 @@ public:
 	void ClearToolBar() const;                     //Clears the tool bar 
 	
 	// -- Figures Drawing functions
-	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected=false) const;         //Draw a rectangle
+	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected = false) const;         //Draw a rectangle
 	void DrawLine(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected=false) const;         //Draw a Line
 	void DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool selected=false) const; //Draw a triangle
-	void DrawRhombus(Point P1, GfxInfo RhombusGfxInfo, bool selected) const;                   //Draw a Rhombus
-	void DrawEllipse(Point P1, GfxInfo EllipseGfxInfo, bool selected) const;                   //Draw a Ellipse 
+	void DrawRhombus(Point P1, Point P2, Point P3, Point P4, GfxInfo RhombusGfxInfo, bool selected) const;                   //Draw a Rhombus
+	void DrawEllipse(Point P1, Point P2, GfxInfo EllipseGfxInfo, bool selected) const;                   //Draw a Ellipse 
 	
 	void PrintMessage(string msg) const;	       //Print a message on Status bar
 
@@ -34,6 +34,8 @@ public:
 	color getCrntFillColor() const;	               //get current filling color
 	int getCrntPenWidth() const;		           //get current pen width
 	void DrawColorPallete(int x) const;            //Draws color pallete
+
+	void DrawResizePallete() const;
 
 	
 	~Output();

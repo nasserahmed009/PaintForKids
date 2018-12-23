@@ -2,6 +2,8 @@
 #define ACTION_H
 
 #include "..\DefS.h"
+#include <Windows.h>
+#include <MMSystem.h>
 
 class ApplicationManager; //forward class declaration
 

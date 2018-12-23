@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectName>PT Project</ProjectName>
     <ProjectGuid>{1AC3DDD7-FDDE-487E-A2A4-52A8FCF7BDB9}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -129,11 +129,20 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AddEllipseAction.cpp" />
-    <ClCompile Include="AddLineAction.cpp" />
-    <ClCompile Include="AddRhomAction.cpp" />
-    <ClCompile Include="AddTriAction.cpp" />
-    <ClCompile Include="CEllipse.cpp" />
+    <ClCompile Include="Actions\AddEllipseAction.cpp" />
+    <ClCompile Include="Actions\AddLineAction.cpp" />
+    <ClCompile Include="Actions\AddRhomAction.cpp" />
+    <ClCompile Include="Actions\AddTriAction.cpp" />
+    <ClCompile Include="Actions\SelectAction.cpp" />
+    <ClCompile Include="Actions\DeleteAction.cpp" />
+    <ClCompile Include="Actions\ExitAction.cpp" />
+    <ClCompile Include="Actions\SaveAction.cpp" />
+    <ClCompile Include="Actions\BringFrontAction.cpp" />
+    <ClCompile Include="Actions\BringBackAction.cpp" />
+    <ClCompile Include="Actions\SoundAction.cpp" />
+    <ClCompile Include="Figures\CEllipse.cpp" />
+    <ClCompile Include="Actions\ChngDrawColor.cpp" />
+    <ClCompile Include="Actions\ChngFillColor.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
@@ -170,22 +179,37 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant1.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
-    <ClCompile Include="CRhombus.cpp" />
-    <ClCompile Include="CTriangle.cpp" />
+    <ClCompile Include="Actions\CopyAction.cpp" />
+    <ClCompile Include="Figures\CRhombus.cpp" />
+    <ClCompile Include="Figures\CTriangle.cpp" />
+    <ClCompile Include="Actions\CutAction.cpp" />
     <ClCompile Include="Figures\CFigure.cpp" />
     <ClCompile Include="Figures\CRectangle.cpp" />
     <ClCompile Include="Actions\AddRectAction.cpp" />
     <ClCompile Include="GUI\Input.cpp" />
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
-    <ClCompile Include="CLine.cpp" />
+    <ClCompile Include="Figures\CLine.cpp" />
+    <ClCompile Include="Actions\loadAction.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Actions\PickByFigureAction.cpp" />
+    <ClCompile Include="Actions\PickByColorAction.cpp" />
+    <ClCompile Include="Actions\PasteAction.cpp" />
+    <ClCompile Include="Actions\ResizeFigure.cpp" />
+    <ClCompile Include="Actions\SaveByTypeAction.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AddEllipseAction.h" />
-    <ClInclude Include="AddLineAction.h" />
-    <ClInclude Include="AddRhomAction.h" />
-    <ClInclude Include="CEllipse.h" />
+    <ClInclude Include="Actions\AddEllipseAction.h" />
+    <ClInclude Include="Actions\AddLineAction.h" />
+    <ClInclude Include="Actions\AddRhomAction.h" />
+    <ClInclude Include="Actions\SelectAction.h" />
+    <ClInclude Include="Actions\BringFrontAction.h" />
+    <ClInclude Include="Actions\BringBackAction.h" />
+    <ClInclude Include="Actions\DeleteAction.h" />
+    <ClInclude Include="Actions\ExitAction.h" />
+    <ClInclude Include="Figures\CEllipse.h" />
+    <ClInclude Include="Actions\ChngDrawColor.h" />
+    <ClInclude Include="Actions\ChngFillColor.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />
@@ -206,8 +230,10 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpegint.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
-    <ClInclude Include="CRhombus.h" />
-    <ClInclude Include="CTriangle.h" />
+    <ClInclude Include="Actions\CopyAction.h" />
+    <ClInclude Include="Figures\CRhombus.h" />
+    <ClInclude Include="Figures\CTriangle.h" />
+    <ClInclude Include="Actions\CutAction.h" />
     <ClInclude Include="Figures\CFigure.h" />
     <ClInclude Include="Figures\CRectangle.h" />
     <ClInclude Include="Actions\Action.h" />
@@ -217,11 +243,28 @@
     <ClInclude Include="GUI\UI_Info.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
-    <ClInclude Include="CLine.h" />
-    <ClInclude Include="AddTriAction.h" />
+    <ClInclude Include="Figures\CLine.h" />
+    <ClInclude Include="Actions\AddTriAction.h" />
+    <ClInclude Include="Actions\PickByFigureAction.h" />
+    <ClInclude Include="Actions\PickByColorAction.h" />
+    <ClInclude Include="Actions\PasteAction.h" />
+    <ClInclude Include="Actions\ResizeFigure.h" />
+    <ClInclude Include="Actions\loadAction.h" />
+    <ClInclude Include="Actions\SaveAction.h" />
+    <ClInclude Include="Actions\SaveByTypeAction.h" />
+    <ClInclude Include="Actions\SoundAction.h" />
+    <ClInclude Include="includeFiles\AllActions.h" />
+    <ClInclude Include="includeFiles\AllFigures.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <None Include="Figures\ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Actions\elipse.wav" />
+    <Media Include="Actions\line.wav" />
+    <Media Include="Actions\rectangle.wav" />
+    <Media Include="Actions\rho.wav" />
+    <Media Include="Actions\tri.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
